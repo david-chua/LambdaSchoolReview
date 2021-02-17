@@ -18,6 +18,6 @@
 
 #### Different tags:
 
-```` <p> `````
+### ```<p> ```
 
    * The paragraph element is meant for holding text. By default, it will render text on a new line.
