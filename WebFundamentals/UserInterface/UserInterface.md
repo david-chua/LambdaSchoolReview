@@ -32,7 +32,7 @@
   * span element is a generic text container. It does not create a new line like the p element does. It's typically used for styling words or phrases within a larger body of text.
   * Unline divs, span operates inline and does not take up its own line.
 
-``` <h1> --> <h6>
+``` <h1> --> <h6> ```
 
   * The heading tags are intended to be a way to present the subject matter of the page. 1 being the most important and 6 being the least.
   * Avoid using heading tags to resize text. Headings use size to indicate their relative importance, but CSS is preferred for general purpose resizing.
