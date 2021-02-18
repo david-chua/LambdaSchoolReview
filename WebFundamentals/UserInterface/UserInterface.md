@@ -147,9 +147,9 @@ Sample of image tag:
 
 - This is the parent element and will contain list items.
 
-- There is also an ordered or numbered list <ol>, each has their own purpose.
+- There is also an ordered or numbered list ```<ol>```, each has their own purpose.
 
-- Generally speaking, <ul> would be used for grocery list and <ol> for a recipe where direction needs to be followed in a specific order.
+- Generally speaking, ```<ul>``` would be used for grocery list and ```<ol>``` for a recipe where direction needs to be followed in a specific order.
 
 - In addition, some developers like to style their lists in CSS and opt not to use these tags.
 
