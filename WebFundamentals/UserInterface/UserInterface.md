@@ -92,3 +92,85 @@ Example of possible uses of divs:
 Notice in the example above that the section tag is used to wrap content but we're able to split this section in two halves using divs.
 
 Semantically, we are still using section and at the same time, we are using presentational div tags to split the content in half. Later on, using CSS can be used to split the content without hurting the semantic structure.
+
+
+## Expanded 'Basic' elements
+
+There are dozens of HTML elements that are readily available but only a handful are used regularly.
+
+#### Attributes
+
+One way to include data into our elements is to use special flags inside our tags called attributes.
+
+We will see attributes in action in the next section for hyperlinks and images.
+
+```
+<a href="http://dabrook.org"> Visit DaBrook</a>
+```
+
+From <a> to </a> is full element
+href is known as the attribute name
+http://dabrook.org is the attribute value
+Both the attribute name and attribute value are found in the opening tag.
+
+### More elements
+
+```
+<a>
+```
+
+- This 'a'("anchor") element allows us to create links to other web pages or even to other pages within our own web pages).  You will always see the 'a' element used with the href attribute to tell the browser what address you want the link to point to.
+
+Sample usage of anchor tags:
+```
+<a href="http://www.lambdaschool.com">Here is a link</a>
+```
+
+```
+<img>
+```
+
+- This element will display an image on the screen. It will always have a 'src' attribute which points to the address of the image to be displayed.
+- Image tags are self closing.
+
+Sample of image tag:
+
+```
+<img src="https://picsum.photos/500/300" />
+```
+
+```
+<ul> and <ol>
+```
+
+- This element represents an "unordered list".
+- This is the parent element and will contain list items.
+- There is also an ordered or numbered list <ol>, each has their own purpose.
+- Generally speaking, <ul> would be used for grocery list and <ol> for a recipe where direction needs to be followed in a specific order.
+- In addition, some developers like to style their lists in CSS and opt not to use these tags.
+
+```
+<li>
+```
+
+- This stands for the list item and is the companion to the <ul> and <ol>.
+- These items represents the items to appear in the list. Any other elements can appear in an li.
+
+Sample of a lists
+
+```
+<h1> This is a list </h1>
+<p> This list contains a lot of different items <p>
+
+<ul>
+    <li>
+      <span>I am an item</span>
+    </li>
+    <li>
+      <span>I am another item</span>
+    </li>
+    <li>
+      <span>I am a third item</span>
+    </li>
+  </ul>
+```
