@@ -37,3 +37,58 @@
   * The heading tags are intended to be a way to present the subject matter of the page. 1 being the most important and 6 being the least.
   * Avoid using heading tags to resize text. Headings use size to indicate their relative importance, but CSS is preferred for general purpose resizing.
   * Semantically, you should only use one h1 per page. Using more than one will not result in an error but is not considered best practice.
+
+
+## Semantic HTML5
+
+Examples of semantic tags are:
+
+```
+<h1>
+<p>
+<section>
+<nav>
+<header>
+<fooder>
+
+```
+
+Semantic in code means that the tags used in the HTML code is easy to identify what they're meant for.
+
+Non semantic examples are:
+
+```
+<div>
+<span>
+```
+
+At this point, we can see the advantage of semantic markup for web developers. The clarity and meaning are found in the tag that's being used.
+
+## Div tags are not bad
+
+While it might seem that using divs are bad, this is really not the case.
+
+We use divs for many purpose:
+
+- To create a space
+- Add structure
+- Style elements
+
+Example of possible uses of divs:
+
+```
+
+<section>
+  <div>
+    <p> Half of the content should go here </p>
+  </div>
+  <div>
+    <p> The other half should go here. </p>
+  </div>
+</section>
+
+```
+
+Notice in the example above that the section tag is used to wrap content but we're able to split this section in two halves using divs.
+
+Semantically, we are still using section and at the same time, we are using presentational div tags to split the content in half. Later on, using CSS can be used to split the content without hurting the semantic structure.
