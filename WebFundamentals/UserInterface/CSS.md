@@ -68,3 +68,16 @@ body {
 
 - color: it's used for text only. It will change the color of text.
 - font-size: We can't use width or height for text, but we can determine the size of the font used. Some units are (px, em).
+
+
+## Box Model
+
+The box model places all html elements into boxes.
+The make up of each box is the following:
+-  content (text, or image)
+- padding (black space around the content)
+- border
+- margin (blank space around the border)
+
+We use CSS to add styles in our box model.
+By default, most HTML elements are boxes, however there are some, including span, a, button, and others that don't follow this rules. 
