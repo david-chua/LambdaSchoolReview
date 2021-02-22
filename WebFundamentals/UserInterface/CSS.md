@@ -337,3 +337,163 @@ vertical-align: baseline;
 }
 
 ```
+
+## px, em, and rem
+
+#### px
+
+- px unit is referred to as an absolute length unit. This means that px does not adjust for its surroundings. That being understood, px units are still viable in some scenarios where layout control is needed. Modern browsers now allow  px units to scale with the zoomed in viewport.
+
+Syntax Examples
+
+```
+<h1> Example</h1>
+```
+
+```
+h1{
+  font-size: 10px;
+}
+```
+
+Pros:
+
+- Easiest unit for developers to read from design files
+- Modern browsers now allow px units to grow with built in zoom features
+- No reliance on cascading for sizing
+
+Cons:
+
+- Rigid unit that is not responsive in layouts
+- Hard coded font size value are not accessible for users that change their own default settings.
+
+#### em
+
+- em unit is referred to as a relative unit length. This means that em will adjust to its surroundings.
+- In the example below, notice that .main-content has the font-size: 10px. The em inside of our h1 will now adjust its value to match the 10px. This is useful when building responsive layouts for adjusting fonts on different  devices.
+
+One of the issues with em is its inherited calculation. Sometiems changing just one parent element can lead to a cascade of skewed sizes. The cascade of font sizes can easily compound, creating hard-to-anticipate issues.
+
+syntax example:
+
+```
+<section class="main-content">
+  <h1>Example</h1>
+</section>
+```
+
+```
+.main-content {
+  font-size: 10px;
+}
+
+.main-content h1 {
+  /* 2em === 20px */
+  font-size: 2em;
+}
+```
+
+Pros:
+
+- Responsive to its surroundings
+
+Cons:
+
+- Can be too flexible at times and create cascading font sizes that weren't expected
+- Converting px to em when creating code from a design file usually requires a calculator or a memorization that can feel cumbersome
+
+
+#### rem
+
+The rem or root em unit is also referred to as a relative length unit. The root part means that this unit looks to the root element in a page. Usually the root element is going ot be the html tag in a web application
+
+Using hard coded pixel on the html tag is bad practice as it overwrites the user's default settings on their browser. This is where a % based comes to be used. A 62.5% base value converts rem units by the power of them. So 1 rem = 10px throughout the document.
+
+Some examples
+18 px == 1.8 rem
+13 px = 1.3 rem
+27 px = 2.7 rem
+
+Syntax example:
+
+```
+<section class="main-content">
+  <h1>Example</h1>
+</section>
+```
+
+```
+html {
+  /* This technically works but is too rigid and not accessible */
+  font-size: 16px;
+  /* Best Practice */
+  font-size: 62.5%;
+}
+
+.main-content {
+  font-size: 10px;
+}
+
+.main-content h1 {
+  /* 2rem === 20px */
+  font-size: 2rem;
+}
+```
+
+Pros:
+
+- Responsive to root element only
+- If you use a % based unit, you can achieve accessibility gains and eliminate awkward conversion system of 16px ( the browser default size).
+
+Cons:
+
+- If you don't make the root element flexible, you will hurt accessibility by overwriting default user settings in the browser.
+- Converting px to rem when creating code from a design file naturally requires a calculator or memorization that can feel cumbersome.
+
+
+## % and vw/vh
+
+#### %
+
+The % unit is referred to as a relative length unit. The % unit is usually used for building responsive layouts more than for font sizing. % based layouts start at the viewport width and then cascade down through nested units.
+
+Look at the example below to see how the cascade of nested % based units work. You can see the .main-content section is 100% of its viewport as its top level element in our example.
+
+Note the h1 width is 50% of the .main-content and not the viewport. That means if we adjusted .main content width to a different value like 60%, the h1 width would become 50% of the new 60% value.
+
+HTML:
+
+```
+<section class="main-content">
+  <h1>Example</h1>
+</section>
+```
+
+CSS:
+
+```
+.main-content {
+/* this will be the entire viewport */
+  width: 100%;
+}
+
+.main-content h1 {
+/* this will be half of .main-content */
+  width: 50%;
+}
+```
+
+Pros:
+
+- Responsiveness starts at the viewport level and cascades down to nested elements helping you build a layout to adjust to any size.
+
+Cons:
+
+- You have to be careful with % based layout as widths can get too small very fast
+- If you don't add everything up to 100% when building layout, % can cause a lot of frustration searching the box model to see where the math went wrong.
+
+#### vw/vh
+
+- These units completely rely on the viewport of the browser window to render. These should typically only be used for specific used cases like full screen layouts.
+
+If you have ever tried ot use height: 10%, you'll appreciate vw and vh. Rarely they are used to make a font fill the screen (think slideshows, or landing page headers w/ font size to 1/3 of viewport, e.g. font-size: 33vh).
