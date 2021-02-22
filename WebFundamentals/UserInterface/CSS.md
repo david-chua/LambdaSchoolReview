@@ -184,10 +184,118 @@ There are occasions you would want to select every element on a web page. The un
 
 Specificity Weight: Less specific than any selector.
 
-#### CSS Syntax example:
+CSS Syntax example:
 
 ```
 * {
   color: red;
 }
 ```
+
+### Element Selectors
+
+- This is for styling all elements with the specific tags to follow the styles.
+
+Specificity weight: More specific than universal less specific than everything else.
+
+
+HTML Syntax Example:
+
+```
+<h1> I'm an h1 element </h1>
+```
+
+CSS Syntanx:
+
+```
+h1{
+  color: blue;
+}
+```
+
+### Class Selector
+
+Class selectors begin to introduce a heavier specificity than compared to element or universal selectors. Classes allow us to select individual elements by placing a special attribute in our HTML. We can use the same class over and over again on many elements. This behavior is extremely powerful and allows designers and develoeprs to be more efficient.
+
+Specificity Weight: More than universal and element, less than ID, inline and !important.
+
+HTML Syntax examples
+
+```
+<h1 class="example-class"> I'm a class</h1>
+<h1 class="example-class"> I'm a duplicate class</h1>
+<h1 class="another-class"> New class selector</h1>
+```
+
+CSS Synyax
+
+```
+.example-class{
+  color: green;
+  font-size: 16rem;
+  text-align: center;
+}
+```
+
+Multiple classes are unique in that we can have multiple classes in the same HTML attribute. This allows for layers of class specificity weight that we can control by using siblings selectors.
+
+Specificity weight: same overall weight as a single class, but lowest class on the page wins.
+
+### Pseudo-Classes
+
+- This is used when you may not have a set amount of elements, but you still want to style them individually.
+
+For example, you are given a list of invenory. That list items grows and shrinks everyday with purchases and new items.
+
+Now let's imagine that the last item in the invetory needs to update to a color to signify the end of the inventory. Without pseudo-classes, we couldn't achieve that result.
+
+WE could use something like li:last-child to always select the last child in an unordered list to achieve our goal with the inventory.
+
+Specificity Weight:
+
+- Same specificity weight as classes. More specific than universal and element.
+- Less specific than ID, inline and !important.
+
+
+HTML Example:
+
+```
+<h1 class="normal">Normal class here</h1>  
+<h1 class="normal">Normal class here</h1>  
+<h1 class="normal">Psuedo class found here!</h1>  
+```
+
+CSS Syntax:
+
+```
+h1:last-child {  
+  color: orange;  
+}  
+```
+
+
+### ID Selectors
+
+IDs are only allowed to be used once per HTML page. Use IDs for very specific reasons that can't be accomplished using a class.
+
+Specificity Weight:
+
+- More than universal, element, pseudo-class, and Classes.
+- Less than inline styles and !important.
+
+HTML Syntax:
+
+```
+<h1 id="example-id">I have an ID</h1>  
+```
+
+CSs Syntax:
+
+```
+#example-id {  
+  color: gold;  
+}
+```
+
+
+## 3 Different Style Integrations
