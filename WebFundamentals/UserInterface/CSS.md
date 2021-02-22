@@ -299,3 +299,41 @@ CSs Syntax:
 
 
 ## 3 Different Style Integrations
+
+1. Inline Styles
+2. Embedded style tag in the HTML page
+3. Externally linked CSS file
+
+The standards the best approach change with the flow of new technology, but for now, we will say that external style sheets are the way to code. This is because inline and stye tags are more specific and we want to control all our style specificity in one place as we learn.
+
+
+## CSS reset
+
+A CSS reset is when a developer will remove all default styling by browsers. Usually a style sheet will reset all box model and font properties to 0 or inherit.
+
+Eric Meyer's popular CSS reset:
+
+```
+
+html, body, div, span, applet, object, iframe,  
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,  
+a, abbr, acronym, address, big, cite, code,  
+del, dfn, em, img, ins, kbd, q, s, samp,  
+small, strike, strong, sub, sup, tt, var,  
+b, u, i, center,  
+dl, dt, dd, ol, ul, li,  
+fieldset, form, label, legend,  
+table, caption, tbody, tfoot, thead, tr, th, td,  
+article, aside, canvas, details, embed,  
+figure, figcaption, footer, header, hgroup,  
+menu, nav, output, ruby, section, summary,  
+time, mark, audio, video {  
+margin: 0;  
+padding: 0;  
+border: 0;  
+font-size: 100%;  
+font: inherit;  
+vertical-align: baseline;  
+}
+
+```
