@@ -122,4 +122,72 @@ div{
 
 ### padding
 
-- The padding is the transparent area between the border and the content. 
+- The padding is the transparent area between the border and the content.
+
+
+## CSS Inheritance
+
+CSS stands for cascading style sheets.
+
+To understand CSS, we need to understand where the "C" comes from. The word "cascade" suggests a pattern of inheritance that we can use in our code. Child inherits characteristics and personality from the parents.
+
+CSS inheritance is similar to human inheritance in that you can pass traits down to ancestor elements.
+
+In CSS, every ancestor of the original parent gains access to all the CSS properties through inheritance.
+
+Inheritance occur in the HTML structure. In HTML, when an element is placed inside another element, it is said to be nested within its parent element.
+
+
+HTML structure:
+
+```
+<div class="parent">
+  <p>Parent</p>
+  <div class="child">
+    <p>Child</p>
+    <div class="grandchild">
+      <p>Grandchild</p>
+    </div>
+  </div>
+</div>
+```
+
+CSS:
+
+```
+.parent{
+  color: red;
+}
+```
+
+Notice that by styling the .parent class, all of our p tags nested inside of the parent class turn red. Using inheritance this way is extremely powerful and allows for more natural development when building user interfaces.
+
+## CSS Specificity
+
+- Specificity is the concept we use to describe the ability to style many elements or just one element using CSS selectors. Selectors allows us to access HTML tags and update their styles.
+
+#### Specificity Weight
+
+- Think of specificity  weight like the waterfall example used earlier. The water at the top of the waterfall is less specific and can be overwritten further.
+
+- The diagram below helps visualize specificity weight. Note the < symbol is used to represent "less specific". The more you read to the right, the more specific a selector or style will be.
+
+```
+* < elements < classes, pesudo-classes, attributes < IDs < inline styles < !important
+```
+
+The selectors above are very common in styling practices, but they do not represent every possible selector. It is recommended that you solidify your knowledge of these selectors first before moving on to more advanced selectors.
+
+### Universal Selectors *
+
+There are occasions you would want to select every element on a web page. The universal selector, sometimes call the wild car or star selectors, dos precisely that.
+
+Specificity Weight: Less specific than any selector.
+
+#### CSS Syntax example:
+
+```
+* {
+  color: red;
+}
+```
