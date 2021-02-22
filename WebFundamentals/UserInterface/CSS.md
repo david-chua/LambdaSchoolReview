@@ -74,10 +74,52 @@ body {
 
 The box model places all html elements into boxes.
 The make up of each box is the following:
--  content (text, or image)
+- content (text, or image)
 - padding (black space around the content)
 - border
 - margin (blank space around the border)
 
 We use CSS to add styles in our box model.
-By default, most HTML elements are boxes, however there are some, including span, a, button, and others that don't follow this rules. 
+By default, most HTML elements are boxes, however there are some, including span, a, button, and others that don't follow this rules.
+
+
+### Height and width:
+
+- We can tell the browser how exactly wide and tall we want our element to be.
+- This is used in divs, imgs, and other height based elements.
+- Size value can be measured in pixel("px") and relative percent of screen (%).
+
+```
+div {
+  height: 400px;
+  width: 400px;
+}j
+
+div {
+  height: 100%;
+  width: auto;
+}
+```
+
+### margin
+
+- The margin is an invisible area that surrounds your content, padding, and border. This is the outermost area in the box Model
+
+### border
+
+- Border will set a border around your element.
+- You can determine the size, color, and style of the border.
+- It will be set up in this order:
+  - width
+  - style
+  - color
+
+```
+div{
+  border: 1px solid black;
+}
+```
+
+### padding
+
+- The padding is the transparent area between the border and the content. 
