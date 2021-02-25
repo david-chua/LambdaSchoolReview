@@ -187,3 +187,141 @@ Output:
 // Uncaught referenceError: letScope is not defined
 
 ```
+
+## Primitive Data Types (String, Number, Boolean)
+
+Primitive data types, also known as basic data types are the simples data type in JavaScript. They're sort of like the primary colors in that all other data types are made of these types.
+
+#### Strings
+
+Strings are block of text. They will always be defiend with quotation marks around them (either single quotes or double). Any text with quotes around it (even numbers) are strings.
+
+```
+const dog = 'Fido';
+const string = '2';
+```
+
+
+Numbers
+
+Numbers are just that, numbers. Numbers do NOT have quotes around them. They can be negative as well. JavaScript does have a limitation on the size of a number (+/- 9007199254740991), but only very rarely will that limitation come up.
+
+```
+const answer = 42;
+const negative = -13;
+```
+
+
+Booleans
+
+Booleans are an important relic from the origins of computer science. It is a dichotomous concept that powers binary code. The only booleans in JavaScript are true and false, traditionally written in lowercase characters. These variables are useful when you need to employ some kind of dichotomous (or "yes"/"no") logic in your code.
+
+
+```
+const iLoveJavaScritp = true;
+const isThisaString = false;
+```
+
+
+#### Undefiend and Null
+
+There are a couple of JavaScript objects that don't really fit into any types. Those are the values undefined and null. You will get undefined when you are looking for a variable that does not have a value yet. undefined simply means what you are asking for does not exist.
+
+```
+console.log(unknownVar); //undefined
+```
+
+null is an object that we, the developers, set when we want to tell other developers that the item they are looking for exists, but there is no value associated with it. While undefined is set by the JavaScript language is set by the developers. If you ever receive null, it means that another developer has set that value to null.
+
+let phoneNumber = '123-456-7890';
+phoneNumber = null;
+
+phoneNumber; // null
+
+Both undefined and null are neither strings.
+
+
+#### Math Operators
+
+Standard Operators
+
+```
+1 + 1; // 2
+2 * 2; // 4
+2 - 2; // 0
+2 / 2; // 1
+
+const num1 = 2;
+const num2 = 2;
+
+num1 + num2 // return 4
+
+const string1 = 'My name is'
+const string2 = ' Bob';
+
+string1 + string2 // 'My name is Bob'
+
+#### %
+
+Something you may not have seen before is the module operator (%). This math operator will divide two numbers (integers or floats) and return only the remainder. For example 10/3  is 3 with a remainder of 1, so 10 % 3 will return 1.
+
+21 % 5 // 1
+21 % 6 // 3
+21 % 7 // 0
+
+```
+
+#### Math.pow
+
+We can use the pow method on Math to return a number raised to an exponent. It will take two numbers. The first is the base and the second is the power. For example, Math.pow(5,2) calculate 5 squared, which is 25.
+
+```
+Math.pow(2,2) // 4
+Math.pow(3,2) // 9
+Math.pow(3,3) // 27
+```
+
+#### Math.round, Math.floor, Math.ceil
+
+.round rounds a number to the nearest whole number.
+.floor will round a number down to the nearest whole number.
+.ceil will round up to the nearest whole number.
+
+```
+Math.round(6.5) // 7
+Math.round(6.45) // 6
+Math.floor(6.999) // 6
+Math.ceil(6.001) // 7
+```
+
+#### Truthiness
+
+When using an if statement or other statements that expect a Boolean value (such as the !, NOT), if the expression given is not a Boolean v alue, JavaScript will do something called type coercion and transform whatever it is given into a Boolean value. This is known as "truthy" or "falsey".
+
+```
+// items that are interpreted as true
+true
+1
+' '
+[] // an array
+{} // an object
+function() {}
+
+
+// items that are interpreted as fasle
+false
+0
+undefined
+null
+''
+
+#### Comparison Operators
+
+JavaScript has a number of comparison and logical operators. These operators work just as they would in math: greater th an, less than, greater than or equal to, and all the rest. We use these operator to evaluate two expressions. As the computer runs the code, the operator will return either a true (if the statement is true) or a false (if the statement is not true).
+
+
+```
+1 > 2; // false
+2 < 3; // true
+10 >= 10; // true
+100 <= 1; // false
