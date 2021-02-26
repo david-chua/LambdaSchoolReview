@@ -364,7 +364,7 @@ The "OR" operator will check the two expression and return true if either one is
 
 ```
 (!false) // true
-(!(1===1)) // false 
+(!(1===1)) // false
 ```
 
 Note about Logical Operators:
