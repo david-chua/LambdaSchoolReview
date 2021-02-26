@@ -315,6 +315,8 @@ undefined
 null
 ''
 
+```
+
 #### Comparison Operators
 
 JavaScript has a number of comparison and logical operators. These operators work just as they would in math: greater th an, less than, greater than or equal to, and all the rest. We use these operator to evaluate two expressions. As the computer runs the code, the operator will return either a true (if the statement is true) or a false (if the statement is not true).
@@ -324,4 +326,49 @@ JavaScript has a number of comparison and logical operators. These operators wor
 1 > 2; // false
 2 < 3; // true
 10 >= 10; // true
-100 <= 1; // false
+100 <= 1; // false]
+
+````
+
+The "triple equal" sign (===) must not be confused with the single equal sign (which indicates assigning a value to a variable). The triple equal will compare everything about the two items, including type, and return if they are exactly equal or not. (Something to note: There is also "double equal" (==) which will compare two items but will allow type coercion so a string and an integer can be considered equal (1 == '1') // true).
+
+```
+1 === 1;  // true
+1 === '1'; // false
+'cat' === 'cat'; // true
+'cat' === 'Cat'; // false
+
+```
+
+### Logical Operators
+
+#### &
+
+The first logical operator we will look at is the "AND" operator.
+
+This will evaluate both expressions and will return true if BOTH expressions are true. If one or both is false, then the operator will return false.
+
+#### ||
+
+The "OR" operator will check the two expression and return true if either one is true. It will re turn false only if BOTH expressions are false.
+
+```
+(100 > 10 || 10 === 10) // true
+(10 == 9 || 10 > 9) // true
+(10 === 9 || 1 > 9) // false
+```
+
+#### !
+
+"NOT" operator. The NOT operator will return the opposite of Boolean value.
+
+```
+(!false) // true
+(!(1===1)) // false 
+```
+
+Note about Logical Operators:
+
+- The expressions are evaluated in order, and the computer will skip any redundant expression. In an && statement, if the first expression is false, the second expression will not be evaluated because BOTH expressions need to be true. Same for the || statement. If the first expression is true, the second will not be evaluated because there only needs to be the one true statement to fulfill the requirements.
+
+- Use parenthesis. As we saw in the second ! operator example, we use parenthesis to evaluate what was inside the parenthesis FIRST, and then applied the ! operator.
