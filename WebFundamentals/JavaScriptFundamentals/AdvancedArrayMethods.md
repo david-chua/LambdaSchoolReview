@@ -157,3 +157,36 @@ Same results and cleaner code. The line return state.population >= 650000; tells
 
 
 #### .reduce
+
+Reduce is slightly trickier than .map and .filter because it requires use of different arguments. Its powers though are endless. Essentially, reduce works to algorithmically simplify an array down to a single value.
+
+Let's say we want a single number of all the state's population added together.
+
+```
+let statePopulations = 0;
+for (let i =0; i< data.length; i++){
+  statePopulations += data[i].population;
+}
+```
+
+This is a relatively simple algorithm but let's look at it in terms of reduce function now. .reduce allows us to reduce all data to a single value. It is a perfect use here because we can aggregate the data and use .reduce to do so for us
+
+
+```
+
+const reduceStatePopulations = data.reduce((total, state) => {
+  return total += state.population;
+}, 0);
+```
+
+This is more succinct  but a lot is going on here. Importantly, we pass 0 as a second argument to our reduce function. This argument will become the starting value of our total, if not provided, would default to the first item in the array. In this case that would be disastrous because the first item in our array is an object, and we're trying to reduce our total to a single numerical value. Instead, we can provide a starting value for total and thus we set what our data type will reduce to. Remember the total also gets memorized or remembered by our function each pass.
+
+The four items that get passed back from our callback function when using .reduce are:
+
+- The current value of the total aggregated values
+- We set the initial value at the end of the function.
+- The current item in the array,
+- The index again.
+- The full array.
+
+To sum up. These functions are fantastic and allows us to write clean, reusable code in a functional programming style. They give us the power to represent our data in an enjoyable way.
