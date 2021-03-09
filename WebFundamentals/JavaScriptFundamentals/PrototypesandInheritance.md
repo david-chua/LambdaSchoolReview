@@ -77,12 +77,12 @@ newman.speak();
 
 Whenever we use JavaScript's call or apply method, this is explicitly defined.
 
-WE can override how we set CordialPerson constructor objects by taking the object-oriented appraoch. WE do so by calling them explicitly with new functions, .call and .apply.
+WE can override how we set CordialPerson constructor objects by taking the object-oriented approach. WE do so by calling them explicitly with new functions, .call and .apply.
 
 
 ## Prototypes
 
-All objects in JavaScript have a protoytype property by default. this property is used as an object to attach methods and other properties that can be delegated down to other child function/objects.
+All objects in JavaScript have a prototype property by default. this property is used as an object to attach methods and other properties that can be delegated down to other child function/objects.
 
 The constructor function is a way we can build objects.
 
@@ -92,7 +92,7 @@ function Animals(object){
 }
 ```
 
-A constructor function "contrcuts" objects. You can think of it as a template. The function itself needs to take in an object literal of some sort so that it can map that object literal's properties to a new object that will be returned once instantiated.
+A constructor function "constructs" objects. You can think of it as a template. The function itself needs to take in an object literal of some sort so that it can map that object literal's properties to a new object that will be returned once instantiated.
 
 ```
 function Person(attributes){
