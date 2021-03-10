@@ -76,5 +76,5 @@ After we have captured our element, we can use that instance of the elements we 
 * Gets and sets the text of an element. Essentially whatever text is between the open and closing tags of an HTML element.
 * Can use the assignment perator (=) to reset the text of an element
 * Setting this property on a node removes all of its children and replaces them with a new single text node.
-* <div> something here </div> 
+* [//] <div> something here </div> 
 * element.textContent = 'Something New';
