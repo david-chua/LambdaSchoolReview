@@ -14,4 +14,4 @@ When the DOM is built and the webpage is loaded, developers get access to it in 
 
 To manipulate elements on the DOM, we need to select them. There are many ways of doing this such as selecting the body, the head (document.body || document.head). But we want to go deeper, we'll need to use other methods.
 
-** getElement ** Methods
+**getElement** Methods
