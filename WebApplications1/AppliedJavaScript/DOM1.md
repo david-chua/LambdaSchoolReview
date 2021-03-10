@@ -76,5 +76,53 @@ After we have captured our element, we can use that instance of the elements we 
 * Gets and sets the text of an element. Essentially whatever text is between the open and closing tags of an HTML element.
 * Can use the assignment perator (=) to reset the text of an element
 * Setting this property on a node removes all of its children and replaces them with a new single text node.
-* [//] <div> something here </div> 
+* < div > something here </ div >
 * element.textContent = 'Something New';
+
+**.setAttribute()(or .{attr})**
+
+* This method (or property) is used as a way to set or reassign an attribute on the element.
+*'.setAttribute()' is a method that takes two arguments, the attribute to set, and the value to set to that attribute
+* eg: element.setAttribute('src', 'http://www.imagesource.com/image.jpg')
+* Can also use pattern: element.'attrname' = 'value';
+* eg: element.src = 'http://www.imagesource.com/image.jpg';
+
+**.style**
+
+* Every element contains a style object. This property accesses that style object. The style object contains every available style as a key and a value as the value. It is important to note that these are NOT the CSS styles, these are inline HTML styles.
+* These styles are associated with the HTML inline styles set on the element
+  * eg: <div style="color: red;" > DIV stuff </ div >
+* You can access and change a property on the style object by using an assignment operator **=**.
+* eg: element.style.color = 'blue';
+* Changing a property on the style object will effectively give this an inline styles.
+* Inline styles have the highest specificity, overriding any other selector except !important.
+
+
+**.classname, .id**
+
+* **.className** accesses or assigns a string containing all of the classes on the element.
+* **.id** accesses or assigns containing the id of the element.
+
+
+**.classList**
+
+* classList will return an array like object of all the classes on the element. there are many methods in classList.
+  * classList is a DOMTokenList.
+    * A DOMTokenList is an array like object with numerical zero based index, a length property, and also the .contains() and .forEach() methods
+  * Most notably, the methods .add(), .remove(), and .toggle() exist. All three take a single string representing the class
+    * .add('className') and .remove('classname') do as their name indicate.
+    * toggle('className') will add the class if it does not exist and remove it if it does.
+
+**.appendChild() and .prepend()**
+
+* These methods add child elements to parent elements.
+* .appendChild(child) will take an element and add it to its children. It will add it to the 'end' physically so if the children are displayed in order, it will be last.
+  * eg: parentElement.appendChild(childelement);
+* .prepend(child) adds a child to the beginning, displaing it first.
+  * eg: parentElement.prepend(childElement);
+
+**.children and .parentNode**
+
+* These are properties used for accessing relatives of the elements.
+* .children returns an HTML collection of all the children of that element.
+* .parentNode returns the parent element of that element. 
