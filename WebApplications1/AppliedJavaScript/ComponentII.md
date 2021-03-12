@@ -148,3 +148,40 @@ timeMachine()
     console.log(err); --> OUTPUT: [Error: ms is less than 1 second promise rejected!]
     });
 ```
+
+
+## HTTP
+
+HTTP is a network protocol, a set of rules that govern the way web client, like a browser communicates with web servers over the internet.
+
+We, as developers, need to know what HTTP methods are and how they are used to perform CRUD (Create, Read, Update, Delete) operations on server resources and what HTTP status codes are and what they are used for.
+
+HTTP Methods provide a common language or nomenclature that the client can use to let the sever know what operation it wants to perform.
+
+When a client needs to ask a server for information, it should do a GET request specifying a URL that points to the desired resource.
+
+A POST request is used to ask the server to add or create new resources.
+
+the method used by the client to ask the server to make changes to specific resources is PUT.
+
+to remove or delete from the server the client needs to send a DELETE request.
+
+HTTP status codes are used to indicate if a request has been successful or not and why?
+
+## Axios
+
+axios is a JavaScript library. It is used to send HTTP  requests to servers. It is not necessary to do this, but it makes things much easier. Because all server requests are asynchronous, axios uses Promises. once you get the basic pattern down, axios is incredibly easy to use. 
+
+examples:
+
+axios.get:
+
+```
+axios.get('http://severlocation.com/data')
+  .then(response => {
+      // deal with the response data in here
+    })
+  .catch( err => {
+    // deal with error in here
+    })
+```
