@@ -19,7 +19,6 @@ function App() {
   }
 
   function addTodo(){
-    console.log('clicked');
     let item = {
       id: Date.now(),
       task: todoAdd,
@@ -31,7 +30,6 @@ function App() {
   }
 
   function removeCompleted(){
-
     let filteredTasks = tasks.filter(task =>{
       return task.completed === false
     })

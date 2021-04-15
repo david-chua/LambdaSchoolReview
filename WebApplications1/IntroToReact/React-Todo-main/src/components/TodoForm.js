@@ -6,7 +6,6 @@ export default function TodoForm(props){
 
   const changeHandler = event => {
     setTodoAdd(event.target.value)
-    console.log(event.target.value)
   }
 
   return (
