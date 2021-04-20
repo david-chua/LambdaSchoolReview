@@ -1,6 +1,6 @@
 // Data gathered from https://www.marvel.com/characters
 
-export const avengers = [
+export default [
   {
     id: 1,
     name: 'Iron Man',

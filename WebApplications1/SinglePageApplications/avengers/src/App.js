@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import {avengers} from './avengersData.js';
-import AvengersList from './Components/AvengersList';
-import Home from './Components/Home';
-import './App.css';
-
-function App() {
-
-  const [avengersObject, setAvengersObject] = useState(avengers);
-
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import AvengersList from "./Components/AvengersList";
+import Avenger from "./Components/Avenger";
+import Home from "./Components/Home";
+import "./App.css";
+import heros from "./data";
+const App = () => {
+  const [hero] = useState(heros);
   return (
     <Router>
       <nav className="navbar">
@@ -21,12 +19,22 @@ function App() {
       </nav>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/avengers" component={AvengersList}/>
+          {/* we can use Route to render child components instead of having to use the component prop. This way we can easily pass down props to our components.  */}
+          <Route path="/avengers/:hero">
+            {/* Passing our data to avangers list */}
+            <Avenger key={hero.id} hero={hero} />
+          </Route>
+          <Route path="/avengers/">
+            <AvengersList hero={hero} />
+            {/* Passing our data to avangers list */}
+          </Route>
+
+          {/* You can also render a component with the component prop if you do not need to pass any additional props to your component */}
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
