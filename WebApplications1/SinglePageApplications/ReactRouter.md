@@ -93,3 +93,19 @@ The first thing that Link takes as props is the **to** props. This is just like 
 ### Switch
 
 If a route matches multiple routes enclosed in a switch statement, the browser will only render the first component it comes across. This can come in handy when considering nested routes.
+
+### useParam
+
+The useParams hook relies on props to pass new and changing data into the app. Parameters are placeholders in a URL that represents  some changing data. When we've set up routes in the past, we've written some routes like <Route path="/employee" that corresponds to some components, but what if we want to load a different data depending on the URL.
+
+The **useParam** hook allows us to create dynamic routes that will render content based on the URL. So, instead of requiring that all routes are written out ahead of time, the URL determines what renders on the page. For example, a url "website.com/johnSmith" would render data about John Smith, while "website.com/janeDoe", would render data about Jane Doe. Neither have to be specified in your code. The browser matches the URL to the data, thus the name. If no data is found, it throws an error in some ways.
+
+In order to use a parameter in routing, we need to assign the route with a colon in App.js or wherever the routes are defined. So **Route path="/employee** becomes **<Route path=/:employee"**. With that simple change, we can use the useParam hook to create dynamic routes.
+
+A real life example of this is Twitter. It would be crazy to imagine that everytime a user makes a new profile, a new line of code has to be written. Instead, Twitter routes look something like this:
+
+```
+<Route path="/:handle" component={Profile} />
+```
+
+The path is specified with a **:** and the component will load accordingly. 
