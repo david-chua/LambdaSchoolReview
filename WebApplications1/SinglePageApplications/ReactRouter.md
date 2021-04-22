@@ -113,4 +113,5 @@ The path is specified with a **:** and the component will load accordingly.
 
 ### Lesson Notes
 - Link: changes URL
-- Route: reads URL 
+- Route: reads URL
+- Nested Routing: sometimes, we want routes to be evaluated inside component. Creating a core component that has possibility to display item. 

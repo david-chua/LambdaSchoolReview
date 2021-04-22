@@ -1,6 +1,9 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 
-function Home() {
+function Home(props) {
+  console.log('Home', props);
+  const history = useHistory();
   return (
     <div className="home-wrapper">
       <img
@@ -8,7 +11,7 @@ function Home() {
         src="https://source.unsplash.com/F6-U5fGAOik"
         alt=""
       />
-      <button className="md-button shop-button">Shop now!</button>
+      <button className="md-button shop-button" onClick={()=> history.push("/shop")}>Shop now!</button>
     </div>
   );
 }
