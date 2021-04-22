@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import Home from "./components/Home";
-import { Link, Route } from 'react-router-dom';
+import Shop from "./components/Shop";
+import { Link, Route, Switch } from 'react-router-dom';
+import data from './data';
 
 export default function App() {
+
+  const [products, setProducts] = useState(data);
+
   return (
     <div className="App">
       <nav>
@@ -15,6 +20,10 @@ export default function App() {
       </nav>
       {/* Switch is like a JS switch statement. The first "true" match with path and URL will render that route component and will breakout of Routes. Only first match will render. */}
       {/*Rendered by Route components */}
+      <Switch>
+        <Route path="/shop" render={(props)=> <Shop items={products} />} />
+        <Route path="/" component={Home}/>
+      </Switch>
     </div>
   );
 }

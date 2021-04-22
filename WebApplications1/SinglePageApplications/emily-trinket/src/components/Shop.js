@@ -7,9 +7,7 @@ function Shop(props) {
   console.log(props);
   return (
     <div className="items-list-wrapper">
-      {/* We made the entire card a Link so that if you click on the img or text
-          in the store, we will navigate to that item id's page with the dynamic Link "to" string.*/}
-      {/*{props.items.map(item => (
+      {props.items.map(item => (
         <Link to={`/shop/${item.id}`}>
           <div className="item-card" key={item.id}>
             <img
@@ -21,7 +19,7 @@ function Shop(props) {
             <p>${item.price}</p>
           </div>
         </Link>
-      ))} */}
+      ))}
     </div>
   );
 }
