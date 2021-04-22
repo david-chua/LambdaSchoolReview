@@ -1,10 +1,14 @@
 import React from "react";
 import { useParams, useRouteMatch, Route, NavLink } from "react-router-dom";
 import Movies from "./Movies";
+
+import { useHistory } from 'react-router';
+
 function Avenger({ hero }) {
   // console.log("Props", props);
   const params = useParams();
 
+  const history = useHistory();
   // we can use this hook to grab information about the way React Router matched this route.
   // useRouteMatch returns several values when you console.log(match)
   // const match = useRouteMatch()
@@ -22,6 +26,9 @@ function Avenger({ hero }) {
     <div className="characters-list-wrapper">
       <div className="character-card">
         <h2>{heros.name}</h2>
+        <button type="button" onClick={() => history.goBack()}>
+        Go Back
+      </button>
         <p>{heros.nickname}</p>
         <p>{heros.description}</p>
         <img src={heros.img} alt="random avengers img" />

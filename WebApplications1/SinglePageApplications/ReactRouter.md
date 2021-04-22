@@ -108,4 +108,9 @@ A real life example of this is Twitter. It would be crazy to imagine that everyt
 <Route path="/:handle" component={Profile} />
 ```
 
-The path is specified with a **:** and the component will load accordingly. 
+The path is specified with a **:** and the component will load accordingly.
+
+
+### Lesson Notes
+- Link: changes URL
+- Route: reads URL 
