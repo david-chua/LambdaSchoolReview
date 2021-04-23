@@ -20,6 +20,15 @@ function App() {
 
     // Step 6: Create function that will update 'notes' with param values passed
     // note is a parameter. we're passing "note" state from NoteForm into this func onSubmit
+    const addNewNote= note => {
+      const newNote = {
+        id: Date.now(),
+        title: note.title,
+        body: note.body
+      }
+
+      setNotes([...notes, newNote]);
+    }
 
 
       // DO NOT(E) DO:
@@ -30,7 +39,7 @@ function App() {
       <div className="App">
         <h1>My Notes</h1>
         {/* Step 7: Pass addNewNote as a prop into NoteForm */}
-        <NoteForm />
+        <NoteForm addNewNote={addNewNote} title="Default title"/>
         <Notes notes={notes} />
       </div>
     );
