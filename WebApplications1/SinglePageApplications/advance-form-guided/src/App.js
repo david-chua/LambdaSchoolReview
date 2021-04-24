@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./App.css";
 import Form from "./components/Form";
 
 export default function App() {
@@ -10,6 +10,3 @@ export default function App() {
     </div>
   );
 }
-
-
-export default App;
