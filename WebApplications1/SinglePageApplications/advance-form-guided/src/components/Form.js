@@ -12,6 +12,13 @@ export default function Form() {
     terms: ""
   });
 
+  const [error, setErrors] = useState({
+    name: "",
+    email: "",
+    motivation: "",
+    positions: "",
+    terms: ""    
+  })
   const formSubmit = e => {
     e.preventDefault();
     console.log('form submitted');
