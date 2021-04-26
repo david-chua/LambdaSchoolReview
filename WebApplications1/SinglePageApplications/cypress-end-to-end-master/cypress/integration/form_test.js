@@ -22,6 +22,8 @@ describe('Testing form inputs', () => { // you can use context instead of descri
     .select("Yard Work")
     .should("have.value", "Yard Work")
 
+
+    cy.screenshot('test-image');
     cy
     .get('[data-cy="terms"]')
     .check()
