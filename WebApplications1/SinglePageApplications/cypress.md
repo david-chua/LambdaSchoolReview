@@ -1,4 +1,4 @@
-# Cypress.io
+the# Cypress.io
 
 Writing good quality code isn't possible without tests. It's simply too difficult to catch every error on your own. In your careers, you'll be expected to write and understand different types of testing in order to speed up your work flow, prevent bugs, and integrate systems. There are four types of tests JavaScript developers write and tests work together to help diagnose problems.
 
@@ -117,4 +117,41 @@ Run in the fun bus project -
 
 3. Run **npm run e2e** in terminal which will create a cypress.json file and a cypress folder within your website directory. Inside the cypress folder, you'll find four more folders, including the example files we looked at earlier.
 4. To write our own tests, we'll need to create a new test file. You can call it anything you want but best practices suggest that the file name should match the function of the test. In this case, the file name would be **sample_test.js**.
-5. From the cypress GUI, click on the file **sample_test.js** to run in the browser. 
+5. From the cypress GUI, click on the file **sample_test.js** to run in the browser.
+6. At this point, you should see **No tests found** error message as well as a default blank page.
+
+## My First Test
+
+Now let's return to the **sample_test.js** file and write a very basic tests. For setup purposes, we can write a test called My First Test and check to see if it equals true. This will always pass.
+
+```
+// arrange
+describe('My First Test', function(){
+// act
+  it('Does not do much', function(){
+// assert
+      expect(true).to.equal(true);
+  })
+})
+```
+
+Until this point, we've been running tests on the default blank page. If we want to run tests on our own index.html file, we need to add the action **visit** into the //act portion of our test.
+
+1. IN order to do this, we'll need to add a base URL to cypress.json file. You should use the format "http://localhost:8080/" such that the addition looks somethign like the below. Note that you can visit a URL without setting the baseURL, but then you would need the full file path in **cy.visit()**. That said, using **localhost:8080** is considered a best practice because it prevents an annoying automatic default refresh that happens under the hood.
+
+```
+{
+  "baseUrl": "http://localhost:8080/"
+}
+```
+2. Now that a baseUrl exists, you can run a second test to load your index.html page with **cy.visit()**.
+
+```
+describe('My Second Test', function(){
+  // Arrange
+  it('Visits a new site', function(){
+    // Act
+    cy.visit('index.html');
+  })
+})
+```
