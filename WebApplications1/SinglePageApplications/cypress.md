@@ -155,3 +155,170 @@ describe('My Second Test', function(){
   })
 })
 ```
+
+### Interacting with Elements
+
+The tests covered in the previous objectives are basically the simplest possible tests we can run. More practically, we'll want to test how a user interacts with the webpage such that we don't have to manually click around a page looking for bugs. To do that, we'll use a variety of cypress actions and assertions.
+
+### Actions
+
+We will primarily use Cypress to test whether or not user actions give the returns we expect them to. Actions in cypress are designed to simulate a user actions like a click event, a double click event, a scroll, or a checked box which are all the things we've been working in this unit.
+
+### Visibility
+
+Another important test we'll run is visibility, which are tests to check whether or not an element is hidden. Visibility tests can be chained with the actions above to see how elements appear and disappear depending on user actions.
+
+In addition to actionability and visibility, Cypress allows us to test scrolling, covering, readonly animations, and more.
+
+### Best practices
+
+The following cheat sheet of best targeting elements is taken directly from the Cypress documentation.
+
+Example 1:
+
+```
+cy.get('button').click()
+```
+
+Recommended: Never
+Notes: Way too generic, no context.
+
+Example 2:
+
+```
+cy.get('.btn-btn-large').click()
+```
+
+Recommended: Never
+Notes: Bad: Coupled to styling. Highly subject to change.
+
+Example 3:
+
+```
+cy.get('#main').click()
+```
+
+Recommended: Sparingly
+Notes: Better, but still coupled to styling or JS event listner.
+
+Example 4:
+
+```
+cy.get('[name=submission]').click()
+```
+
+Recommended: Sparingly
+Notes: Coupled to the name attribute which has HTML semantics
+
+Example 5:
+
+```
+cy.contains('Submit').click()
+```
+
+Recommended: Depends
+Notes: Much better. But still coupled to text content that may change.
+
+Example 6:
+
+```
+cy.get('[data-cy=submit]').click()
+```
+
+Recommended: Always
+Notes: Best. Isolated from all changes.
+
+### Assertions
+
+After we set up the simulated user actions we will want to test that some expectation has been met: text has rendered on the page, a new page has loaded, etc. We'll do this using assertions.
+
+The most common assertion is **.should()**: we'll assert that some element should contain some content or do a specific thing. Since Cypress code syntax is English-like, let's look at an example which tests that a link navigates to a new page.
+
+```
+describe('Link Navigation', function(){
+    it('Asserts that the word instagram.com l ink to instagram.com', function(){
+        cy.visit('index.html')
+
+        cy.contains('Instagram.com').click()
+
+        // Should be on a new URL which includes '/commands/actiosn'
+        cy.url().should('include', 'instagram.com/')
+    })
+})
+```
+
+We saw **.contains()** in the example above. This will check if the selected element contains some specified content (like text or an image). Contains is a little tricky because it can also be used in either the **assertion** or **action** phase of your test. Contain can be used in place of id selectors to select elements based on text. For example, you could use **cy.contains('submit').click()** to simulate a user clicking a button or **cy.contains('Intagram.com')** to grab any element containing the text Instagram.com
+
+### Testing DOM elements:
+
+1. Arrange - First we need to set up our test with a name and function declaration. As covered in the previous objectives.
+
+```
+describe('Header Text', function(){
+    it('Checks if header exists', function() { })
+})
+```
+
+2. Act - Next we need to act. Our action here will simply be loading up the web page with **cy.visit**
+
+Current code at this point:
+
+```
+describe('Header Text', function(){
+    it('Checks if header exists', function(){
+      cy.visit('index.html')
+    })
+})
+```
+
+3. Assert - Finally, we'll grab the header element of interest and assert that it contains the text "Fun Bus" with **cy.get('.logo-heading').contains('Fun Bus');
+
+Final test code:
+
+```
+describe('Header Text', function(){
+    it('Checks if header text exists', function(){
+        cy.visit('index.html');
+        cy.get('.logo-heading').contains('Fun Bus');
+    })
+})
+```
+
+### Failing Test
+
+A test will fail when the expectation or assertion, is false. In our example above, if the logo-heading file doesn't contain the given text, the test would fail. To illustrate how these work, we could change the .contains() text to "Fun Bus!" and as expected, the test would time out because it can't find what it's looking for:
+
+Example of failing test:
+
+```
+//Test will fail because header text does not contain the full string
+
+describe('Header Text', function() {
+    it('Checks if header text exists', function () {
+        cy.visit("index.html");
+        cy.get('.logo-heading').contains('Fun Bus!');
+
+    })
+})
+```
+
+### Running Cypress in console:
+
+Cypress Run
+
+- This command is used to run all cypress tests. By default, this command will run all tests, including the example tests. There are a plethora of options we can add in order to tailor the command to our needs. A full list of these options can be found in the documentation, but hte most important for us is **--spec**
+
+## --spec
+
+**--spect** or **-s** will specify which tests to run. So, **npx cypress run --spec "cypress/integration/sample_test.js" will run only the tests in the **sample_test.js** file.
+
+You can specify multiple files by separating filenames with a, all inside of the quotation marks.
+
+## Other Commands
+
+The **cypress run** command is by far the most commonly utilized but **cypress open**, **cypress, verify**, **cypress version**, and **cypress cache** are all accepted as valid.
+
+open - Opens the Cypress Test Runner in interactive mode.
+verify - Verify that Cypress is installed correctly and is executable
+version - returns package version and binary version for debugging (rarely used)
+cache - view or clear cache
