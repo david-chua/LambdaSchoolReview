@@ -415,3 +415,29 @@ render(){
   console.log(this.state);
 }
 ```
+
+
+## Guided lecture Note
+
+Constructor:
+* set up initial state
+* set up bindings if needed.
+
+Render
+* Renders things
+
+*ComponentDidMount
+* fetch inital data from api
+* set up eventListener
+* set up timers/intervals
+
+componentDidUpdate
+* fetch new data based on changed props or state
+* update REFs
+* update state based on new data
+
+componentWillUnmount
+* clean up  dangerous things that happened in componentDidMount
+* remove all manual eventListener
+* remove/stop timers/intervals
+* warn users they are about to leave the 'form', are they sure they want to leave? 
