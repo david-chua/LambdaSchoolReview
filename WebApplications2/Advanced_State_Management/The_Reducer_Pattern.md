@@ -1,0 +1,3 @@
+# The Reducer Pattern
+
+The difficulties of storing and efficiently performing logic on data within components become more and more apparent as the amount of data increases. Consequently, as components grow and deal with large sets of data, the storing and transportation of state across the entire application increasingly becomes more and more cumbersome as well. Reducers offer one possible way to address this problem within the component. At the level of the application, an elegant combination of Context API with reducers provides one possible way that React developers can manage global state. 
