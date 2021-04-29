@@ -95,9 +95,71 @@ test("renders greeting on Greeting component", async() => {
     // Assert
     expect(greeting).toBeInTheDocument();
 })
+```
 
 ## Running Tests
 
 Follow along:
 
-In this example, we will be testing to see whether react will render the way we expect it too.
+See follow-along-testing project
+
+Notes:
+
+Now a few things about the export:
+
+React has to be in scope because we will be using JSX. react-testing-library exposes a render function and a screen object that we are importing with import {render, scree } syntax.
+
+* render allows us to render React components so we can test them.
+* screen gives us access to the query functions needed to query the "screen" for different elements to test.
+
+## Overview:
+
+We test pieces of interface by capturing what we expect to see (or not see) in the DOM queries. What should (or should not) be there is rendered to the virtual DOM by the library's renderer. This is the DOM node of interest (a certain button, a label containing a specific text, an input with some specific value). We can run matchers against that piece of DOM to assert, for example, that the selection exists in the document, or that it's visible.
+
+Let's consider the example of an increment counter that increases by one every time when the increment button is clicked.
+
+```
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  return(
+    <div>
+      <h2> {count} </h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count -1)}> Decrement</button>
+    </div>
+  )
+}
+
+export default Counter;
+```
+
+Our test would then look something like the following:
+
+```
+import React from 'react';
+
+import { render, screen } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
+import Counter from './Counter';
+
+test("increments count when increment button is clicked", async() => {
+  //Arrange
+  render(<Counter />);
+  //Act
+  const count = screen.getByText(/0/i);
+  // get the button node
+  const button = screen.getByText(/increment/i);
+  // simulate a user click
+  userEvent.click(button);
+  // Assert
+  expect(count).toHaveTextContent("1") // passes with 1 because we expect it to be 1 after a click.
+  expect(count).not.toHaveTextContent('0');
+});
+```
+
+## Break the test
+
+We'll tell you to break the test often. In the example above there are multiple expect statements as an attempt to "break the test", this is important and intentional. When testing, we want to "break the test" as much as we possibly can, this is the best(and really the only) way to ensure that your website won't break when a user goes and tries to use it. 
