@@ -32,4 +32,165 @@ Redux ha s single immutable state tree (referred to as store) where all state ch
 
 Writing immutable code can be tough - your JavaScript skills will really be tested here - and it may seem tedious especially since we will be building small apps with small state trees. Because of that it may be pretty hard to see the benefits. However, when you start working in larger application with huge state trees, you will quickly grow to appreciate the benefits of writing immutable code, and the extra effort it takes will make it worth the work.
 
- 
+ ## Reducer Follow Along
+
+ Reducer functions take two arguments, the current state and action, and return a new, updated state object based on both arguments:
+
+In psuedocode, the idea looks like:
+
+```
+(state, action) => newState
+```
+
+More specifically, consider a function in JavaScript that, when passed an integer, would return that value + 1 without mutating the original integer's value. Notice that we could pass is our initial state value - 0 - and return the new value - 1- without overriding the initial state.
+
+```
+cosnt initialState = 0;
+const reducer = (state ) => {
+  const newstate = state + 1
+  return newState;
+}
+
+const newStateValue = reducer(initialState);
+console.log(initialState, newStateValue) ; // 0, 1
+```
+
+Often, returning something such as an integer or string is not the best choice, especially as data grows more complex than previous examples.
+
+Consider the previous example, where component's state utilizes an object as its data structure of choice:
+
+```
+const initialState = { count: 0 }
+const reducer = (state) => {
+  return { count: state.count + 1 }
+}
+```
+
+Again, we are returning a new object and are not directly mutating or overriding the initial state object.
+
+This reducer function is a pure function without any side effects. Reducer functions are the perfect fit for managing changes in state while maintaining the immutability we want in our components.
+
+We've discussed the nature of the incoming state value, but what about the action?
+
+The action, represented by an object, contains properties related to some action that happens in our apps. Every action object is required to have a type property, which will "inform" the reducer actions happening in the app. The type allows the reducer to know what part of the state needs to change.
+
+## Follow Along
+
+Looking at the reducer above, lelt's show it that we want to increment our count state by passing in an action with 'increment' as the type.
+
+```
+const initalState = { count: 0 }
+const reducer(state, action) => {
+  if (action.type === 'increment'){
+    return { count: state.count = 1}
+  }
+}
+
+reducer(initialState, { type: 'increment'})
+```
+
+the strategy is especially powerful when we want our reducer to be able to reduce the state. Take a look at our reducer now:
+
+```
+const initalState = {count: 0}
+const reducer = (state, action) => {
+  if (action.type === 'increment'){
+    return { count: state.count + 1}
+  } else if (action.type === 'decrement'){
+    return { count: state.count -1 }
+  }
+}
+
+reducer(initalState, { type: 'increment'})
+reducer(initialState, { type: 'increment'})
+```
+
+Now our state management is very predictable. Our current state passes into the reducer, and an action follows to tell the reducer how to update the state.
+
+We can also add a payload property to our action objects (sometimes called data). Our reducer needs to have some data passed into it through the action to be able to update the state correctly, and this is where the data would live.
+
+```
+const initalState = { name: "Donald Duck"}
+const reducer = (state, action ) => {
+  if (action.type === 'changeName'){
+    // how do we know what to change the name to? The action payload?
+    return { name: action.payload }
+  }
+}
+
+reducer(initialState, { type: 'changeName', payload: 'Mickey Mouse' });
+```
+
+As you will see in the follow along, the action, and its associated property type, allows us to use the reducer to perform conditional state transformations.
+
+The one last edit we need to make to get to production quality. As you can imagine, or if, if else, if else.. etc statements are going to get very complex and long. We'll use JavaScript's switch statements to make that part of our reducer a lot more readable:
+
+Back to the count example, look at the change here:
+
+```
+const initalState = { count: 0 }
+const reducer = (state, action) => {
+  switch(action.type){
+    case 'increment':
+      return { count: state.count + 1}
+    case 'decrement':
+      return { count: state.count - 1}
+    // "catch-all" which is to leav ethe state untouched.
+    default:
+      return state;
+  }
+}
+
+reducer(initalState, {type: 'increment'})
+reducer(initialState, {type: 'decrement'})
+```
+
+
+## Follow Along - useReducer hook
+
+The useReducer hook is an alternative to useState(useState actually uses useReducer hook under the hood). It is preferable when you have complex logic that you have to deal with in a component, or when you find yourself with a lot of state properties (more than 3) in a single component. useReducer, takes in a reducer function (that we build), as well as the value of the initialState. Then it returns both the current state and a dispatch method in an array, just like useState does.
+
+```
+const [ state, dispatch ] = useReducer(reducer, initialState);
+```
+
+The dispatch method is a significant addition to our arsenal here. It will "dispatch" an action to our reducer when specific events occur in our application.  The dispatch allows us to powerfully combine the reducer from our previous section, with the ability to maintain our state at the level of the component.
+
+The **useReducer** hook has all the functionality we love from the **useState** hook and combines it with the power of the reducers we are building ourselves. In doing so, it provides access to both the state and a function that dispatch actions to our reducer.
+
+Example:
+
+```
+import React, { useReducer } from 'react';
+
+const initalState = {count: 0 }
+// inital count is established
+
+// We will use the same reducer we created in the previous section
+function reducer(state, action){
+  switch(action.type){
+    case: "INCREASE":
+      return { count: state.count + 1}
+    case: "DECREASE"
+      return { count: state.count -1 }
+    defaut:
+      return state
+  }
+}
+
+// Create a functional component
+function Counter(){
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  //Return JSX that displays the count for the user
+  // Note the two button elements which allow the user to increase and decrease the count.  Each of them contains an onClick event that dispatches the desired action object, with its given type.  Each action, when fired, is dispatched to the reducer and the appropriate logic is applied.
+  return (
+    <div>
+      {/* Note, we have access to the current state and the dispatch method from the useReducer hook, so we can utilize them to display the count as well as couple the dispatching of the actions from the appropriate buttons.*/}
+      <div className="count">Count: {state.count}</div>
+      <button onClick={() => dispatch({type: 'INCREASE' })}>+1</button>
+      <butotn onClick={() => dispatch({type: 'DECREASE' })}>-1</button>
+    </div>
+  )
+}
+```
