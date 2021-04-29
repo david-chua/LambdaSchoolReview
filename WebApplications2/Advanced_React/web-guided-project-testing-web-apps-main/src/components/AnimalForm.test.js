@@ -16,6 +16,12 @@ test('form is filled out, submitted and adds new animal', () => {
   const ageInput = screen.getByLabelText(/age/i);
   const notesINput = screen.getByLabelText(/notes/i);
 
+  expect(speciesInput).toHaveValue("Tiger");
+
+  // negative assertion
+  const noTigerText = screen.queryByText(/tiger/i);
+  expect(noTigerText).toBeNull();
+
   // type into inputs
   userEvent.type(speciesInput, "Tiger");
   userEvent.type(ageInput, "3");
