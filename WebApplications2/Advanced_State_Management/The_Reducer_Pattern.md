@@ -194,3 +194,122 @@ function Counter(){
   )
 }
 ```
+
+
+Reducer Lecture Notes:
+
+```
+ // Goal: combine these four actiosn into a single calculator function, which we can call and tell it which action to run.
+
+ const add = (a,b) => {
+   return a + b;
+ }
+
+ const multiply = (a,b) => {
+   return a*b;
+ }
+
+ const subtract = (a,b) => {
+   return a-b;
+ }
+
+ const divide = (a,b) => {
+   return a/b;
+ }
+
+  // Use a string to define the name of the action to be called.
+
+  <!-- const calculator = (a,b, action) => {
+    if (action === 'ADD'){
+      return a +b
+    } else if ( action === 'SUBTRACT'){
+      return a-b
+    } else if (action === 'MULTIPLY'){
+      return a*b
+    } else if (action === 'DIVIDE'){
+      return a/b
+    } else return
+  } -->
+
+Cleaned up:
+
+ const calculator = (a,b,action) => {
+   switch(action) {
+    case "ADD":
+      return a + b
+    case "SUBTRACT":
+      return a-b;
+    case "MULTIPLY":
+      return a*b;
+    case "DIVID":
+      return a/b;
+   }
+ }
+
+ // Put our arguments into a "payload" object in the form {a: number, b: number}
+
+ // also group the name of the action and the payload together
+ // action: {type: "NAME_OF_ACTION", payload: {a: number, b: number}}
+ // payload can be anything.
+
+ More generally:
+ //action: {type: 'NAME_OF_ACTION', payload: anything}
+
+ // Remember:
+ // type is just the name of the action to be performed
+ // payload represents the arguments taht would be passed to the action if it were a standalone function.
+
+const state = 0;
+
+ const calculator = (state, action) => {
+   switch(action.type) {
+    case "ADD":
+      return state + action.payload;
+    case "SUBTRACT":
+      return state - action.payload;
+    case "MULTIPLY":
+      return state * action.payload;
+    case "DIVIDE":
+      return a / action.payload;
+    default:
+      console.log("ERROR: ACTION NOT FOUND");
+      return state;
+   }
+ }
+
+ const state = 25
+
+ const action = {type: "ADD", payload: 35}
+
+ calculator(state,action) // -> 60
+
+
+Another example:
+
+const reducer = (state, action ) => {
+  switch(action.type){
+    case "ADD":
+      return { ...state, currentValue: state.currentValue + action.payload };
+    case "SUBSTRACT"
+      return { ...state, currentValue: state.currentValue - action.payload };
+    case "CLEAR":
+      return { ...state, currentValue: 0 }
+    case "ADD_TO_MEMORY":
+      return { ...state, memory: state.currentValue };
+    default:
+      return state;
+  }
+}
+
+
+```
+
+Actions are always in the format;
+{ type: string, payload; any }
+
+If we're refactoring a bunch of independent functions into a reducers
+
+these names correspond like this:
+
+const add = (value) => {}
+action = {type: "ADD", payload: value}
