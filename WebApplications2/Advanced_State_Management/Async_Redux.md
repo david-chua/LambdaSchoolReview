@@ -30,3 +30,48 @@ the application can be express in states and actions like so:
 | unlocked open      | close          | locked close       |
 | unlocked open      | lock           | locked open        |
 | locked open        | unlock         | unlocked open      |
+
+
+## Redux Middleware
+
+Middleware is a common tool used in programming. You will see middleware used a lot when you start learning about NodeJS.
+
+Middleware intercepts some process, runs a function at the intercept points, then (usually) continues the process or sometimes middleware stops the process entirely.
+
+When whatever "process" in question is kicked off, there is usually data that is flowing through different functions. With middleware, when we "intercept" the process, we are usually trying to use that flowing data.
+
+Middleware in Redux is very common and gives us a chance to do a few things with the data passing from action creators to the reducers. This is what it looks like with Redux:
+
+Middleware intercepts every action before it flows through the Reducers.
+
+Middleware can:
+
+* stop actions
+* forward an action untouched
+* dispatch a different action
+* dispatch multiple actions
+
+We can have multiple middleware.
+
+Middleware runs sequentially, in the order, they are defined.
+
+Middleware is added to the store when it is created.
+
+A traditional Redux applications flow like this:
+
+1. A [Component] --> calls --> B [Action Creator]
+2. B -- returns a --> C[Action]
+3. C -- is dispatched to all D[Reducers]
+4. D updates E[State]
+5. E sends changes to A
+
+When we add middleware, the flow changes to this:
+
+1. A[Component] --> calls -> B[Action Creator]
+2. B --> returns a --> C[Action]
+3. C --> flows through all of D[Middleware]
+4. D --> AND THEN --> dispatched to all E[Reducers]
+5. E --> Updates F[State]
+6. F --sends changes to A.
+
+## Follow along - Adding a logger middleware library. 
