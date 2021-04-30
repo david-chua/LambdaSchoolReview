@@ -75,3 +75,28 @@ When we add middleware, the flow changes to this:
 6. F --sends changes to A.
 
 ## Follow along - Adding a logger middleware library. 
+
+Let's add a logger middleware library to React/Redux app
+install using npm install redux-logger
+
+Next import:
+
+```
+import logger form 'redux-logger';
+```
+
+Finally, we need to import a helper function from redux. This function is the **applyMiddleware** function. You can probably guess that we pass logger into this function. You would be correct but the **applyMiddleware** function is going to be inside the **createStore** function. It looks like this:
+
+```
+import { applyMiddleware, createStore } from 'redux';
+import logger form 'redux-logger';
+
+const store = createStore(
+  reducer,
+  applyMiddleware(logger0)
+);
+```
+
+That is a very basic middleware package that will console.log your actions as they flow through the action creators, before they hit the reducers.
+
+## Redux Thunk
