@@ -74,7 +74,7 @@ When we add middleware, the flow changes to this:
 5. E --> Updates F[State]
 6. F --sends changes to A.
 
-## Follow along - Adding a logger middleware library. 
+## Follow along - Adding a logger middleware library.
 
 Let's add a logger middleware library to React/Redux app
 install using npm install redux-logger
@@ -100,3 +100,149 @@ const store = createStore(
 That is a very basic middleware package that will console.log your actions as they flow through the action creators, before they hit the reducers.
 
 ## Redux Thunk
+
+Redux Thunk is a separate node package called redux-thunk. Since the Redux action --> reducer flow is synchronous, we will use Redux Thunk to make the flow asynchronous and make API calls from our action creators.
+
+thunk is another word for a function. But it's not just any old function. It's a special (and uncommon) name for a function that's returned by another function like this:
+
+```
+function not_a_thunk(){
+  // this one is a "thunk" because it defers work for later;
+  return function(){
+    console.log('do stuff now');
+  };
+}
+```
+
+So how does this apply to Redux? Well, when we start using the **redux-thunk** middleware, it does an interesting thing with our redux flow. When an action creator is called, **redux-thunk** intercepts and acts on returned data. If the thing returned is an action, it forwards the action through the reducer. But, if the thing returned is a function, aka a thunk ( a function returned from a function), then it invokes the thunk and passes the dispatch function as an argument to it.
+
+This is where **redux-thunk** becomes very powerful. This action-creator returned thunk has access to the dispatch function. So we can run an async function, like an API call, and inside the **.then()** we can dispatch an action.  
+
+Let's look at a simple example of an action creator that does this when a user logs in:
+
+```
+function logInUser(creds){
+  // this returned function is the thunk, and gets dispatched passed in
+  return function(dispatch){
+    return axios.post('/login', creds).then(res => {
+      const loggedInAction = { type: USER_LOGGED_IN, payload: res.data.user }
+      dispatch(loggedInAction);
+    });
+  };
+};
+```
+
+The thunk has access to dispatch and can dispatch a new action based on the result of the API call.
+
+Cleaned up code:
+```
+const logInUser = creds => dispatch => {
+  return axios.post('/login', creds).then(res => {
+      const loggedInAction = { type: USER_LOGGED_IN, payload: res.data.user }
+      dispatch(loggedInAction);
+  });
+}
+```
+Let's take an example of getting fetch pokemon functions
+
+```
+export const FETCH_POKEMON_START = "FETCH_POKEMON_START";
+
+export const getPokemon = () => dispatch => {
+  dispatch({ type: FETCH_POKEMON_START });
+};
+```
+
+Now we'll go into the reducer and build a case for that action. Import the correct action type, and add an isFetching property to the initial state object. In this case, set isFetching to true, and reset the error back to an empty string, just in case it has an error in it.
+
+```
+import { FETCH_POKEMON_START } from '../actions';
+
+const initialState = {
+  pokemon: [],
+  error: '',
+  isFetching: false
+}
+
+function reducer(state = initialState, action){
+  switch (action.type){
+    case FETCH_POKEMON_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: ''
+      };
+    default:
+      return state;
+  }
+}
+
+export default reducer;
+```
+
+Now back to the action creator to make our API call. To continue, we need to add axios as a dependency and import it to the action creator file. Then, make a GET request to 'https://pokeapi.co/api/v2/pokemon/'.
+
+In the **.then()** and **.catch()**, we need to dispatch more actions. Inside the **.then()**, we will dispatch the **FETCH_POKEMON_SUCCESS** action and pass with it the data we get back from the API. If there is an error, we need to dispatch the **FETCH_POKEMON_FAIL** action and pass with it the error. Make two new action types for both cases, then build out the **.then()** and **.catch()**
+
+```
+import axios from 'axios';
+
+export const FETCH_POKEMON_START = 'FETCH_POKEMON_START';
+export const FETCH_POKEMON_SUCCESS = 'FETCH_POKEMON_SUCCESS';
+export const FETCH_POKEMON_FAIL = 'FETCH_POKEMON_FAIL';
+
+export const getPokemon = () => dispatch => {
+  dispatch({ type: FETCH_POKEMON_START })
+  axios
+    .get('https://pokeapi.co/api/v2/pokemon/')
+    .then(res =>
+      dispatch({type: FETCH_POKEMON_SUCCESS, payload: res.data.results })
+    )
+    .catch(err =>
+      dispatch({type: FETCH_POKEMON_FAIL, payload: err })
+    )
+};
+```
+
+Finally, we will build the cases for our two new actions. In the reducer file, import our action types. Then build a case for each inside the reducer function.
+
+```
+import {
+  FETCH_POKEMON_START,
+  FETCH_POKEMON_SUCCESS,
+  FETCH_POKEMON_FAIL
+} from '../actions';
+
+const initialState = {
+  pokemon: [],
+  error: '',
+  isFetching: false
+}
+
+function reducer(state = initialState, action){
+  switch(action.type){
+    case FETCH_POKEMON_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: ''
+      }
+    case FETCH_POKEMON_SUCCESS:
+      return {
+        ...state,
+        pokemon: action.payload,
+        isFetching: false,
+        error: ''
+      }
+    case FETCH_POKEMON_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
+export reducer;
+```
