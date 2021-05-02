@@ -8,15 +8,15 @@ const Joke = (props) => {
     props.getJoke();
   }, [props.getJoke]);
 
-  if(props.loading){
-    return <><h2>Loading...</h2></>
-  }
-
   return (
     <div>
       <h1>Dad says: </h1>
-      <h2> {props.joke}</h2>
-      <button onClick={() => props.getJoke()}>Get new joke</button>
+      {props.loading ? <h2>Loading...</h2> : (
+      <div>
+        <h2> {props.joke}</h2>
+        <button onClick={() => props.getJoke()}>Get new joke</button>
+      </div>
+    )}
     </div>
   );
 };

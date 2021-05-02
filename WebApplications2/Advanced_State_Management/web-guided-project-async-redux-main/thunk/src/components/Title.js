@@ -5,17 +5,17 @@ import { updateTitle, toggleEditing } from '../actions/titleAction';
 const Title = (props) => {
   const [newTitleText, setNewTitleText] = useState('');
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const {editing, title} = useSelector((state) => state.titleReducer);
 
   const handleChanges = e => {
     setNewTitleText(e.target.value);
   };
-  console.log(state);
+
   return (
     <div>
-      {!state.titleReducer.editing ? (
+      {!editing ? (
         <h1>
-          {state.titleReducer.title}{" "}
+          {title}{" "}
           <i onClick={() => toggleEditing(dispatch)} className="far fa-edit"/>
         </h1>
       ) : (
