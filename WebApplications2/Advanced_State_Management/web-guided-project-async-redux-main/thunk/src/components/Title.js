@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import { updateTitle, toggleEditing } from '../actions/titleAction';
+import { getJoke } from '../actions/jokeAction';
 
 const Title = (props) => {
   console.log(props)
@@ -48,7 +49,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateTitle:  (title) => dispatch(updateTitle(title)),
-    toggleEditing:  () => dispatch(toggleEditing())
+    toggleEditing:  () => dispatch(toggleEditing()),
+    getJoke: () => dispatch(getJoke())
   }
 }//something
 
