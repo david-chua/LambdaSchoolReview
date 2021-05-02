@@ -6,7 +6,7 @@ const initialState = {
   title: "Jokes"
 };
 
-export const titleReducer = (state = initialState, action) => {
+const titleReducer = (state = initialState, action) => {
   switch(action.type){
     case UPDATE_TITLE:
       return {... state, title: action.payload, editing: false }
@@ -16,3 +16,5 @@ export const titleReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default titleReducer;

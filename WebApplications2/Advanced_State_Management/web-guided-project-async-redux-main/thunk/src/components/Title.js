@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateTitle, toggleEditing } from '../actions/titleAction';
 
 const Title = (props) => {
+  console.log(props)
   const [newTitleText, setNewTitleText] = useState('');
 
   const handleChanges = e => {
@@ -37,11 +38,23 @@ const Title = (props) => {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    title: state.title,
-    editing: state.editing
+    title: state.titleReducer.title,
+    editing: state.titleReducer.editing
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTitle:  (title) => dispatch(updateTitle(title)),
+    toggleEditing:  () => dispatch(toggleEditing())
+  }
+}//something
 
-export default connect(mapStateToProps, {updateTitle, toggleEditing})(Title);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Title);
+
+// connect(mapStateToProps, mapDispatchToProps) returns decorator function
+// We then invoke that decorator on title
+// and magically, Title can now read from and write to the store.

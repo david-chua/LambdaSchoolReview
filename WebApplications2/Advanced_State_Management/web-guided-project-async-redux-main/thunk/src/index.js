@@ -7,9 +7,9 @@ import logger from 'redux-logger';
 import App from './App';
 
 // import { reducer } from './reducers';
-import { titleReducer } from './reducers/titleReducer';
+import reducer from './reducers/index';
 
-const store = createStore(titleReducer, applyMiddleware(logger));
+const store = createStore(reducer, applyMiddleware(logger));
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(

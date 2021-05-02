@@ -1,13 +1,8 @@
+import { combineReducers } from 'redux';
+import titleReducer from './titleReducer';
+import jokeReducer from './jokeReducer';
 
-const initialState = {
-  quote: null,
-  isFetching: false,
-  error: ''
-};
-
-export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  titleReducer,
+  jokeReducer
+})
