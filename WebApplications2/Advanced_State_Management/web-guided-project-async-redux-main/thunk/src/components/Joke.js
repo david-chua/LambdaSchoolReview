@@ -1,18 +1,35 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getJoke } from '../actions/jokeAction';
 
-const Joke = () => {
+const Joke = (props) => {
+  useEffect(() => {
+    // run api call sync action when the component mounts.
+    props.getJoke();
+  }, [props.getJoke]);
+
+  if(props.loading){
+    return <><h2>Loading...</h2></>
+  }
+
   return (
-    <h1>Dad says: </h1>
+    <div>
+      <h1>Dad says: </h1>
+      <h2> {props.joke}</h2>
+      <button onClick={() => props.getJoke()}>Get new joke</button>
+    </div>
   );
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    quote: state.quote,
-    isFetching: state.isFetching,
-    error: state.error
+    joke: state.jokeReducer.joke,
+    loading: state.jokeReducer.loading,
+    error: state.jokeReducer.error
   };
 };
 
-export default connect(mapStateToProps)(Joke);
+const mapDispatchToProps = {getJoke}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Joke);

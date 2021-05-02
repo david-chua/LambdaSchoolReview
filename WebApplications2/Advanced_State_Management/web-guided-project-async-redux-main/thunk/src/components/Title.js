@@ -1,22 +1,22 @@
 import React, {useState} from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateTitle, toggleEditing } from '../actions/titleAction';
-import { getJoke } from '../actions/jokeAction';
 
 const Title = (props) => {
-  console.log(props)
   const [newTitleText, setNewTitleText] = useState('');
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const handleChanges = e => {
     setNewTitleText(e.target.value);
   };
-
+  console.log(state);
   return (
     <div>
-      {!props.editing ? (
+      {!state.titleReducer.editing ? (
         <h1>
-          {props.title}{" "}
-          <i onClick={() => props.toggleEditing()} className="far fa-edit"/>
+          {state.titleReducer.title}{" "}
+          <i onClick={() => toggleEditing(dispatch)} className="far fa-edit"/>
         </h1>
       ) : (
         <div>
@@ -27,8 +27,7 @@ const Title = (props) => {
             value={newTitleText}
             onChange={handleChanges}
           />
-          <button onClick={() => {
-            props.updateTitle(newTitleText)}
+          <button onClick={() => {updateTitle(newTitleText, dispatch)}
           }>
             Update title
           </button>
@@ -38,24 +37,24 @@ const Title = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    title: state.titleReducer.title,
-    editing: state.titleReducer.editing
-  }
-}
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+//     title: state.titleReducer.title,
+//     editing: state.titleReducer.editing
+//   }
+// }
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     updateTitle:  (title) => dispatch(updateTitle(title)),
+//     toggleEditing:  () => dispatch(toggleEditing()),
+//     getJoke: () => dispatch(getJoke())
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateTitle:  (title) => dispatch(updateTitle(title)),
-    toggleEditing:  () => dispatch(toggleEditing()),
-    getJoke: () => dispatch(getJoke())
-  }
-}//something
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Title);
+export default Title;
 
 // connect(mapStateToProps, mapDispatchToProps) returns decorator function
 // We then invoke that decorator on title
