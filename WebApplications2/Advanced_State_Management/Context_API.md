@@ -121,3 +121,58 @@ return(
       </P>
     </div>
 );
+```
+
+## Lecture Notes
+
+### State/Props
+
+#### Pros
+
+* Easy to setup
+* Easy to modify
+
+Cons
+
+* No Separation of Concerns
+* Gets messy when spread across components
+
+Recommendation:
+
+* Only use for smaller projects or when state is only used within one component.
+
+### Reducers and Redux
+
+#### Pros
+
+* Separation of Concerns
+* Reducers are easy to read
+* Easy to add features
+* Can connect to any state
+
+#### Cons
+
+* Lots of moving parts
+* Syntax can be confusing
+* Doesn't allow state over branches of components.
+
+Recommendation:
+
+* Industry Standard
+
+### Context API
+
+#### Pros
+
+* Simple to setup
+* Can connect to any state
+* Can connect multiple context to different parts of the app
+
+#### Cons
+
+* Still new
+* Can also be messy if not used with restraint
+
+Recommendation:
+
+* Young upstart
