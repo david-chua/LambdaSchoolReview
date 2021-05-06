@@ -3,12 +3,22 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Login from './components/Login';
 import GasPrices from './components/GasPrices';
+import PrivateRoute from'./components/PrivateRoute';
 
 import axios from 'axios';
 
-function App() {
+function App(props) {
+
   const logout = () => {
-    
+    axios.post('http://localhost:5000/api/logout')
+      .then(res => {
+        console.log(res)
+        localStorage.removeItem('token')
+        window.location.href = '/login';
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
 
 
@@ -27,7 +37,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/protected" component={GasPrices} />
+          <PrivateRoute exact path="/protected" component={GasPrices} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
