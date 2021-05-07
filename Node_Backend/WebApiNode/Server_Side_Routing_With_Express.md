@@ -189,3 +189,224 @@ server.put('/hobbits/:id', (req,res) =>{
     }
 })
 ```
+
+## Overview
+
+REST is a generally agreed upon set of principles and constraints. They are recommendations , not a standard.
+
+When designing RESTful application, keep the following principles in mind:
+
+* everything is a resource
+* each resource is accessible via a unique URL
+* resources can have multiple representations
+* communication happens over a stateless protocol (HTTP)
+* resource management happens via HTTP methods.
+
+Applying the REST architecture to our APIs can make them scalable and simpler to maintain and extend.
+
+## Follow Along
+
+REST APIs have six constraints
+
+1. **Client-server** architecture
+2. **Stateless** architecture. Each request should stand on its own, and order should not matter. No shared state.
+3. **Cacheable**: improves network performance.
+    * GET, PUT, DELETE should be idempotent (the same command executed multiple times, the state of resources on the server is exactly the same, much like pure functions).
+    * POST is not idempotent.
+    * Caching is a way to store and retrieve data so that the server can fulfill future request faster without repeating expensive calculations or operations.
+4. **Layered System**: component A (a client) might be or might not communicate directly with component B (the server). There may be other layers between them like logging, caching, DNS server, load balancers, and authentication.
+5. **Code on demand**
+    * The API returns the resource and code to act on it.
+    * The client only needs to know how to execute the code.
+    * Makes the API more flexible, upgradeable, and extendible.
+    * Most Web Applications sends JavaScript code along with data.
+6. **Unifrom Interfaces**
+    * Each resource should be accessible through a single URL. Not a hard requirement, but recommended.
+    * We should be able to manage the resources through these representatives (the URL).
+    * Every interaction with the resource should happen through the URL identifier we gave to it.
+    * Self descriptive messages.
+    * HATEOAS (Hypermedia As The Engine Of Application State). Much like a choose your own adventure book, the pages are not read in order. You start on page 1. Based on the information available, the reader (client) chooses the action to take, moving them to a different page.
+
+## Overview
+
+An Express Router behaves like a mini Express application. It can have its own Routing and Middleware. But it needs to exist in an Express application. Think of routers are a way of organizing Express applications - you write separate pieces taht can alter be composed together.
+
+This hsould all become clear with an example.
+
+We'll start with our main server file.
+
+```
+const express = require('express');
+
+const server = express();
+
+server.use('/', (req,res) => {
+    res.send('API up and running!');
+})    
+
+server.liste(8000, () =>
+    console.log('API running on PORT 8000')
+)
+```
+
+If our applications only included the above code, we wouldn't need routers. But imagine that this application needs endpoints for the users resource alone.
+
+Now imagine this application also needs to deal with products, orders, returns, categories, providers, warehouses, clients, employees, and more.
+
+Even if we only have five endpoints per resource, each endpoint will have many lines of code, and you can see how trying to cram all that code in a single file could get unwieldy real fast.
+
+Let's rewrite it to separate the main server file from the file handling the routers for users.
+
+Create a file to handle all routes related to the user resources.
+
+```
+// inside /users/userRoutes.js <- this can be place anywhere and called anything
+const express = require('express');
+
+const router = express.Router(); // notice the Uppercase R
+
+// this file will only be used when the route begins with "/users"
+// so we can remove that from the URLs, so "/users" becomes simply "/"
+router.get('/', (req, res) => {
+  res.status(200).send('hello from the GET /users endpoint');
+});
+
+router.get('/:id', (req, res) => {
+  res.status(200).send('hello from the GET /users/:id endpoint');
+});
+
+router.post('/', (req, res) => {
+  res.status(200).send('hello from the POST /users endpoint');
+});
+
+// ... and any other endpoint related to the user's resource
+
+// after the route has been fully configured, we then export it to be required where needed
+module.exports = router; // standard convention dictates that this is the last line on the file
+```
+
+Now, even if the user resources needs 8 or 10 endpoints, they are package neatly into this file.
+
+How can we use it in our main file? Like so:
+
+```
+const express = require('express');
+
+const userRoutes = require('./users/userRoutes');
+const productRoutes = require('./products/productRoutes');
+const clientRoutes = require('./clients/clientRoutes');
+
+const server = express();
+
+server.use('/users', userRoutes);
+server.use('/products', productRoutes);
+server.use('/clients', clientRoutes);
+
+server.listen(8000, () => console.log('API running on port 8000'));
+```
+
+Much cleaner, we add three sets of endpoints to our server, where each needs only two lines of code.
+
+There is an alternative syntax for writing route handlers, but we'll leave that for you to explore.
+
+Also note that it is possible to have a central router representing our API and have that router import the routes. This logic cleans up our main server file even more. Let's s ee an example of that.
+
+```
+const express = require('express');
+const apiRoutes = require('./api/apiRoutes');
+
+const server = express();
+
+server.use('/api', apiRoutes);
+
+server.listen(8000, () => console.log('API is running on PORT 8000'));
+```
+
+And the apiRoutes could look like this:
+
+```
+// inside /api/apiRouts.js <-- this can be placed anywhere and called anything
+const express = require('express');
+
+// if the other routers are not nested inside /api then the paths wo uld change
+
+const userRoutes = require('./users/userRoutes');
+const productRoutes = require('./products/productRoutes');
+const clientRoutes = require('./clients/clientRoutes');
+
+const router = express.Router(); //notice the Uppercase R
+
+// this file will only be used when the route begins with "/api"
+// so we can remove that from the URLs, so "/api/users" become simply "/users"
+router.use('/users', userRoutes);
+router.use('/products', productRoutes);
+router.use('./clients', clientRoutes);
+
+// .. and any other endpoint related to the user's resource.
+
+// after the route has been fully configured, we can then export it so that in can be required where needed.
+module.exports = router; // standard convention dictates that this is the last line on the file.
+```
+
+As you can see, routers can use other routers.
+
+The **userRoutes**, **productRoutes**, and **clientRoutes** remain unchanged(other than relocating them inside the API folder).
+
+## Follow Along
+
+Let's implement a simple API that returns strings but takes advantage of the Express Routers. Express routers are overkill for such a simple application.
+
+// Create a folder and main server, initialize to create a json package, install nodemon and expresss.
+
+in the index.js:
+
+```
+const express = require('express');
+
+const server = express();
+
+server.use('/', (req,res) => res.send('APIT is up and running!'));
+
+// using port 9000 for this example
+server.listen(9000, () => console.log('API is running on port 9000'));
+```
+
+Let's add our first router to manage the races resource.
+
+* create a folder called races to host our router.
+* create a file called raceRoutes.js and add the code:
+
+```
+const express = require('express');
+
+const router = express.Router();
+
+router.get('/', (req,res) => {
+  const races = ['human', 'elf', 'hobbit', 'wizard', 'dwarf', 'orc'];
+
+  res.status(200).json(races)
+});
+
+module.exports = router;
+```
+
+Now open your index.js file and use the newly created router by following these steps:
+
+* require the raceRoutes.js  file after requiring Express.
+* use the race router to handle the /races endpoint.
+
+Our index.js file should now look like this:
+
+```
+const express = require('express');
+
+const raceRoutes = require('./races/raceRoutes');
+
+const server = express();
+
+server.use('/races', raceRoutes);
+
+server.use('/', (req,res) => res.send('API is up and running'));
+
+server.listen(9000, () => console.log('API is running on port 9000'));
+```
