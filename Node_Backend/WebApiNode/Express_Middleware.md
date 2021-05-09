@@ -84,3 +84,38 @@ By convention, we name the third parameter **next**.
 Any middleware in the queue CAN modify both the request and response object, but it's NOT required. In this case, we are not making changes to either.
 
 Any middleware in the queue can stop the request and send a response back to the client. When that happens, the rest of the middleware, including the route handlers, will not work. We'll see an example of this in the code along.
+
+Calling the **next()** function signals to Express that the middleware has finished, and it should call the next middleware function. If **next()** is not called a response is not sent back to the client, the request will hang, and clients will get a timeout error. So, make sure always to call the **next()** or use one of the methods that send a response back like **res.send()**  or **res.jsion()**.
+
+Let's add our middleware to the queue:
+```
+server.use(logger);
+```
+
+Hitting any of our endpoints will display some information about the request in the console.
+
+## Follow Along:
+
+Any middleware in the queue can stop the request and send a response back to the client. When that happens, the rest of the middleware, including the route handlers, will not be executed.
+
+Start by defining a function that shows our current predicament at the console as the application loads
+
+```
+function atGate(req,res,next){
+  console.log('At the gate, about to be eaten');
+
+  next();
+}
+```
+
+Then add it as the first middleware in the queue.
+
+```
+server.use(atGate);
+```
+
+This middleware is what's called the global or application wide middleware. It applies to every endpoint in our server. Accessing any route in our server should display the message on the console.
+
+Now let's add the authentication middleware that only grants access if we hit the correct route. picking any route is futile.
+
+```
