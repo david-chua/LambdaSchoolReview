@@ -10,7 +10,7 @@ server.use(express.json());
 
 server.use('/api/users', logger, userRouter);
 
-server.get('/', (req, res) => {
+server.get('/', logger, (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`);
 });
 
