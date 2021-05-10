@@ -12,17 +12,22 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkAccountId, (req, res, next) => {
   // DO YOUR MAGIC
+  res.status(200).json(res.account);
 })
 
-router.post('/', checkAccountPayload, (req, res, next) => {
+router.post('/', checkAccountPayload, checkAccountNameUnique, async (req, res, next) => {
   // DO YOUR MAGIC
-  console.log('hello');
-  res.json({message: 'success'})
+  try {
+    const newPost = await Accounts.create(req.body);
+    res.status(201).json(newPost);
+  } catch(err){
+    next(err)
+  }
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', checkAccountPayload, (req, res, next) => {
   // DO YOUR MAGIC
 });
 
