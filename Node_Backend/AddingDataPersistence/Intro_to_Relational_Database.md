@@ -330,7 +330,7 @@ Knex also allows for a where clause. In Knex, we could write **SELECT * FROM use
 
 db('users').where({id: 1 });
 
-This method will resolve to an array containing a single entry like so: **[{id: 1, name: 'bill'}]
+This method will resolve to an array containing a single entry like so: **[{id: 1, name: 'bill'}]**
 
 Using this we might add a **GET** endpoint where a specific user is grabbed.
 
@@ -384,4 +384,4 @@ In Knex, the equivalent of **DELETE FROM users WHERE age =33;** is:
 db('users').where({age: 33}).del();
 ```
 
-Once again, the **where** must come before the **del**. This method will resolve to the count of records remove. 
+Once again, the **where** must come before the **del**. This method will resolve to the count of records remove.
