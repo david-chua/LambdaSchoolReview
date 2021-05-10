@@ -2,19 +2,21 @@ const express = require('express');
 
 // You will need `users-model.js` and `posts-model.js` both
 // The middleware functions also need to be required
+const { logger } = require('../middleware/middleware');
 const Users = require('./users-model');
 const Posts = require('../posts/posts-model');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   // RETURN AN ARRAY WITH ALL THE USERS
   try {
-    let users = await Users.get();
-    res.status(200).json(users);
+    // let users = await Users.get();
+    // res.status(200).json(users);
+    throw new Error();
 
   } catch(err){
-    console.log(err);
+    next(err)
   }
 
 });
@@ -96,10 +98,15 @@ router.post('/:id/posts', (req, res) => {
   } catch(err){
     console.log(err);
   }
-  // RETURN THE NEWLY CREATED USER POST
-  // this needs a middleware to verify user id
-  // and another middleware to check that the request body is valid
 });
+
+router.use((err, req, res, next) => {
+   res.status(500).json({
+     message: err.messasge, // DEV
+     stack: err.stack, // DEV
+     custom: "Server Error occured" // Production
+   })
+})
 
 // do not forget to export the router
 
