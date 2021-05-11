@@ -13,8 +13,8 @@ Consider the following **farms** and **ranchers** table:
 ## Ranchers
 
 | id | rancher_name | farm_id |
-| 1  | John Doe    |  1 |
-| 2 | Jane Doe | 1 |
-| 3 | Jim Done | 2 |
-| 4 | Jay Dow  | 2 |
-| 5 | Jen  Dunn | 1| 
+| 1  | John Doe     |  1      |
+| 2  | Jane Doe     | 1       |
+| 3  | Jim Done     | 2       |
+| 4  | Jay Dow      | 2       |
+| 5  | Jen  Dunn    | 1       |  
