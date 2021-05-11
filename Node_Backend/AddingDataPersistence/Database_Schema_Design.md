@@ -309,4 +309,4 @@ Run the seed by typing:
 knex seed:run
 ```
 
-You can now use SQLite Studio to confim that the accounts table has two entries. 
+You can now use SQLite Studio to confirm that the accounts table has two entries.
