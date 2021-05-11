@@ -6,13 +6,15 @@ Consider the following **farms** and **ranchers** table:
 
 ## Farms:
 
-| id | farm_name|
-|1   | Beech Ranch |
-|2  | Morton Farms |
+| id | farm_name    |
+|----|--------------|
+|1   | Beech Ranch  |
+|2   | Morton Farms |
 
 ## Ranchers
 
 | id | rancher_name | farm_id |
+| ---|--------------|---------|
 | 1  | John Doe     |  1      |
 | 2  | Jane Doe     | 1       |
 | 3  | Jim Done     | 2       |
