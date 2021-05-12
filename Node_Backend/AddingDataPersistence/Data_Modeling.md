@@ -24,3 +24,10 @@ Data normalization is a deep topic in database design. To begin thinking about i
 | Morton Farms | horses    |  chickens   | cows     |
 
 This table has two issues. There is no proper id field (as multiple farms may have the same name), and multiple fields are representing the same type of data: animals.
+
+| farm_id     | farm_name        | animals   |
+|-------------|------------------|-----------|
+|  1          |  Beech Ranch     |  pigs, chickens, goats  |
+|  2          | Morton Farms     | horses, chickens, cows  |
+
+While we now have eliminated the first two issues, we now have multiple entries in one field, separated by commas. This isn't good either, as its another example of denormalization. There is no "array" data type in a relational databases, so each field must contain only one data point. 
