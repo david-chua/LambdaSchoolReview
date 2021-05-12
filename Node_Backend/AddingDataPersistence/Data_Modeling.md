@@ -19,6 +19,7 @@ Data normalization is a deep topic in database design. To begin thinking about i
 ## Denormalized Data
 
 | farm_name    | animal1   | animal 2    | animal 3 |
+| -------------|-----------|-------------|----------|
 | Beech Ranch  | pigs      |  chickens   | goats    |
 | Morton Farms | horses    |  chickens   | cows     |
 
