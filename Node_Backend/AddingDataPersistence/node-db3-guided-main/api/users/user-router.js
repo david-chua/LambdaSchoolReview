@@ -1,5 +1,5 @@
 const express = require("express");
-
+const User = require("./user-model");
 const db = require("../../data/db-config.js");
 
 const router = express.Router();
@@ -32,6 +32,15 @@ router.get("/:id", (req, res) => {
       res.status(500).json({ message: "Failed to get user" });
     });
 });
+
+router.get('/:id/posts', async (req,res) => {
+  try{
+    const posts = await User.getUserPosts(req.params.id);
+    res.json(posts)
+  } catch(err) {
+    res.status(500).json({message : "Server error"})
+  }
+})
 
 router.post("/", (req, res) => {
   const userData = req.body;
