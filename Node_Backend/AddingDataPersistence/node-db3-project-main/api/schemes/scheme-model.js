@@ -28,30 +28,30 @@ function find() { // EXERCISE A
 }
 
 async function findById(scheme_id) { // EXERCISE B
-  console.log(scheme_id)
   const data = await db('schemes as s')
   .leftJoin('steps as st', 's.scheme_id', 'st.scheme_id')
   .select('s.scheme_name', 'st.*')
   .where('s.scheme_id', scheme_id)
   .orderBy('st.step_number')
 
-  console.log(data);
+  if (!data[0]){
+    return null
+  } else {
+    let object = {
+      scheme_id: scheme_id,
+      scheme_name: data[0].scheme_name,
+      steps:
+        data[0].step_id ? [data.map(step =>{
+          return {
+            step_id: step.step_id,
+            step_number: step.step_number,
+            instructions: step.instructions
+          }
+        })] : []
+    }
 
-  let object = {
-    scheme_id: scheme_id,
-    schme_name: data[0].scheme_name,
-    steps:
-      data[0].step_id ? [data.map(step =>{
-        return {
-          step_id: step.step_id,
-          step_number: step.step_number,
-          instructions: step.instructions
-        }
-      })] : []
-
+      return object
   }
-
-  return object
 }
 
   /*
