@@ -10,7 +10,6 @@ exports.up = function(knex) {
       .onUpdate("CASCADE")
     tbl.integer('ingredient_id')
       .unsigned()
-      .notNullable()
       .references('ingredient_id')
       .inTable('ingredients')
       .onDelete('CASCADE')
@@ -20,5 +19,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.scheme.dropTableIfExists('step_ingredient_info');
+  return knex.schema.dropTableIfExists('step_ingredient_info');
 };
