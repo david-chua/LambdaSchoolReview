@@ -7,7 +7,6 @@ exports.seed = function(knex) {
       return knex('step_ingredient_info').insert([
         {step_id: 1, ingredient_id: 3, quantity: '1 tbsp'},
         {step_id: 2, ingredient_id: 1, quantity: '2 eggs'},
-        {step_id: 2, ingredient_id: 1, quantity: '2 eggs'},
         {step_id: 2, ingredient_id: 2, quantity: 'a pinch of salt'},
         {step_id: 4, ingredient_id: 3, quantity: '2 tbsp'},
         {step_id: 5, ingredient_id: 4, quantity: '1 can'},
