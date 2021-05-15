@@ -48,8 +48,13 @@ async function checkUsernameFree(req,res,next) {
     "message": "Invalid credentials"
   }
 */
-function checkUsernameExists() {
-
+function checkUsernameExists(req,res,next) {
+  const { username } = req.body
+  if (username){
+    next()
+  } else {
+    next({message: "Invalid Credentials", status: 401})
+  }
 }
 
 /*
@@ -60,12 +65,19 @@ function checkUsernameExists() {
     "message": "Password must be longer than 3 chars"
   }
 */
-function checkPasswordLength() {
-
+function checkPasswordLength(req,res, next) {
+  const { password } = req.body;
+  if (password && password.length > 3){
+    next()
+  } else {
+    next({message: "Password must be longer than 3 characters", status: 422})
+  }
 }
 
 // Don't forget to add these to the `exports` object so they can be required in other modules
 module.exports = {
   restricted,
-  checkUsernameFree
+  checkUsernameFree,
+  checkUsernameExists,
+  checkPasswordLength
 }

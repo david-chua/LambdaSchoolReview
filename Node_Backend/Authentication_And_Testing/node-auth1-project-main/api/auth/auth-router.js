@@ -3,12 +3,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const { add, findBy } = require('../users/users-model')
-const { checkUsernameFree } = require('./auth-middleware');
+const { checkUsernameFree, checkUsernameExists, checkPasswordLength } = require('./auth-middleware');
 
 const router = express.Router();
 
 
-router.post('/register', checkUsernameFree, (req,res) => {
+router.post('/register', checkUsernameExists, checkPasswordLength, checkUsernameFree, (req,res) => {
   res.json({message: 'register'})
 })
 
