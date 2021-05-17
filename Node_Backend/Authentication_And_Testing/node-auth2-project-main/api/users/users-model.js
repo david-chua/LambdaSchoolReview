@@ -1,10 +1,10 @@
 const db = require('../../data/db-config.js');
 
 function find() {
-  // return db('users')
-  //   .join('roles', 'roles.role_id', 'users.role_id')
-  //   .select('users.user_id', 'users.username', 'roles.role_name');
-  return findById(1)
+  return db('users')
+    .join('roles', 'roles.role_id', 'users.role_id')
+    .select('users.user_id', 'users.username', 'roles.role_name');
+
 
   /**
     You will need to join two tables.
@@ -59,7 +59,7 @@ function findById(user_id) {
    */
    return db('users')
    .join('roles', 'roles.role_id', 'users.role_id')
-   .select('users.user_id', 'users.username', 'users.password', 'roles.role_name')
+   .select('users.user_id', 'users.username', 'roles.role_name')
    .where('users.user_id', user_id)
    .first();
 }
