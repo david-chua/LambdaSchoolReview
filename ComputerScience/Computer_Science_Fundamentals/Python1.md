@@ -248,3 +248,15 @@ Don't send a question you haven't proofread. When you post your question, you sh
 As feedback and responses to your question begin coming in, respond as quickly as possible. You'll likely receive clarifying questions and your readers need that clarification to help you.
 
 ## Follow Along - Using **print** with different objects
+
+Let's start by executing the print function to print different types of objects in Python. There are numerous types of objects that you can print using the **print** function.
+
+Using **print** with no arguments
+
+```
+>>> print()
+
+>>>
+```
+
+Notice the empty line after calling the **print** function. The default end value when calling print is the newline character **'\n'**. 
