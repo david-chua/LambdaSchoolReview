@@ -55,4 +55,19 @@ Think like a villain. What inputs would break your program?
 
 Where is the description of the problem incomplete? If you cannot get answers on something that the specifications leave unclear, make an educated guess, and document your assumptions and decision.
 
-You are done with this step when you can explain this problem to someone who has never seen it. Your explanation should be thorough enough for this person to skip the "Understand" step and start planning right away. 
+You are done with this step when you can explain this problem to someone who has never seen it. Your explanation should be thorough enough for this person to skip the "Understand" step and start planning right away.
+
+## 2. Plan
+
+This step is where you will ask, "what steps will I take to solve the problem?" You will take your description of the problem and transform it into a complete, actionable plan to solve that problem. If you realize you still don't truly understand the problem while planning, return to **Understand** until you resolve the ambiguity. If you have not yet completed **Understand**, you will end up planning to solve the wrong problem! When interviewing, you must do this step aloud.
+
+Remember, you aren't coding during this step unless it's a small piece of throwaway code to test a hypothesis. It would be best if you wrote pseudocode during this step, however.
+
+### Questions:
+
+* Do you know the answer to a similar problem that has comparable inputs and outputs?
+  * Does this problem remind you of anything else?
+  * Can you bring that knowledge to bear here?
+
+* Does my plan meet the performance requirements?
+  * What's the time complexity?
