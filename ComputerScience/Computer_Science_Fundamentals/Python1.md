@@ -71,3 +71,128 @@ Remember, you aren't coding during this step unless it's a small piece of throwa
 
 * Does my plan meet the performance requirements?
   * What's the time complexity?
+  * What's the space complexity?
+  * How big can my input be?
+
+* Can sorting the input data ahead of time lead to any improvements in time complexity?
+  * Does recursion help?
+  * Is the problem made up of identical subproblems?
+  * Can you state the problem with itself in its definition?
+
+* Think like a villain. Does your plan cover the edge cases?
+
+### Actions
+
+Solve the problem like a human. If you're sorting something, imagine your task as a pile of blocks that you need to sort by hand. Break down the steps you take into small enough pieces for the computer to understand. Approach the problem from many angles.
+
+Get a brute force solution as quickly as possible. Even if it's not performant enough. It can lead you to better solutions. 
+
+Come up with as many plans of attacks as you can. Choose the best one that satisfies performance needs.
+
+Try to solve a simpler version of the problem. If the input is a 2D array, can you solve it for 1D array? If you need to count the number of ways to eat cookies 1,2, or 3 at a time. first try to solve it the number of ways you could eat two at a time, or even one at a time. The solution to the more straightforward problem can lead to insights on the more complex problem.
+
+List the nouns and verbs in the problem description. Map each one to an algorithm, process, data structure, object, method, function, etc.
+
+"Perfect" can be the enemy of "good". Even if your initial workable solution isn't performant enough, you can iterate later. "Premature optimization is the root of all evil."
+
+You know you completed this step when you have pseudocode that's detail enough to convert to real code. It would be best if you also were convinced the pseudocode represents a legitimate working solution.
+
+## 3. Execute
+
+This step is where you take your plan and convert it to actual working code. This step isn't easy, but it's much easier if you've done an excellent job with the "Understand" and "Plan" steps above. If you find shortcomings in  your plan while implementing the solution, return to the "Plan" phase until you solve the ambiguity. If you have not yet completed the "Plan" step, you will spend far longer on the "Execute" step than you have to.
+
+### Questions
+
+* Think like a villain. Does your implementation handle all inputs?
+* What is the best way to split this code into separate functions or classes?
+* Does this functionality already exists?
+  * Are there built-in libraries I can leverage?
+  * Are there third-party libraries I can leverage?
+
+### Actions
+
+Convert your pseudocode and outlines into actual code. Don't Repeat yourself (DRY). Remove redundant code as you write it.
+
+Document code as you write it. Header block should contain information on how someone should code. Comment only when necessary; where possible, write code clearly enough that comments aren't needed. If comments help clarify or summarize a piece of code to a reader, definitely add comments.
+
+If you write code that's hackish or kludgy, fix it. If you don't have time to fix it, comment it, explain why you couldn't do it the right way (time constraints, etc), and what you need to do to make it right.
+
+You know this step is complete when your solution works on good data, it doesn't fall on flawed data or edge cases, and the program passes all of the tests.
+
+## 4. Reflect
+
+The primary question you are dealing with during this step is - "Is the implementation as good as I can make it?" Would I be proud to show my code to another programmer?
+
+### Questions
+
+* Does you resolution work in all cases?
+  * Main case?
+  * Edge cases?
+
+* Is the solution performant enough?
+* Is the code documented?
+* In retrospect, what would you do differently? What will you di differently next time?
+  * What went right?
+  * What went wrong?
+
+### Actions
+
+Adding documentation is necessary action during this step. It would be best if you documented any future changes you plan on making. You should document any code sections that you will need to make more performant if the data increases.
+
+Another critical action to take during this step is to remove any redundant or unnecessary code. Also, depending on time constraints, it's likely that you might have some hackish code that you'd like to improve in the future when time allows. Make sure to document any ideas or plans on how you might do so.
+
+You know that this step is complete when your code is adequately refactored and exhaustively documented.
+
+## Follow Along:
+
+Let's use the **dining philosophers problem** as an example problem to use our Problem Solving Framework on. Here's a short description of the problem.
+
+Five silent philosophers sit at a round table with bowls of noodles. One chopstick is placed between each pair of adjacent philosophers.
+
+Each philosopher must alternately think and eat. However, a philosopher can only eat noodles when they have both left and right chopsticks. Each chopstick can be held by one philosopher and so a philosopher can use the chopstick only if it is not being used by another philosopher. After an individual philosopher finish eating, they need to put down both chopsticks so that the chopsticks become available to others. A philosopher can take the chopstick on their right or the one on their left as they become available, but cannot start eating before getting both chopsticks.
+
+Eating is not limited by the remaining amounts of noodles or stomach space; an infinite supply and infinite demand are assumed.
+
+The problem is how to design a discipline of behavior (a concurrent algorithm) such that no philosopher will start; i.e. each can forever continue to alternate between eating and thinking, assuming that no philosopher can know when others may want to think or eat.
+
+### 1. Understand
+
+On the surface, this seems like a straightforward problem - however, some approaches will lead to problematic results.
+
+Here are some critical pieces of information from the question we should highlight.
+
+* There are 5 philosophers
+* There are 2 states (eating, thinking)
+* there is precisely 1 chopstick in between each pair of philosopher(5 total)
+* BOTH chopsticks are required to transition from thinking or eating
+
+Some essential questions to ask here include "When should philosophers pick up a chopstick?" and "When should philosopher put down a chopstick?"
+
+Remember that you want to establish if there are any restrictions or limitations you need to consider before you work on a solutions.
+
+### 2. Plan
+
+Let's create a solution written as a set of rules that define how philosophers should interact with chopsticks in a manner that will allow them to transition between eating and thinking.
+
+1. Philosopher is eating (2 chopsticks)
+2. Philosopher finishes eating and sets down chopsticks
+3. Philosopher is thinking (0 chopsticks)
+4. Philosopher sees his/her neighbor set down chopsticks & picks them up.
+5. Repeat steps 1-4
+
+### 3. Execute
+
+We could break down the general plan above into a few specific results
+
+* eat for a set amount of time once they are holding both chopsticks
+* put down the right chopstick
+* put down the left chopstick
+* pick up the left chopstick as soon as it becomes available
+* pick up the right chopstick as soon as it becomes available
+* repeat
+
+However, this solution will not alwyas work.
+
+### 4. Reflect
+
+The above solution has the potential to create a situation known in Computer Science as **deadlock**. A deadlock means that two processes are stuck in an eternal state of waiting. If neither has two chopsticks, they cannot eat. But they also won't put down chopsticks they are holding (because they haven't eaten yet). We need to revise the rules about when the philosophers should pick up/ put down chopsticks to eliminate this possibility.
