@@ -259,4 +259,25 @@ Using **print** with no arguments
 >>>
 ```
 
-Notice the empty line after calling the **print** function. The default end value when calling print is the newline character **'\n'**. 
+Notice the empty line after calling the **print** function. The default end value when calling print is the newline character **'\n'**.
+
+Using **print** with a string literal:
+
+```
+>>> print("Lambda School is Awesome!")
+Lambda School is Awesome!
+>>>
+```
+
+Notice how calling print with the string literal printed the exact string we passed in onto the screen.
+
+Using **print** with a variable:
+
+```
+>>> slogan = "i love lamp"
+>>> print(slogan)
+i love lamp
+>>>
+```
+
+Notice how calling print with the slogan variable prints the value assigned to the slogan variable. 
