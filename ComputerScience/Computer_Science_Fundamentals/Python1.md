@@ -280,4 +280,48 @@ i love lamp
 >>>
 ```
 
-Notice how calling print with the slogan variable prints the value assigned to the slogan variable. 
+Notice how calling print with the slogan variable prints the value assigned to the slogan variable.
+
+Using print with an expression:
+
+```
+>>> superlative = "wonderful";
+>>> school = "Lambda School"
+>>> print(school + " is " + superlative)
+Lambda School is wonderful
+>>>
+```
+
+NOtice how the argument for the print function can be an expression. Once the expression is resolved to a string object, the print function can output it to the screen.
+
+Using print with other object types:
+
+```
+print(2020)
+2020
+print(123.456)
+123.456
+print(False)
+False
+print(["Lambda", "School", 2,0,2,0])
+["Lambda", "School", 2,0,2,0]
+print(("Lambda", "School"))
+('Lambda', 'School')
+print({"school": "Lambda School", "year": 2020})
+{'school': 'Lambda School', 'year': 2020}
+```
+
+Any object passed as an argument into print will get converted to string type before outputted to the screen
+
+You can see how the print function is easy to use and how it can handle any object type that you pass into it.
+
+## Passing multiple arguments into print
+
+Now, let's look at how we can pass multiple arguments into the **print** function. Using **print** with multiple arguments gives you flexible and easy way to output items to the screen.
+
+We can pass multiple objects, all of the same or different types into print.
+
+```
+>>>print("Lambda School", 2020, True)
+Lambda School 2020 True
+>>>
