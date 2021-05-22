@@ -328,3 +328,21 @@ Lambda School 2020 True
 ```
 
 Notice how each object we passed in was converted to a string and then output to the screen. Notice also that print used " " as the default separator value.
+
+We can change the separator value by assigning a value to the keyword argument **sep**
+
+```
+>>> print("Lambda School", 2020, True, sep="!!!")
+Lambda School!!!2020!!!True
+>>> print("Lambda School", 2020, True, sep="\t")
+Lambda School    2020    True
+>>> print("Lambda School", 2020, True, sep="\n")
+Lambda School
+2020
+True
+>>> print("Lambda School", 2020, True, sep="")
+Lambda School2020True
+>>>
+```
+
+## Specifying the **end** value with **print**
