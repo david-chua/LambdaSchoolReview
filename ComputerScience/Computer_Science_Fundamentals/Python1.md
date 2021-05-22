@@ -325,3 +325,6 @@ We can pass multiple objects, all of the same or different types into print.
 >>>print("Lambda School", 2020, True)
 Lambda School 2020 True
 >>>
+```
+
+Notice how each object we passed in was converted to a string and then output to the screen. Notice also that print used " " as the default separator value.
