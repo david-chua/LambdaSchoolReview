@@ -376,4 +376,123 @@ Whitespace is any character represented by something that appears empty (usually
 >>>
 ```
 
-Notice the characters are " " (space), \t (tab), \n (newline), \
+Notice the characters are " " (space), \t (tab), \n (newline), \r (return), \x0b (unicode line tabulation), and \x0c (unicode form feed).
+
+You've seen the different ty pes of whitespace characters that can appear, but you mainly need to concern yourself with " ", \t, and \n.
+
+### Logical Lines of Code
+
+Whitespace is used to denote the end of a logical line of code in Python, a logical line of code's end (a statement or a definition) is marked by a \n.
+
+```
+>>> first = "Lambda"
+>>> second = "School"
+>>> first + second
+>>> 'LambdaSchool'
+>>> first \
+... + \
+... second
+'LambdaSchool'
+>>>
+```
+
+Notice how the REPL evaluates the expression first + second when I return on line 3. Below that, I can write one logical line of code over multiple lines by ending each line with a \ character. That \ character lets Python interpreter that even though there is a new line, you don't want to treat it as the end of a logical line.
+
+It's important to understand that Python assumes meaning in newline characters when trying to interpret your code.
+
+### Code Blocks.
+
+Whitespace (indentation) can denote code blocks. Python gives meaning to the amount of whitespace (indentation level) that comes before a logical line of code.
+
+```
+>>> if True:
+... if True:
+  File "<stdin>", line 2
+    if True:
+    ^
+IndentationError: expected an indented block
+>>>
+```
+
+The code raises an **IndentationError** because the Python interpreter expects to find additional whitespace inside the **if** block.
+
+```
+>>> if True:
+...     if True:
+...         print("it worked!")
+...
+it worked!
+>>>
+```
+
+The Python interpreter can successfully run this code because consistent whitespace (level of indentation is used).
+
+```
+>>> if True:
+...     if True:
+...         print("it worked!")
+  File "<stdin>", line 3
+    print("it worked!")
+
+TabError: inconsistent use of tabs and spaces indentation
+```
+
+Although you can't tell in the code snippet above, for the second if statement, for the second if statement, i used a \t to indent. But, for the indentation on **print("it worked!")**, we used eight spaces. The mismatch of tab usage and spaces raises an error when Python tries to interpret the code.
+
+Consistent whitespace usage (indentation) is crucial to making sure that Python can interpret your code correctly.
+
+In Python, whitespace has meaning: it denies the end of logical lines and also code blocks. Whitespaces is any character represented by something that appears empty although the most common characters are "", \t, \n. The Python interpreter knows where the end of a logical line of code is because of the \n. the amount of whitespace (level of indentation) is used in Python to denote blocks of code. Understanding how the Python interpreter looks at the whitespace is vital to writing valid Python code.
+
+## Overview: Basic Types
+
+Python is not a "statically typed" language and every variable in Python is an object. You don't have to declare a variable's type.
+
+## Follow Along
+
+## Number
+
+In Python, you can have integers and floating point numbers.
+
+You can define an integer like so:
+
+```
+my_int = 3
+```
+
+You can also cast a floating-point to be an integer like so:
+
+```
+my_int = int(3.0)
+```
+
+To define a floating-point number, you can declare it literally or typecast it with the float constructor function:
+
+```
+my_float = 3.0
+my_flaot = float(3)
+```
+
+## String
+
+You can define strings with either single or double quotes
+
+```
+my_string = 'Lambda School'
+my_string = "Lambda School"
+```
+
+It's common to use double quotes for strings so that you can include apostrophes without accidentally terminating the string.
+
+```
+my_string = "I don't have to worry about apostrophes with my double quotes"
+```
+
+Let's practice declaring variables to store an int, float, and a string:
+
+```
+my_int = 2
+my_float = 5.0
+my_str = "Lambda School"
+```
+
+## Overview: Basic Operators
