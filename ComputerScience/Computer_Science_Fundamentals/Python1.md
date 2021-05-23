@@ -274,9 +274,9 @@ Notice how calling print with the string literal printed the exact string we pas
 Using **print** with a variable:
 
 ```
->>> slogan = "i love lamp"
+>>> slogan = "I love lamp"
 >>> print(slogan)
-i love lamp
+I love lamp
 >>>
 ```
 
@@ -576,8 +576,63 @@ Then, let's combine a_list and b_list into a combined list
 combined = a_list + b_list
 ```
 
-if our code worsk as expected, combined should have a length of 10.
+if our code works as expected, combined should have a length of 10.
 
 ```
 print(len(combined)) # 10
+```
+
+## Overview - Formatted Strings
+
+To format a string in Python, you use the **%** operator to format a set of stored variables in a tuple. You also include argument specifiers in your string with special symbols like **%s** and **%d**.
+
+For example, let's say you want to insert a **name** variable inside a string. You would do the following:
+
+```
+name = "Austen"
+formatted_string = "Hello, %s!" % name
+print(formatted_string) # Hello, Austen!
+```
+
+If you have more than one argument specifier, you need to enclose your arguments in a tuple:
+
+```
+name = "Austen"
+year = 2020
+print("Hey %s! It's the year %d." % (name, year))
+# Hey Austen! It's the year 2020.
+```
+
+Any object that is not a string can also be formatted using the **s%** operator. The string which returns form the object's **repr** method will be used in the formatted string.
+
+```
+my_list = [1,2,3]
+print("my_list: %s" % my_list)
+# my_list: [1, 2, 3]
+```
+A few of the common arguments specifiers are:
+
+* **%s** - String ( or any object with a string representation)
+* **%d** - Integers
+* **%f** - Floating point numbers
+* **%.<number of digits>f** - Floating point numbers with a fixed amount of digits to the dot's right.
+* **%x/%X** - Integers in hexadecimals (lowercase/uppercase)
+
+## Follow Along
+
+Let's see if we can use all of this information to practice formatting a few strings
+
+Let's imagine that we have some data we want to inject into a string:
+
+```
+product_name = "bananas"
+price = 1.23
+product_id = 123456
+```
+
+We need to print a formatted string using argument specifiers and a tuple that contains our data:
+
+```
+print("%s (id: %d) are currently $%.2f." % (product_name, product_id, price))
+# bananas (id: 123456) are currently $1.23.
 ```
