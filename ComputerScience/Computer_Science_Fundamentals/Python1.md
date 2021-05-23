@@ -496,3 +496,88 @@ my_str = "Lambda School"
 ```
 
 ## Overview: Basic Operators
+
+There are a few basic operators that you should be familiar with as you start writing Python code.
+
+### Arithmetic Operators
+
+You can use the addition(**+**), subtraction(**-**), multiplication(*****), and division (**/**) operators with numbers in Python.
+
+```
+my_number = 2 + 2 * 8 / 5.0
+print(my_number) # 5.2
+```
+
+There are also an operator called the modulo operator (**%**). This operator returns the remainder of integer division.
+
+```
+my_remainder = 9 % 4
+print(my_remainder) # 1
+```
+
+You can use two multiplication operators to make the exponentiation operator (**).
+
+```
+two_squared = 2 ** 2
+print(two_squared) # 4
+two_cubed = 2**3
+print(two_cubed) # 8
+```
+
+## Using operators with non-numbers
+
+You can use the addition operators to concatenate strings and lists:
+
+```
+string_one = "Hello,"
+string_two = " World!"
+combined = string_one + string_two
+print(combined) # Hello, World!
+
+lst_one = [1,2,3]
+lst_two = [4,5,6]
+big_lst = lst_one + lst_two
+print(big_list) # [1, 2, 3, 4, 5, 6]
+```
+
+You can also use the multiplication operator to create a new list or string that repeats the original sequence:
+
+```
+my_string = "Bueller"
+repeated = my_string * 3
+print(repeated) # BuellerBuellerBueller
+
+my_list = [1,2,3]
+repeated_list = my_list * 3
+print(repeated_list) # [1, 2, 3, 1, 2, 3, 1, 2, 3]
+```
+
+## Follow Along
+
+Now, let's see if we can combine all of this information in a quick demo.
+
+First, let's create two variables ,  a and b, where each variable stores an instance of **object class**.
+
+```
+a = object()
+b = object()
+```
+
+Next, let's see if we can make two lists, one containing five instances of a, and the second with five instances of b.
+
+```
+a_list = [a] * 5
+b_list = [b] * 5
+```
+
+Then, let's combine a_list and b_list into a combined list
+
+```
+combined = a_list + b_list
+```
+
+if our code worsk as expected, combined should have a length of 10.
+
+```
+print(len(combined)) # 10
+```
