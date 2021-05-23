@@ -292,7 +292,7 @@ Lambda School is wonderful
 >>>
 ```
 
-NOtice how the argument for the print function can be an expression. Once the expression is resolved to a string object, the print function can output it to the screen.
+Notice how the argument for the print function can be an expression. Once the expression is resolved to a string object, the print function can output it to the screen.
 
 Using print with other object types:
 
@@ -635,4 +635,262 @@ We need to print a formatted string using argument specifiers and a tuple that c
 ```
 print("%s (id: %d) are currently $%.2f." % (product_name, product_id, price))
 # bananas (id: 123456) are currently $1.23.
+```
+
+## Overview: Basic String Operations
+
+You can think of string as anything between quotes. Strings store a sequence of characters or bits of text.
+
+There are a lot of ways you can interact with strings in Python.
+
+## Follow Along
+
+The **len()** method prints out the number of characters in the string.
+
+```
+my_string = "Hello, world!"
+print(len(my_string)) # 12
+```
+
+The **index()** method prints out the number of characters in the string.
+
+```
+my_string = "Hello, world!"
+print(my_string.index("0")) # 4
+print(my_string.index(", w")) # 5
+```
+
+The **count()** method returns the number of occurrences of the substring argument.
+
+```
+my_string = "Hello, world!"
+print(my_string.count("0")) # 2
+print(my_string.count("ll")) # 1
+```
+
+To slice a string, you can use the syntax: **[start:stop:step]**. To reverse the string's order, you can set the step value to be **-1**.
+
+```
+my_string = "Hello, world!"
+print(my_string[3:7]) # lo,
+print(my_string[3:7:2]) # l,
+print(my_string[::-1]) # !dlrow ,olleH
+```
+
+You can convert a string to uppercase or lowercase with the **upper()** and **lower()** methods
+
+```
+my_string = "Hello, world!"
+print(my_string.upper()) # HELLO, WORLD!
+print(my_string.lower()) # hello, world!
+```
+
+You can determine if a string starts with or ends with a specific sequence with the **startswith()** and **endswith()** methods.
+
+```
+my_string = "Hello, world!"
+print(my_string.startswith("Hello")) # True
+print(my_string.endswith("globe!")) # False
+```
+
+The **split()** method allows you to split up a string into a list. The default separator is any whitespace.  You can also specify the separator value with an argument if you want.
+
+```
+my_string = "Hello, world1"
+print(my_string.split()) # ['Hello,', 'World!']
+print(my_string.split(",")) # ['Hello', ' world!']
+print(my_string.splti("1")) # ['He', '', 'o, wor', 'd!']
+```
+
+## Overview: Conditionals
+
+Python uses Boolean values to evaluate conditions. An expressions in any Boolean context will evaluate to a Boolean value and then control your program's flow. Python's Boolean values  are written as True or False.
+
+## Follow Along
+
+to compare the value of two expressions for equality, you use the **==** operator. You can also use **<** (less than), **>** (greater than), **<=** (less than or equal), **>=** (greater than or equal), and **!=** (not equal).
+
+```
+x = 10
+print(x == 10) # True
+print(x == 5) # False
+print(x < 15) # True
+print(x > 15) # False
+print(x <= 10) # True
+print(x >= 10) # True
+print(x != 20) # True
+```
+
+You build up more complex Boolean expressions by using the **and** and **or** operators.
+
+```
+name = "Elon"
+age = 49
+if name == "Elon" and age == 49:
+  print("You are a 49 year old person named Elon.")
+
+if name == "Elon" or name == "Bill":
+  print("Your name is either Elon or Bill.")
+```
+
+Any time you have an iterable object (like a list), you can check if a specific item exists inside that iterable by using the **in** operator.
+
+```
+years = [2018, 2019, 2020, 2021]
+year = 2020
+
+if year in years:
+  print("%s is in the years collection" % year )
+
+# 2020 is in the years collection
+```
+
+We can use the if, elif, and the else keywords to define a series of code blocks that will execute conditionally.
+
+```
+first_statement = False
+second_statement = True
+
+if first_statement:
+  print("The first statement is true")
+elif second_statement:
+  print("The second statement is true")
+else:
+  print("Neither the first statement nor the second statement are true")
+```
+
+Any object that is considered "empty" evaluates to False. For example, **"", [], and 0** all evaluate to False.
+
+If we want to determine if two objects are actually the same instance in memory, we use the is operator instead of the value comparison operator **==**.
+
+```
+a = [1,2,3]
+b = [1,2,3]
+
+print(a == b) # True because a and b have the same value
+print(a is b) # False because a and b reference two different list objects
+
+x = [1,2,3]
+y = x
+
+print(x == y) # True because x and y have the same value  
+print(x is y) # True because x and y reference the same list object.
+```
+
+There is also the **not** operator, which inverts the Boolean that follows it.
+
+```
+print(not False) # True
+print(not(1 == 1)) # False because 1 == 1 is True and then inverted by not
+```
+
+## Overview: Loops
+
+You can two types of loops in Python a **for** loop and a **while** loop. A **for** loop iterates over a given sequence (iterator expression). A **while** loop repeats as long as a Boolean context evaluates to True.
+
+The break statement terminates the loop containing it. Control of the program flows to the statement immediately after the body of the loop. If the **break** statement is inside a nested loop (loop inside another loop), the **break** statement will only terminate the innermost loop.
+
+You can use the **continue** statement to skip the rest of the code inside a loop for the current iteration only. The loop does not terminate entirely but continues with the next iteration.
+
+## Follow Along: Looping example:
+
+Here is an example of a few different ways you can use a **range** a the iterable for a **for** loop.
+
+```
+# Print 0, 1, 2, 3, 4
+for x in range(5):
+  print(x)
+
+# Prints 2, 3, 4, 5, 6
+for x in range(2,7):
+  print(x)
+
+# Prints 1, 3, 5, 7
+for x in range(1,8, 2):
+  print(x)
+```
+
+This example shows the simple usage of a while loop to print the same values as the for loops above.
+
+```
+# Prints 0, 1, 2, 3, 4
+count = 0
+while count < 5:
+  print(count)
+  count += 1
+
+# Prints 2, 3, 4, 5, 6
+count = 2
+while count < 7:
+  print(count)
+  count += 1
+
+# Prints 1, 3, 5, 7
+count = 1
+while count < 8:
+  print(count)
+  count +=2
+```
+
+You can use a **break** statement to exit a **for** loop or a **while** loop:
+
+```
+# Prints 0, 1, 2, 3, 4
+count = 0
+while True:
+  print(count)
+  count +=1
+  if count >=5:
+    break
+```
+
+You can also use a continue statement to skip the current block but not exit the loop entirely.
+
+```
+# Prints 1, 3, 5, 7
+for x in range(0):
+  # if x is even, skip this block and do not print
+  if x % 2 == 0:
+    continue
+  print(x)
+```
+
+## Overview - User Defined Functions
+
+To make our code more readable and DRY, we often want to encapsulate code inside a callable function.
+
+To define a function in Python, we follow this syntax:
+
+```
+def function_name(argument1, argument_2, etc.):
+  # function line 1
+  # function line 2
+  # etc..
+```
+
+## Follow Along:
+
+Let's define a greeting function that allows us to specify a name and a specific greeting.
+
+```
+def greet(name, greeting):
+  print("Hello, %s, %s" % (name, greeting))
+```
+
+Now, we can call our greet function and pass in the data that we want
+
+```
+greet("Austen", "I hope you are having an excellent day!")
+# Hello, Austen, I hope you are having an excellent day!
+```
+
+If we want to define a function that returns a value to the caller, we use the **return** keyword.
+
+```
+def double(x):
+  return x * 2
+
+eight = double(4)
+print(eight)
+# 8
 ```
