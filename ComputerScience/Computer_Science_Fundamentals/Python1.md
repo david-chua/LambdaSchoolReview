@@ -346,3 +346,34 @@ Lambda School2020True
 ```
 
 ## Specifying the **end** value with **print**
+
+You can also specify the **end** value by assigning a value to the **end** keyword argument when you call print function. Being able to print a value to the screen but allow the user to stay on the same line is useful and necessary in some cases.
+
+Here is how you can change the default end value (which is \ n) when calling the print function
+
+```
+>> print("Are you a Lambda School student?", end=" (Y or N)")
+Are you a Lambda School Student? (Y or N)>>>
+```
+
+Customizing the end value when calling the print function can be useful and necessary in some circumstances.
+
+You have now learned the basics of using the print function in Python. You learned how to call the print function to print objects of different types. You now know how to use print with multiple positional arguments in certain necessary situations, you also know how to change the default end value when calling the print function.
+
+## Overview
+Python is unique because indentation instead of some other character marks blocks of code. A block of code is a collection of statements that are grouped. The syntax for denoting blocks varies from language to language. For example, in C, blocks are delimited by curly braces(**{** and **}**). Understanding how Python uses whitespaces and indentation to denote logical lines and code blocks is essential.
+
+## Follow Along
+
+### Whitespace Characters
+
+Whitespace is any character represented by something that appears empty (usually \t or " "). The characters of Python considers to be whitespace can be seen printing out the value of **string.whitespace** from the string library.
+
+```
+>>> import string
+>>> string.whitespace
+' \t\n\n\x0b\x0c'
+>>>
+```
+
+Notice the characters are " " (space), \t (tab), \n (newline), \
