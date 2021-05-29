@@ -200,4 +200,92 @@ On line one, we create a dict object that has two key-value pairs. Then, because
 
 Mutable objects work great when you know you will likely need to change the size of the object as you use and interact with it. Changing mutable objects is cheap (because you don't have to copy all existing elements to a new object).
 
-### Alising with Mutable Objects
+## Immutable Objects
+
+An immutable object is an object whose value cannot be changed after it is created. Immutable means not changeable. Anytime you try to update the value of an immutable object, a new object is created instead.
+
+The following types are immutable:
+
+* Numbers (int, float, complex)
+* Strings
+* Bytes
+* Booleans
+* Tuples
+
+Immutable objects are useful when you want to make sure that the object you created will always maintain the same value. Immutable objects are more expensive to change (in terms of time and space complexity) because changing the object requires making a copy of the existing object.
+
+Let's look at a few examples:
+
+### Numbers
+
+```
+my_int = 1
+id(my_int) # 4513307280
+type(my_int) # <class 'int'>
+my_int  # 1
+my_int = 2
+id(my_int) # 4513307312
+type(my_int) <class 'int'>
+my_int # 2
+```
+
+In the code above, the first line creates a new int object, and the variable my_int now points at the object. You can see this object has in for its type and a specific id for its identity and a 1 for its value.
+
+Then we assign 2 to my_int which creates a new object and assigns it to the variable my_int. This object has int for its type and a new id and 2 for its value.
+
+### Strings
+
+```
+my_str = 'a'
+type(my_str) # <class 'str'>
+id(my_str) # 140716674193840
+my_str # 'a'
+my_str += 'b'
+type(my_str) # <class 'str'>
+id(my_str) # 140716674658992
+my_str # 'ab'
+```
+
+So, on line 1, we create a string object with the value 'a' and assign it to the variable my_str. We verify that the object is of type str and with get the specific id.
+Then we concatenate 'b' on the existing string with the line **my_str += 'b'**. Now, because string objects are immutable, we cannot change a string object's value after it has been created. To concatenate, we create a new string object and assign the value **'ab'** to that object.
+
+This behavior in Python is vital to be aware of when working with string concatenation. If you have to add and remove frequently from a string, this will be inefficient if you work with string objects directly.
+
+### Tuples
+
+Tuples are an immutable container of names, where each name has unchangeable (immutable) binding to an object in memory. You cannot change the bindings of the names to the objects.
+
+```
+my_tuple = ('love', [1,2,3], True)
+my_tuple[0] # 'love'
+my_tuple[0] = 'laughter'
+Traceback (most recent call last):
+ File "<stdin", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
+
+Here we created a tuple using ( and ) to denote the tuple literate syntax. Just like a list, tuples can contain elements of any type. Above, we've included a string, a list, and a boolean as our tuple elements. We are proving the tuple objects immutability by showing the error that occurs when trying to assign a new item to a position in the tuple.
+
+One thing that often causes confusion surrounding the immutability of tuples in Python is demonstrated by the following behavior.
+
+```
+my_tuple[1] = [4,5,6]
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+id(my_tuple[1])
+140715574620864
+
+my_tuple[1][0] = 4
+my_tuple[1][1] = 5
+my_tuple[1][2] = 6
+my_tuple[1]   # [4,5,6]
+my_tuple # ('love', [4,5,6], True)
+id(my_tuple[1]) # 140715574620864
+```
+
+Notice that we cannot create a new list object and bind it to the name at position 1 of our tuple. This is demonstrated when **my_tuple[1] = [4,5,6]** raises a **TypeError**. However, we can assign new objects to the list that is at position 1 of our Tuple? Why is that? This is because List are mutable objects. So we can modify a list without creating a new object. So, when we are modifying the list directly (instead of assigning new objects), it doesn't affect our tuple's immutability. Notice that the identity (140715574620864) of the list at **my_tuple[1]** doesn't change after replacing its three list elements.
+
+### Passing Objects to Functions
+
+Mutable and immutable objects are not treated the same when they are passed as arguments to functions. When mutable objects are passed into a function, they are passed by reference. So, supposed you change the mutable object that was passed in as an argument. In that case, you are changing the original object as well.
