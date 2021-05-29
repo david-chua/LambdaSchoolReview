@@ -292,3 +292,42 @@ Mutable and immutable objects are not treated the same when they are passed as a
 
 
 ## Time Complexity
+
+### What is an algorithm?
+
+An algorithm is a set of instructions for accomplishing task. Within this broad definition, we could call every piece of code an algorithm.
+
+## How do we measure how "good" an algorithm is?
+
+After coming up with a first-pass solution to a problem, we need to measure how "good" our answer is. Will it stand up to the test of millions of users? Is it fast enough that our users will be blown away by how quickly they get their results? Or will torturously slow speeds cause lag that scares them all away?
+
+When given a choice between different algorithms, we want to choose the most efficient algorithm (considering both *time* and *space* efficiency depending on our needs).
+
+Note: It is common for your first solution to work with a few items or users and break as you add more. Making sure that the solutions scale is something all developers must look out for.
+
+### What is Big O Notation?
+
+We need a way to talk about efficiency (number of operations in the worst case) in a more general sense.
+
+Big O notation is the language we use for describing how efficient an algorithm is.
+
+The specific terms of Big O notation describe how fast the runtime grows (relative to the input size), focusing on when the input gets extremely large.
+
+Why do we focus on growth of runtime versus exact runtime? The actual runtime depends on the specific computer running the algorithm, so we cannot compare efficiencies that way. By focusing on the general growth, we can avoid exact runtime differences between machines and environments.
+
+We also talk about runtime relative to the input size because we need to express our speed in terms of something. So we show how the speed of the algorithm in terms of the input size. That way, we can see how the speed reacts as the input size grows.
+
+We don't care about speed when the input size is small. The difference in speed are likely to be minimal when the input size is small. When the input size gets enormous, we can see the differences in efficiency between algorithms.
+
+### Common Big O Run Times
+
+Refer to the table below to see a list of the most common runtimes. The table is ordered from fastest to slowest
+
+| Classification                |  Description                           |
+|-------------------------------|----------------------------------------|
+| Constant O(1)                 | The runtime is entirely unaffected by the input size. This is the ideal solution |
+| Logarithmic O(log n)          | As the input size increases, the runtime will grow only slower. This is a pretty good solution |
+| Linear O(n)                   | As the input size increases, the runtime will grow at the same rate. This is a pretty good solution |
+| Polynomial O (n^c)            | As the input size increases, the runtime will grow at a faster rate. This might work for small inputs but not scalable. |
+| Exponential O(c^n)            | As the input size increases, the runtime will grow at a much faster rate. This solution is inefficient  |
+| FActorial O(n!)               | As the input size increases, the runtime will grow astronomically, even with relatively small inputs. This solution is exceptionally inefficinet|
