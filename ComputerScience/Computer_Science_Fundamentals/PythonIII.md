@@ -470,3 +470,125 @@ We can use the process of elimination to narrow down which runtime classificatio
 From the above examples, we can also see that the number of times the loop runs is increasing slower than the input size is increasing **n** must be doubled before the loop will run one more time. We can eliminate classifications such as O(n log n), O(n^c), O(c^n), and O(n!).
 
 The only two options left at this point are logarithmic and linear. Since the two growth rates (input and number of operations) are not the same, this must run in logarithmic time.
+
+## Space Complexity
+
+## Overview
+
+WE often want to compare an algorithm's time  complexity (how efficiently the number of operations grow as the input size increases). Similarly, we also want to compare the space complexity of an algorithm.
+
+Talking about space complexity is very similar to talking about time complexity. Except with space complexity, we are looking at the efficiency of memory usage instead of number of operations.
+
+Often, it isn't easy to optimize for time and space at the same time. For instance, by increasing time efficiency, you may need to use more memory and decrease space complexity. This is not always the case, but you have to decide if you are optimizing for space or time complexity because of this.
+
+
+## Follow Along
+
+This function takes O(1) space:
+
+```
+def print_something_a_certain_number_of_times(thing_to_print, number_of_times):
+  for i in range(number_of_times):
+    print(thing_to_print)
+```
+
+The function above has a constant O(1) space complexity because no matter how large **n** gets, the amount of memory being used stays the same.
+
+This function  takes **O(n)** space:
+
+```
+def append_to_list_a_certain_number_of_times(number_of_times):
+  # create an empty list
+  my_list = []
+
+  # append to the list the number of times specified by the caller
+  for _ in range(n):
+    my_list.append('lambda')
+  return my_list
+```
+
+We are often referring to additional space when we talk about space complexity - meaning that we do not include the memory used by the inputs.
+
+This function takes constant space O(1) even though the input has n items.
+
+```
+def get_the_max(items_list):
+  maximum = flaot("-inf")
+  for item in items_list:
+    if item > maximum:  
+      maximum = item
+
+  return maximuum
+```
+
+## Overview -  List Comprehensions
+
+List comprehensions are a potent tool. With a list comprehension, you can create a new list based on another list in a single, highly readable line.
+
+The format of a list comprehension follows this syntax:
+
+**[<map expression> for <name> in <sequence expression> if <filter expression>]**
+
+## Follow Along
+
+If you are using a **for** loop to map a list onto a new list or filter an existing list, a list comprehension can be a better option.
+
+Here is an example of replacing a **for** loop used to map word lengths with a single line with a list comprehension
+
+
+```
+sentence = "Every moment is a fresh beginning"
+words = sentence.split()
+word_lengths = []
+
+# Using a for loop
+for word in words:
+  word_lengths.append(len(word))
+
+print(words) # ['Every', 'moment', 'is', 'a', 'fresh', 'beginning']
+print(word_lengths) # [5,6,2,1,5 10]
+
+# Using a list comprehension
+word_lengths = [len(word) for word in words]
+
+print(word_lengths) # [5, 6, 2, 1, 5, 10]
+```
+
+Here is an example of replacing a **for** loop used to filter out odd numbers f rom a list with a list comprehension
+
+```
+number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = []
+
+# Using a for loop
+for number in numbers:
+  if numbers % 2 == 0:
+    even_numbers.append(number)
+
+print(even_numbers) #[2, 4, 6, 8, 10]
+
+# Using a list comprehension
+even_numbers = [ number for number in numbers if number % 2 == 0 ]
+
+print(even_numbers) # [2, 4, 6, 8, 10]
+```
+
+You can also write a list comprehension that maps and filters simultaneously. Let's go back to our sentence example and only track word lengths that are greater than 2.
+
+```
+sentence = 'Every moment is a fresh beginning.'
+words = sentence.split()
+word_lengths = []
+
+# Using a for loop
+for word in words:
+  if len(word) > 2:
+    word_lengths.append(len(word))
+
+print(words) # ['Every', 'moment', 'is', 'a', 'fresh', 'beginning']
+print(word_lengths) # [5, 6, 5, 10]
+
+# Using a list comprehension
+word_lengths = [len(word) for word in words if len(word) > 2]
+
+print(word_lengths) # [5, 6, 5, 10]
