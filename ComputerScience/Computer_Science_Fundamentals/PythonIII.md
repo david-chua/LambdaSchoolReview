@@ -330,4 +330,143 @@ Refer to the table below to see a list of the most common runtimes. The table is
 | Linear O(n)                   | As the input size increases, the runtime will grow at the same rate. This is a pretty good solution |
 | Polynomial O (n^c)            | As the input size increases, the runtime will grow at a faster rate. This might work for small inputs but not scalable. |
 | Exponential O(c^n)            | As the input size increases, the runtime will grow at a much faster rate. This solution is inefficient  |
-| FActorial O(n!)               | As the input size increases, the runtime will grow astronomically, even with relatively small inputs. This solution is exceptionally inefficinet|
+| Factorial O(n!)               | As the input size increases, the runtime will grow astronomically, even with relatively small inputs. This solution is exceptionally inefficient|
+
+
+### A few examples:
+
+### Contant Time:
+
+```
+def print_only_one_thing(list_of_things):
+  print(list_of_things[0])
+```
+
+This is constant time because no matter how large or small the input is, the number of computation within the function is the same.
+
+### Linear Time O(n)
+
+```
+def print_list(list_of_things):
+  for thing in list_of_things:
+    print(thing)
+```
+
+This is linear because the speed of the algorithm increases at the same rate as its input size. If list of things has 10 items, then the function will print 10 times. If it has 10,000 items, then the function will print 10,000 times.
+
+### Quadratic Time O(n^2)
+
+```
+def print_permutation(list_of_things):
+  for thing_one in list_of_things:
+    for thing_two in list_of_things:
+      print(thing_one, thing_two)
+```
+
+Why is this quadratic? The clue is the nested loops. These nested loops mean that for each item in list_of_things (the outer loop), we iterate through every item in list_of_things(the inner loop) For an input size of n, we have to print n * n times or n^2 times.
+
+### What are we supposed to do with constants?
+
+What if we had a function like this?
+
+```
+def do_a_bunch_of_stuff(list_of_things): # (1 + n/2 + 2000)
+  last_idx = len(list_of_things) - 1
+  print(list_of_things[last_idx]0 # O(1))
+
+  middle_idx = len(list_of_things) /2
+  idx = 0
+  while idx < middle_idx: # O(n/2)
+    print(list_of_things[idx])
+    idx = idx + 1
+
+  for num in range(2000): # O(2000)
+    print(num)
+```
+
+**print(item[last_idx])** is constant time because it doesn't change as the input changes. So that portion of the function is O(1).
+
+the while loop that prints up to the middle is 1/2 of whatever the input size is; we can say that portion is O(n/2).
+
+The final portion will run 2000 times, no matter the size of the input.
+
+so putting it all together, we could say that the efficiency is **O(1 + n/2 + 2000);
+
+However, we don't say this. We describe this function as having linear time O(n) because we drop all of the constants. Why do we cut all of the constants? Because as the input size gets huge, adding 2000 or diving by 2 has minimal effect on the algorithm's performance.
+
+## Most Significant Term
+
+Let's consider the following function:
+
+```
+def do_different_things_in_the_same_function(list_of_things): # O(n + n^2)
+  # print all each item in the list
+  for thing in list_of_things: # O(n)
+    print(thing)
+
+  # print every psosible pair of things in the list
+  for thing_one in list_of_things:  O(n*n) = O(n^2)
+    for thing_two in list_of_things:
+      print(thing_one, thing_two)
+```
+
+We could describe this function as O(n + n^2); however, we only need to keep the essential term, **n^2**, so this would be O(n^2). This is because as the input size(n) gets larger and larger, the less significant terms have less effect and only the most significant term is important.
+
+### Big O Represents Worst Case
+
+Let's consider the following function:
+
+```
+def find_thing(list_of_things, things_we_are_trying_to_find):
+  for thing in list_of_things:
+    if thing == things_we_are_trying_to_find:
+      return True
+  return False
+```
+
+What would the result be if it just so happens that the **things_we_are_trying_to_find** in **list_of_things** is the very first item in the list? The function would only have to look at one item in the **list_of_things** before returning. IN this case, it would be O(1). But when we talk about a function's complexity, we usually assume the worst case. What would be the worst case? It would be if it were the last item in **list_of_things**. In that case, we would have to look through all of the **list_of_things** and that complexity would be **O(n)**.
+
+*Note: When talking about runtime complexity in casual conversation, engineers often blur the distinction between big theta and big O notation. In reality, these two are  distinct ways of describing an algorithm. Big theta gives both an upper and lower bound for the running time. Big O only provides an upper bound.*
+
+## Do constants ever matter?
+
+Complexity analysis with Big O notation is a valuable tool. It would be best if you got in the habit of thinking about the efficiency of the algorithms you write and use in your code. However, just because two algorithms have the same Big O notation doesn't mean they are equal.
+
+Imagine you have a script that takes 1 hour to run. By improving the function, you can divide that runtime by 6 and now it only takes 10 minutes to run. With Big O notation, **O(n)** and **O(n/6)** can both be written as **O(n)**, but that doesn't mean it isn't worth optimizing the script to save 50 minutes every time the script runs.
+
+That being said, there is a term you should become familiar with: **premature optimization**. Sometimes, you can sacrifice readability or spend too much time on something to improve its efficiency. Depending on the situation, it could be that having a finished product to iterate on is more important than maximally efficient code. It is your job as a developer to know when making your code more efficient is necessary. You will always be making calculated tradeoffs between runtime, memory, development time, readability, and maintainability. It takes time to develop the wisdom to strike the right balance depending on the scenario.
+
+## Follow Along
+
+Let's look at a few code snippets and classify their runtime using Big O notation.
+
+```
+def foo(n):
+  i = 1
+  while i < n
+    print(i)
+    i *= 2
+```
+
+First, let's think about what the above function is doing. It's printing i, but i is not being incremented by 1, as we usually see. It's doubled every time we run a loop. So for example, if n = 100, then the final results would be...
+
+1
+2
+4
+8
+16
+32
+64
+
+or if n = 10, then we would print ...
+
+1
+2
+4
+8
+
+We can use the process of elimination to narrow down which runtime classification makes sense for this algorithm. The number of times the loop runs seems to vary based on the value of **n** , so this is NOT O(1).
+
+From the above examples, we can also see that the number of times the loop runs is increasing slower than the input size is increasing **n** must be doubled before the loop will run one more time. We can eliminate classifications such as O(n log n), O(n^c), O(c^n), and O(n!).
+
+The only two options left at this point are logarithmic and linear. Since the two growth rates (input and number of operations) are not the same, this must run in logarithmic time.
