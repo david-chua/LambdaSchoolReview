@@ -193,3 +193,137 @@ my_new_louder_list
 ```
 
 Notice how we had to store the returned list in a new variable. Also, notice that it didn't modify the list that we passed in when we called the function.
+
+## Overview
+
+Remember how we said that you had to know how much information you were going to store when you created a static array? Well, with a dynamic array, you don't have to know. You don't have to declare a size when you instantiate a dynamic array. That makes it better in scenarios where the amount of information you need to store is unknown or is likely to fluctuate.
+
+## Time and Space Complexity
+
+### Lookup
+
+To look up an item by index is a constant time O(1). If you have a specific index of an item in  an array, the computations to find that item in memory are all constant times.
+
+### Append
+
+Addinga n item to an array is constant time O(1) in average case. However, in the worst case, the cost is O(n) - during insert.
+
+### Insert
+
+In the worst case, inserting an item is linear time O(n). When you insert into an array, all the items - starting at the index we are inserting into - have to be shifted one index. These items have to move over to make room for the new item being inserted. The worst case scenario is inserting at the 0th index and every item in the array has to shift over.
+
+### Delete
+
+In the worst case, deleting an item is linear time. For any item  you delete (unless it's the last item), all of the items after that index have to be shifted over to fill the now blank spot in the array. Remember, arrays store data in sequential order, so if we delete them, we cannot just leave that space blank. If we left the space blank, it would ruin the quick lookup time. To have a fast lookup time, we need to be able to rely on the distance from the start of the array to whatever index we are trying to access.
+
+### Space
+
+The space complexity of an array is linear O(n). Each item in an array will take up space in memory.
+
+## Strengths
+
+Again, probably the dynamic array's biggest strength is not having to know or worry about the size of the data structure. It can grow to accommodate your data as needed. And you don't have to manage this growth; the data structure itself grows when necessary. Dynamic arrays also have some of the same strengths as static array. They also have efficient lookups O(1) when you have a specific index that you want to retrieve from
+
+## Weaknesses
+
+The main weakness of the dynamic array is related to its strength. To not have to worry about or manage the array's size, when the array runs out of room. It has to grow to accommodate more items. So, let's say you have a dynamic array that is current set up to store 10 items. If it's full and you try to add an 11th item, the data structure can't assume that there is spot available right after the 10th item. It actually creates a new and bigger array and then copies all of the first ten items into the new array and finally it adds the 11th item. Additionally, adding and deleting from a dynamic array have the same weakness as static which is a time complexity of O(n)
+
+## Follow Along Doubling Appends
+
+Underneath the hood of a dynamic array is a static array.  When you create a dynamic array, it is a static array that keeps track of the starting index, the index of the last item that it stores, and the index for the last slow in its capacity. This brings up an important point. An array has a size and capacity. An array's size is how many items it is storing at the moment. Its capacity is how many items it could store before it runs out of room.
+
+So, let's say that your dynamic array instantiates with an underlying static array with a capacity of 10 and a size of 0 when you create it. Then you add 10 items to the array. Now it has the capacity of 10 and a size of 10. If you now go to append an 11th item to the array, you've run out of capacity. Here is where the dynamic of the dynamic array comes into play. The data structure will create a new underlying static array with a capacity twice the size of the original underlying static array. It will then copy the ten original items into the new array and finally add the 11th item. The cost of copying the original items into the new array is O(n). So, when we say that, in the worst case, an append on the dynamic array has a time complexity of O(n), this is why. However, all the other appends still have a time complexity of O(1). So, in the average case append, the time complexity is still efficient. Also, consider that as array's capacity keeps doubling, the doublings will occur less and less frequently.
+
+## Overview
+
+We now know that things are stored in RAM using binary and each "box" in RAM holds 1 byte (8 bits). What does that means for what we can store in RAM? Let's say have 1 byte of RAM to use. How many different numbers can we represent using only this 1 byte?
+
+Remember that each digit in a binary number is successive power of 2. If we have 8 bits to use, we can store 2^8 = 256 different numbers in 1 byte.
+
+## Follow Along
+
+Let's see if we can find a pattern:
+
+  * With one bit, we can express two numbers (0 and 1)
+  * With two bits, for each of the first number (0 or 1), we can put a 0 or a 1, so we can express 4 numbers.
+  * With 3 bits, we can express 8 numbers.
+
+Every time we add a new bit, we double the number of possible numbers we can express in binary. This pattern can be generalized as 2^n and 2^8 = 256.
+
+Often, computers use 4 bytes (32 bits) to represent our variables, meaning we can express as many as 4 billion (2^32) possible values. Similarly, computers may use 8 bytes (64 bits) to represent our variables and can express over 10 billion (2^64).
+
+The 2^X in the binary system is called the bitsize. Eight bytes of memory is called "8-bits" and 16 bytes are called "16-bits", etc.
+
+In theory, you could use less space to represent smaller integers. For instance, in binary, the number one is represented by 1. So technically, to store one in binary, you only need one bit. But computers don't usually do this. Many integers take a fixed amount of space, no matter what number they might have in them. So, even though you only need one bit to represent the number one, the computer would still use 32 or 64 bits to do so.
+
+So, if a variable represents a fixed width integer, it doesn't matter if the value has 6 or 123,456; the amount of space it takes up in RAM is the same.
+
+The computer can store numbers like 3, 6000000, or -14 in 32 bits, one of the "fixed-width integers" we discussed earlier. All of these fixed-width integers take up constant space O(1).
+
+Storing numbers as fixed-width integers introduces a trade-off. We have constant space complexity and because each integer has a constant and expected number of bits, simple mathematical operations only take constant time. The cost of having an integer as fixed width is that there is a limit to the number of integers you can represent.
+
+## Follow Along
+
+So, let's say we wanted to write a program that allowed us to keep trace of the number of hours we spent studying that day. We will round the number of hours to the nearest whole number to store them as fixed width integers. Additionally, each day's hours will be represented by eight bits in binary.
+
+So, we will start at the memory address 0 in RAM, and each day, stores the number of hours we studied in that "box" of RAM. For our first day that we are tracking, we store an 8-bit binary integer in "box" number 0. On the second, we store an 8-bit binary integer in "box" number 1 and so on.
+
+An array is just an ordered sequential collection of data. Well, RAM is already structured like this right? Our days where we track the number of hours that we are studying are in sequential order in RAM.
+
+Knowing this information, what can we do if we want to look up how many hours we studied on day 5 (index 4 because of zero-indexing). Because of all the information is stored in sequential order. , we can do simple math. If you are looking for the day 5 information (index 4), you need to know that the starting item address is 0, and then add 4 (the index). Or, if the starting address was 5, and you were looking for the 10th index, you'd go to memory address 15 (5 + 10)
+
+This math works because we are using one "box" in memory for each day's record. If we were using 64-bit integers that take up 8 boxes in RAM, we would have to slightly adjust our math. In this case, we would have to multiply the index we were looking for by the number of bytes each record was stored in. So, if we were storing 64-bit integers (8 bytes) and wanted to find the item with index 4, and the starting index was 0, we would go to the memory address 0 + (4 * 8) = 32.
+
+Because accessing information from a specific index involves this simple mathematical computation, accessing items in an array is a constant time operation. For the mathematical computations to be consistent and straightforward, arrays have to follow specific rules. Each item in the array has to take up the same number of bytes in RAM. Also, each item has to be stored right next to the previous item in RAM. If there are any gaps or interruptions in the array, then the simple mathematical computation for accessing a particular item no longer works.
+
+## Overview
+
+In this example, we will store some strings. A string is just a bunch of characters or letters. One straightforward way to store a string is an array. So let's see how we can define some mappings to make it easier to store strings in arrays.
+
+## Follow Along
+
+to use our 8-bit slots in memory, we need a way to encode each character in a string in 8-bits. One common character encoding to do this is called "ASCII". Here is how the alphabet is encoded in ASCII:
+
+| Letter    | Encoding       |
+|-----------|----------------|
+|   A       | 01000001       |
+|   B       | 01000010       |
+|   C       | 01000011       |
+|   D       | 01000100       |
+|   E       | 01000101       |
+|   F       | 01000110       |
+|   G       | 01000111       |
+|   H       | 01001000       |
+|   I       | 01001001       |
+|   J       | 01001010       |
+|   K       | 01001011       |
+|   L       | 01001100       |
+|   M       | 01001101       |
+|   N       | 01001110       |
+|   O       | 01001111       |
+|   P       | 01010000       |
+|   Q       | 01010001       |
+|   R       | 01010010       |
+|   S       | 01010011       |
+|   T       | 01010100       |
+|   U       | 01010101       |
+|   V       | 01010110       |
+|   W       | 01010111       |
+|   X       | 01011000       |
+|   Y       | 01011001       |
+|   Z       | 01011010       |
+
+Since we can express character as 8-bit integers, we can express strings as arrays of 8-bit characters.
+
+for example, we could represent "LAMBDA" like so:
+
+```
+L -> 01001100
+A -> 01000001
+M -> 01001101
+B -> 01000010
+D -> 01000100
+A -> 01000001
+```
+
+Each character, once it was encoded, could be stored as an 8-bit slot in memory. 
