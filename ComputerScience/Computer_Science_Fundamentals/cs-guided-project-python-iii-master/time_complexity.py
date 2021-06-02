@@ -1,4 +1,4 @@
-# Constant O(1)- takes one step. 
+# Constant O(1)- takes one step.
 def print_one_item(items):
     print(item[0])
 
@@ -13,3 +13,7 @@ def print_pairs(items):
     for item_one in items:
         for item_two in items:
             print(item_one, item_one)
+
+
+def do_a_bunch_of_stuff(items):
+    last_idx = len(item) - 1; # O(1) 
