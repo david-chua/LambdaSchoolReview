@@ -26,7 +26,6 @@ There is no index that satisfies the conditions in the problem statement.
 #     return -1
 
 def pivot_index(nums):
-    pivot = 0
     left_sum = 0
     right_sum = sum(nums)
     for i in range(len(nums)):
