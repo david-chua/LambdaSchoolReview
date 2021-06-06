@@ -52,9 +52,29 @@ for k in d: # O(n) over the number of kesy in the dictionary
 
 # {'a': 1, 'b': 2, 'x': 2, 'd': 1, 't': 1, 's': 1}
 
-
+```
 def fib(n):
   if n == 0: return 0
   if n == 1: return 1
 
   return fib(n-1) + fib(n-2)s
+
+for i in range(30):
+  print(fib(i))
+
+```
+
+With hash tables:
+
+```
+cache = {}
+
+def fib(n):
+if n === 0: return 0
+if n === 1: return 1
+
+if n in cache:
+  return cache[n]
+
+cache[n] = fib(n-1) + fib(n-2)
+return cache[n]
