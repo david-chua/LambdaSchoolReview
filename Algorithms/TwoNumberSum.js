@@ -113,3 +113,56 @@ sampleArray = [3,5,-4, 8, 11, 1,-1,6]
 sampleSum = 10
 
 console.log("Hash solution", twoNumberSumHashTableSolution(sampleArray, sampleSum))
+
+
+/**
+In Leetcode, there's a similar problem where index has to be returned rather than the value.
+In this method, sorting is not a viable solution since we need to keep the same index as what's currently there.
+
+For Brute Force method, simply return the i and j values:
+**/
+
+function twoNumberSumBruteForceIndexSolution(array, targetSum){
+  for (let i = 0; i < array.length; i++){
+    let firstValue = array[i];
+    for (let j = i+1; j< array.length; j++){
+      let secondValue = array[j];
+      if (firstValue+secondValue === targetSum){
+        return [i,j]
+      }
+    }
+  }
+
+  return [];
+}
+
+
+sampleArray = [3,5,-4, 8, 11, 1,-1,6]
+sampleSum = 10
+
+console.log("Brute Force", twoNumberSumBruteForceIndexSolution(sampleArray, sampleSum));
+
+
+/**
+In terms of two number solution, it's a little different.
+We find the missingNum, and search it if it's there. If it is, we return that object and the current index.
+If the missingNum is not found, we will store the current value with the key as the array value and the value as the array index.
+In this way, we are able to keep track of the missing index. 
+**/
+
+function twoNumberSumHashTableSolutionIndexSolution(array, targetSum){
+  const hash = {};
+  for (let i = 0; i < array.length; i++){
+    currentValue = array[i]
+    missingNum = targetSum - currentValue
+    if (hash[missingNum] !== undefined){
+      return [hash[missingNum], i]
+    }
+    hash[currentValue] = i
+  }
+}
+
+sampleArray = [3,5,-4, 8, 11, 1,-1,6]
+sampleSum = 10
+
+console.log("Hash solution", twoNumberSumHashTableSolutionIndexSolution(sampleArray, sampleSum))
