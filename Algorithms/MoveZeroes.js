@@ -52,6 +52,7 @@ function moveZeroesForLoop(nums){
       let temp = nums[left]
       nums[left] = nums[i]
       nums[i] = temp
+      left++
     }
     if(nums[left] !== 0){
       left++
