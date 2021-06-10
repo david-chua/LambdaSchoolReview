@@ -66,6 +66,7 @@ var findLongestSubstring = function(s){
       currentSum--
     }
   }
+  console.log('s', s)
   return s.slice(left,left+max)
 }
 
