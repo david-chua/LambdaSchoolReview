@@ -36,6 +36,10 @@ var decodeString = function(s) {
 s = "3[a]2[bc]"
 console.log(decodeString(s));
 
-s2 = "abc3[cd]xyz"
+s2 = "abc10[cd]xyz"
 
 console.log(decodeString(s2))
+
+s3 = "a2[bc2[d3[ab]]]"
+
+console.log(decodeString(s3))
