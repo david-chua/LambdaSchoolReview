@@ -1,33 +1,26 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var myAtoi = function(s) {
-  let index = 0
-  let negative = false
-  let max = 2**31-1
-  let min = 2**31 * -1;
-  s = s.trim(); // removes white space
+    let index = 0;
+    let negative = false
+    let num = 0;
+    let max = 2**31-1
+    let min = 2**31 * -1
+    s = s.trim()
 
-  while (index < s.length){
-    if (s[index] == '-'){
-      negative = true
-      index++
-    }
-
-    if (!Number.isInteger(s.charAt(index)) ){
-      let count = 0
-      while (!Number.isInteger(s.charAt(index)) && index < s.length){
-        count = 10* count + (s.charAt(index) - 0)
+    if (s[index] == '-' || s[index] == "+"){
+        negative = s[index] == '-'? true: false
         index++
-      }
-
-      if (negative && -count <= min) return -2147483648
-      if (!negative && count >= max) return 2147483647
-
-      return negative ? -count : count
     }
-  }
-  return 0
-}
 
+    while (s[index] && s[index].charCodeAt(0) - 48 >= 0 && s[index].charCodeAt(0) - 48 <= 9) {
+        num = num * 10 + (s[index].charCodeAt(0) - 48);
+        index++
+    }
 
-s = "42"
+    num = negative ? -num : num
+    return num <= min ? min : num >= max ? max : num;
 
-console.log(myAtoi(s))
+};
