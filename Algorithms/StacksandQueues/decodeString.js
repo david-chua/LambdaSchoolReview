@@ -38,7 +38,9 @@ var decodeString = function(s) {
         if (!isNaN(s.charAt(index))){
           count = 0;
           while (!isNaN(s.charAt(index))){
-            count = 10 * count + (s.charAt(index) - 0)
+            console.log('count before', s.charAt(index))
+            count = 10 * count + (s.charAt(index)-0)
+            console.log(count)
             index++;
           }
           numStack.push(count)
