@@ -32,6 +32,23 @@ output: true
 s only consists of '()[]{}'
 **/
 
+/** solution explanation
+1. create an object with opening brackets, closing brackets, and a matching bracket where obj['}'] returns its opening bracket type. This will be use to check if the brackets match. Also create a stack
+
+2. go through each character in string, we only care about {},[],(), anything else will be ignored.
+- in the loop, if it's an opening bracket, add it to stack .
+- if it's a closing bracket type, we go through and check logic
+
+3. inside closing bracket logic,
+if stack length is already 0, return false because there's no pair
+if last item in the stack is a matching of that closing bracket, remove it from the stack.
+otherwise, return false since mix is incorrect.
+
+4. return stack.length == 0 to make sure if there's a bracket that wasn't closed, it would show that the parenthesis amount is not valid. ie {[()] when you removed matching brackets, you'll be left with {. 
+
+
+
+**/
 
 var isValid = function(s){
   const openingBrackets = { "{": "{", "[": "[", "(": "("}
