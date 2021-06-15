@@ -16,6 +16,12 @@ input: s="aabb"
 output: -1
 **/
 
+/** solution explanation
+
+Create a character object which stores the character and the amount of times they're seen.
+Do another loop to find the first character object that's only been seen once.
+**/
+
 var firstUniqueChar = function(s){
   let charObj = {}
   for (let char of s){
