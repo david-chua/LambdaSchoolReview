@@ -1,0 +1,31 @@
+header{
+  display: block;
+  text-align: center;
+}
+
+.gameContainer{
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 306px;
+  height: 306px;
+  line-height: 100px;
+}
+
+.cell{
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+
+}
+
+.gameResult{
+  text-align: center;
+}
+
+button{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
