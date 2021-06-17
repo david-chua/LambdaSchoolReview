@@ -32,23 +32,22 @@ function GameBoard(props){
     props.setGameState(boardCopy);
 
 
-    handleResultValidation();
+    handleResultValidation(boardCopy);
   }
 
-  const handleResultValidation = () =>{
+  const handleResultValidation = (boardCopy) =>{
     let roundWon = false;
     for (let i = 0; i<= 7; i++){
       const winCondition = winningConditions[i];
-      let a = props.gameState[winCondition[0]];
-      let b = props.gameState[winCondition[1]];
-      let c = props.gameState[winCondition[2]];
+      let a = boardCopy[winCondition[0]];
+      let b = boardCopy[winCondition[1]];
+      let c = boardCopy[winCondition[2]];
 
       if (a === ''|| b === '' || c === ''){
         continue;
       }
       if (a === b && b === c){
         roundWon = true;
-        console.log('break since won');
         break
       }
     }
@@ -61,7 +60,7 @@ function GameBoard(props){
       return
     }
 
-    let roundDraw = !props.gameState.includes("");
+    let roundDraw = !boardCopy.includes("");
     if (roundDraw){
       props.setGameStatus('draw');
       props.setGameActive(false);
