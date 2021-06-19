@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="bar-container">
+      <div class="bar"/>
+    </div>
+    <button onClick=load(3)>Load</butotn>
+  </body>
+  <style>
+    .bar-container{
+      width: 200px;
+      height: 30px;
+      background-color: grey;
+    }
+
+    .bar{
+      height: 100%;
+      background-color: green;
+      width: 0%;
+    }
+  </style>
+  <script>
+
+    // function load(seconds){
+    //   let bar = document.querySelector('.bar');
+    //   let atPercent = 0;
+    //   const interval = setInterval(() => {
+    //     bar.style.width = atPercent + '%';
+    //     atPercent++;
+    //     if (atPercent >= 100){
+    //         clearInterval(interval);
+    //     }
+    //
+    //   }, seconds)
+    // }
+
+    function load(seconds){
+      let bar = document.querySelector('.bar');
+      bar.style.transition = `${seconds}s linear`;
+      bar.style.width = '100%';
+    }
+  </script>
+</html>
