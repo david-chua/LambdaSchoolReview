@@ -207,3 +207,9 @@ No, it doesn't affect the inline elements. Inline elements flow with the content
 Absolute - places an element exactly where you place it. Absolute position is relative to the element's parent. If no parent is available, then relative place to the page itself.
 
 Relative - "Relative to itself". Setting position relative on an element and no other positioning attributes, it will have no effect on its positioning. It allows the use of z-index on the element and it limits the scope of absolutely positioned child elements. Any child elements positioned within that block.  
+
+Fixed  - Element is positioned relative to the viewpoint or the browser window itself. Viewport doesn't change if you scroll and hence the fixed element will stay right in the same position.
+
+Static - static default for every single page element. The only reason you would ever set an element to position static is to forcefully remove some positioning that got applied to an element outside your control.
+
+Sticky - hybrid of relative and fixed positioning. The element is treated as relative positioned until it crosses a specific threshold at which point it is treated as fixed.
