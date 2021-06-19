@@ -134,3 +134,67 @@ input [type="text"] {
 
 <input type="text">
 ```
+
+## What is VH/VW (viewport height/viewport width) in CSS?
+
+It's a CSS unit used to measure the height and width in percentage with respect to the viewport. A VH is equal to 1/100 of the height of the viewport. If the height of the browser is 1000px, 1vh is equal to 10px.
+
+## What is the difference between reset and normalize CSS? How do they differ?
+
+Reset CSS aims to remove all built in browser styling. For example, margins, paddings, font-sizes are reset to be the same.
+
+Normalize CSS aims to make built-in browser styling consistent across browsers. It also corrects bugs for common browser dependencies.
+
+## What is the difference betwen inline, inline-block, and block.
+
+Block element always starts on a new line and takes the space of an entire row. List of block elements are <div>, <p>
+
+Inline elements are elements that don't start a new line. They appear on the same line as the content and tags besides them. Some examples are <a>, <span>, <strong>, and <img> tags.
+
+Inline Block elements are similar to inline elements except they can have padding and margin adding to all four sides.
+
+## How do you test the webpage in different browser.
+
+Test it in different browser while designing or when making major changes.
+
+## What is a pseudo element? What is a pseudo-class
+
+Pseudo-classes select regular elements but under certain conditions like when a user is hovering over the link.
+
+* :link
+* :visited
+* :hover
+* :active
+* :focus
+
+Example: color changes when hovered in that anchor tag.
+```
+a:hover{
+  color: #FF00FF;
+}
+```
+
+A pseudo-element however allows us to create items that do not normally exist in the document tree, for example ::after.
+
+* ::before
+* ::after
+* ::first-letter
+* ::first-line
+* ::selection
+
+In the example below, the color will appear only on the first line of the paragraph.
+
+p: :first-line{
+  color: #ff0000;
+  font-variant: small-caps;
+}
+
+## How do you specify units in CSS? What are different ways to do it?
+
+There are different ways to specify units in CSS like px, em, pt, percentage.
+px(pixels) gives fine-grained control and maintain alignment because 1px or multiple of 1px is guaranteed to look sharp. px is not scalable.
+em maintains relative size. you can have responsive fonts. Em will cascade. 1em is equal to the current font-size of the element or the browser default. If you sent font-size to 16px then 1em is 16px. The common practice is to set default body font-size to 62.5% (equal to 10px).
+
+## Does margin-top or margin-bottom have an effect on inline elements?
+
+No, it doesn't affect the inline elements. Inline elements flow with the content of the page.
