@@ -198,3 +198,12 @@ em maintains relative size. you can have responsive fonts. Em will cascade. 1em 
 ## Does margin-top or margin-bottom have an effect on inline elements?
 
 No, it doesn't affect the inline elements. Inline elements flow with the content of the page.
+
+
+# Advanced CSS questions
+
+## Explain the position property?
+
+Absolute - places an element exactly where you place it. Absolute position is relative to the element's parent. If no parent is available, then relative place to the page itself.
+
+Relative - "Relative to itself". Setting position relative on an element and no other positioning attributes, it will have no effect on its positioning. It allows the use of z-index on the element and it limits the scope of absolutely positioned child elements. Any child elements positioned within that block.  
