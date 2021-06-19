@@ -86,7 +86,7 @@ Descendant Combinator:
 
 The selector will match all elements that have a class of box and that are immediate children of #container. That means, unlike descendant combinator, there can't be another element wrapping .box. It has to be a direct child element.
 
-* General Sibling Combinator - A selector that uses general sibling combinator to match elements based on sibling relationships. The selected elemnts are besides each other in the HTML.
+* General Sibling Combinator - A selector that uses general sibling combinator to match elements based on sibling relationships. The selected elements are besides each other in the HTML.
 
 ```
 h2 ~ p {
@@ -128,7 +128,7 @@ The above example will apply the specified styles only to paragraph elements tha
 
 ```
 input [type="text"] {
-  background-clor: #444;
+  background-color: #444;
   width: 200px;
 }
 
