@@ -71,11 +71,14 @@ _.each = function(list, callback){
       }
   } else {
     // loop through object
+    for (var key in list){
+      callback(list[key], key, list)
+    }
 
   }
 }
 
-_.each(['salty', 'georgie', 'porgie'], function(name, i){
+_.each(['salty', 'georgie', 'porgie'], function(name, i, list){
     if (list[i+1]){
       console.log(name, 'is younger than', list[i+1])
     } else{

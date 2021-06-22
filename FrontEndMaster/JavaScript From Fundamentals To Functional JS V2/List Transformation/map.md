@@ -56,3 +56,24 @@ _.each(suspects, function(suspect){
   suspect.speak();
 });
 ```
+
+## .map() solution
+
+```
+_.map = function(list, callback){
+  // create an empty array to store
+  var storage = [];
+  // looping
+  for (var i = 0; i < list.length; i++){
+    // callback(element)
+    // push
+    storage.push(callback(list[i], i, list));
+  }
+
+  // return []
+  return storage;
+}
+
+
+_.map([1,2,3], function(val) {return val + 1})
+// [2,3,4]  
