@@ -32,3 +32,18 @@ var reduce = function(list, cb, initial = list[0]) {
 }  
 
 reduce([1,2,3], (v,sum) => v + sum);
+
+
+const notInRoom = (suspect, memo) => {
+  // return an array of all the falsies
+  const emptyRooms = reduce(suspect.rooms, (room, memo) => {
+    if (room === false) memo.push(room)
+    return memo
+    }, []);
+
+    return emptyRooms;
+}
+
+
+notinRooms = _.map(newDevelopment, notInRooms)
+_.difference(...notInRooms)
