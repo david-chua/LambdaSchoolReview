@@ -43,3 +43,6 @@ var isValid = function(root, max, min){
         return isValid(root.left, root.val, min) && isValid(root.right, max, root.val)
     }
 }
+
+// Run time O(n) - going through entire tree
+// Spacetime O(n) worst case if it's a giant linked list type.
