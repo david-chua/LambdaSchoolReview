@@ -22,6 +22,43 @@ Each BST node has an integer value, a left child node, and a right child node. A
  * @param {number} target
  * @return {number}
  */
+
+/**
+Recursive Method:
+Average: Time:  O(log N)
+Average Space: Time: O(log N) Space: O(logN) due to stack calls
+Worst: Time: O(N)
+Space: O(N)
+**/
+var closestValue = function(root, target) {
+    return closestHelper(root, target, root.val)
+};
+
+var closestHelper = function(root, target, closest){
+    if (root === null) return closest;
+    if (Math.abs(target-closest) > Math.abs(target-root.val)){
+        closest = root.val
+    }
+    if (target < root.val){
+        return closestHelper(root.left, target, closest);
+    } else if (target > root.val){
+        return closestHelper(root.right, target, closest);
+    } else {
+        return closest
+    }
+}
+
+
+/**
+Iteratively
+
+Average:
+Time: O(logN) Space O(1) - just need a varaible
+Worst:
+Time: O(N) Space O(1)
+**/
+
+
 var closestValue = function(root, target) {
     return closestHelper(root, target, root.val)
 };
