@@ -27,8 +27,16 @@ Array - pop and shift
 
 # How can you tell if an image element is loaded on the page?
 
+onload elements
+
 # What are call() and apply()?
 
 Ways of changing scope of the calling function.
 
 # What is event delegation?
+
+A way of handling many similar elements. It simplifies initialization and saves memory. Less code. Cons are that the event must be bubbling and it can add CPU load.
+
+# What is a worker? When would you use one?
+
+Workers is something you would use in a browser to offload computationally expensive work. Three different thread so you don't block the UI.
