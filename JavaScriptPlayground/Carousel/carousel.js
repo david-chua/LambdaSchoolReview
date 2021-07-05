@@ -47,3 +47,12 @@ previousButton.addEventListener('click', previous)
 
 let nextButton = document.querySelector('.next');
 nextButton.addEventListener('click', next);
+
+function triggerChange(){
+  setInterval(function(){
+    next();
+  }, 5000);
+}
+
+
+triggerChange();
