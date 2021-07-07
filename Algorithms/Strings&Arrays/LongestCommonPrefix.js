@@ -28,7 +28,6 @@ If not, return longest string which is the similarities that's been found.
 If all letters are the same, increase comparison index and add the letter to the result string.
 **/
 
-
 var longestCommonPrefix = function(strs){
   let longest = '';
 
