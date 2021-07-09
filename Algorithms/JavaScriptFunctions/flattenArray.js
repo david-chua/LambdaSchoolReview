@@ -12,18 +12,24 @@
 //   return finalArray;
 // }
 //
-// function flattenHelper(arr, finArr){
-//   for (let i = 0; i < arr.length; i++){
-//     if (Array.isArray(arr[i])){
-//       flattenHelper(arr[i], finArr)
-//     } else {
-//       finArr.push(arr[i])
-//     }
-//   }
-// }
+function flattenArray(arr){
+  let finalArray = [];
+  flattenHelper(arr, finalArray);
+  return finalArray;
+}
+
+function flattenHelper(arr, finArr){
+  for (let i = 0; i < arr.length; i++){
+    if (Array.isArray(arr[i])){
+      flattenHelper(arr[i], finArr)
+    } else {
+      finArr.push(arr[i])
+    }
+  }
+}
 
 
 let testArr = [1,2,[3,4], [2,[3,4]]];
 
-// console.log(flattenArray(testArr))
-console.log(testArr.flat(Infinity));
+console.log(flattenArray(testArr))
+// console.log(testArr.flat(Infinity));
