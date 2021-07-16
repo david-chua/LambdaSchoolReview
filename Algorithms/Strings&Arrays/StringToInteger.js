@@ -60,7 +60,7 @@ step 2: "-91283472332" ('-' is read so result should be negative)
 step 3: "-91283472332" is read idn
 parsed integer is -91283472332
 
-Since -91283472332 is less than lower bound of the range, the final result is -2^31 = -2147483648. 
+Since -91283472332 is less than lower bound of the range, the final result is -2^31 = -2147483648.
 /**
  * @param {string} s
  * @return {number}
@@ -78,6 +78,7 @@ var myAtoi = function(s) {
         index++
     }
 
+    // Char code 48 - 57 represents number keys 0-9
     while (s[index] && s[index].charCodeAt(0) - 48 >= 0 && s[index].charCodeAt(0) - 48 <= 9) {
         num = num * 10 + (s[index].charCodeAt(0) - 48);
         index++
