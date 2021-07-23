@@ -35,8 +35,8 @@ let addTwoNumbers = function(l1,l2){
     let one = l1 ? l1.val : 0;
     let two = l2 ? l2.val : 0;
     dummyNode.next = new ListNode((one + two + carry) % 10); // This would either be a 0 or the remainder.
-    carry = Math.floor((one + two + carry) / 10) // this would either be a 1 or 0. 
-    dummy = dummyNode.next;
+    carry = Math.floor((one + two + carry) / 10) // this would either be a 1 or 0.
+    dummyNode = dummyNode.next;
     if (l1) l1 = l1.next;
     if (l2) l2 = l2.next;
   }
