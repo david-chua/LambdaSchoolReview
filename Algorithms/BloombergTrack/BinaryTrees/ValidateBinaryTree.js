@@ -52,3 +52,5 @@ var isValid = function(root, max, min){
 
 // Run time O(n) - going through entire tree
 // Spacetime O(n) worst case if it's a giant linked list type.
+
+// Steps:
