@@ -1,5 +1,3 @@
-
-
 const candyCrush = function(input){
   let count = 0;
   let lastChar = input[0]
