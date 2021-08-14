@@ -1,3 +1,26 @@
+/**
+Candy crush - 1 direction
+
+Steps
+start with count 0
+lastChar = first character in input
+set retry to true
+splice input to make it into an array so you can loop through
+while retry is true
+
+create a list of characters.
+for each character go through.
+if character is the same the last character, increase count.
+if character doesn't match,
+- check if count is greater than or less than 3. if it is, removal is happening
+- retry is set back to true
+- if it's not, push the character to the list base on the count value.
+- once you go through the list, change chars to the list of char you are left with
+- set count back to 0
+- set lastChar to the first character of the new character list.
+- once retry remains false, returns the list of characters or set it back to string.
+
+**/
 const candyCrush = function(input){
   let count = 0;
   let lastChar = input[0]

@@ -19,3 +19,21 @@ var reversedInteger = function(x){
 
   return reversed
 }
+
+
+x = 101
+
+reverse = 0
+while 101 > 0
+   reverse = 0 * 10 +
+
+
+reverse = 1
+x = 10
+
+reverse = 1 * 10 + x/10 = 10
+x = 1
+
+
+reverse = 10* 10 + 1 = 101
+x = 0 

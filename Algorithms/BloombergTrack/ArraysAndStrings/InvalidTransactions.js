@@ -28,6 +28,19 @@ Output: ["bob,50,1200,mtv"]
 Time complexity: O(n^2)
 space complexity: O(2N) ==> O(n)
 
+steps:
+
+1. create an invalid Array that's the length of the transaction and set each value to false.
+2. do a for loop to compare each value. if first transaction is greater than 1000 for amount,
+set invalid to true
+3. go through another for loop to compare second value for first value.
+4. compare the transaction 1 with transaction 2.
+if time2 - time 1 is less than 60 minutes and names are the same and city is different
+set invalid to true for both transactions.
+5. create a results array
+6. go through invalid array and if it's true, push the transation index to the results
+
+
 /**
  * @param {string[]} transactions
  * @return {string[]}

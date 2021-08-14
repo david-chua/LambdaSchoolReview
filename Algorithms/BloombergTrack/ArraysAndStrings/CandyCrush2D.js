@@ -21,12 +21,18 @@ Output: [[1,3,0,0,0],[3,4,0,5,2],[3,2,0,3,1],[2,4,0,5,2],[1,4,3,1,1]]
 **/
 
 /**
+time: O(R*C)^2 3(R*C) * (R*C)/3
 steps:
-1. create a retry boolean which would keep looping through the board after every loop once the initial deletion occurs
-2. go through each item in matrix, and if value horizontally for 3 candies are the same, change it to the negative value to mark that it is going to be deleted this round.
-3. go thorugh each item in matrix and if value vertically is the same for 3 candies, then change it to negative value to mark that it will be deleted this same round.
-4. once you've gone through the horizontal and vertical, crush the candies and fill up the remaining values of the board as 0 from where row ended.
-5. if you've changed some values in step 2 and 3, make sure to have retry to true so it keeps checking if there are other things to crush. 
+1. create a retry boolean which would keep looping through the board after every loop
+once the initial deletion occurs
+2. go through each item in matrix, and if value horizontally for 3 candies are the same,
+change it to the negative value to mark that it is going to be deleted this round.
+3. go thorugh each item in matrix and if value vertically is the same for 3 candies,
+then change it to negative value to mark that it will be deleted this same round.
+4. once you've gone through the horizontal and vertical,
+crush the candies and fill up the remaining values of the board as 0 from where row ended.
+5. if you've changed some values in step 2 and 3,
+make sure to have retry to true so it keeps checking if there are other things to crush.
 
 
 /**

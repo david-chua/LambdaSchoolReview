@@ -31,6 +31,32 @@ The answer is guaranteed to fit in a 32-bit integer.
 **/
 
 /**
+steps:
+1. if length is 0 = return 0;
+2. create stack
+3. go through loop and add to stack
+
+conditions for first loop:
+4. if white space continue.
+5. if last item of stack is a number and current item is a number, add them like a string
+so 1 4 becomes 14.
+6. if last item is '-' and current item is a number, add them so instead of 3,-,4
+it becomes 3,-4
+7. push to stack.
+
+second loop, we'll evaluate multiplications and divisions first.
+go through loop and if item is *, multiply i-1 and i+1.
+if division, make sure to evalute propery when math.flooring -5/2 becomes -2 instead of -3.
+
+third loop
+add all values in array.
+
+time complexity: O(n)
+space: O(n) for stack 
+
+
+
+/**
  * @param {string} s
  * @return {number}
  */
@@ -71,6 +97,7 @@ var calculate = function(s) {
             if (stack[i] == '/'){
                 tempSum = Math.floor( Number(stack[i-1]) / Number(stack[i+1]))
 
+                // that part is to make sure that for ex. -100/10 doesn't add 1 but -5/2 does add one since floor for negatives would round up but positive would round down
                 if (tempSum < 0 && (Number(stack[i-1]) % Number(stack[i+1])) !== 0){
                     tempSum += 1
                 }
