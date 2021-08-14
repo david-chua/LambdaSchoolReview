@@ -21,6 +21,30 @@ output: 0
 
 **/
 
+/**
+steps:
+1. check for string validation
+2. create maxLength, currentLength, uniqueLetter map,
+leftPointer, rightPointer
+3. while right < s.length do the following
+- if uniqueLetters[right] does not exist, add it
+- increaseRightPointer, currentLength, compare maxLength with currentLength
+- if it exists, delete it from map, increase leftPointer, subtract currentLength
+- once done, return maxLength.
+
+// follow up, if you want the string
+- add maxleftIndex variable and add if statement if
+- currentLength is larger than maxLength, adjust maxLeftIndex with
+currentLeft index.
+- once done with while loop, splice array from maxLeftIndex to maxLength
+- return spliced array.
+
+
+time complexity:
+O(n)
+space: O(n) for unique letters map 
+**/
+
 
 let lengthOfLongestSubstring = function(s){
   if (s.length === 0 ){

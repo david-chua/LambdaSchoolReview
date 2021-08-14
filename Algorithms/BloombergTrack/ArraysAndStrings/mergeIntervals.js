@@ -28,8 +28,10 @@ steps:
 - check edge cases
 - sort intervals where starting value is sorted
 - push first interval
-- do a for loop for each interval and if result interval's last item is greater than or equal to current interval, change ending otherwise push interval to result array.
-- return result. 
+- do a for loop for each interval and if result interval's last
+item is greater than or equal to current interval, change ending
+otherwise push interval to result array.
+- return result.
 
 /**
  * @param {number[][]} intervals

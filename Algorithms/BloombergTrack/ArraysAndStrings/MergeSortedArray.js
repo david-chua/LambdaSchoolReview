@@ -31,8 +31,12 @@ array 2 is length of n. To be in the last index, subtract 1.
 2. initiate endpointer which is m+n - 1 to be in the last index.
 3. for loop from endpointer to 0
 4. if arr2 is less than 0, all values in nums2 have been added, break
-5. if nums1 at array1 pointer is greater than nums2 at array2 pointer, let nums[last Pointer] = nums1[array1 pointer]. Subtract 1 from array 1 pointer.
-6. if nums2 at array2 pointer is greater or equal than nums1 at array1 pointer, let nums1[lastPointer] = nums2[array2 pointer]. Subtract 1 from array 2 pointer.
+
+5. if nums1 at array1 pointer is greater than nums2 at array2 pointer, 
+let nums[last Pointer] = nums1[array1 pointer]. Subtract 1 from array 1 pointer.
+
+6. if nums2 at array2 pointer is greater or equal than nums1 at array1 pointer,
+let nums1[lastPointer] = nums2[array2 pointer]. Subtract 1 from array 2 pointer.
 7 when loop ends, return nums1 array which should now contain m+n length and all the values of nums1 and nums2 values.
 **/
 

@@ -25,7 +25,8 @@ third: use first word as base for checking the rest of strings
 fourth: write a for loop checking each letter of the comparison word
 fifth: for each index, check if the letters are the same.
 If not, return longest string which is the similarities that's been found.
-If all letters are the same, increase comparison index and add the letter to the result string.
+If all letters are the same, increase comparison index and add the
+letter to the result string.
 **/
 
 var longestCommonPrefix = function(strs){

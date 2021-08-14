@@ -19,7 +19,7 @@ Constraints:
 **/
 
 /**
-Time: O(n^2)? - potential due to four loop and .shift being an O(n) run time.
+Time: O(n^2)? - potential due to for loop and .shift being an O(n) run time.
 Space: O(2n) - O(n) due to creating two separate arrays for start and end.
 
 Steps:
@@ -78,12 +78,16 @@ space: O(n) - minheap
      // add iniital item in minHeap array
      minHeap = [intervals[0][1]];
 
-     // counter of how many meetings. if there's at least one item, meeting number is going to start at 1.
+     // counter of how many meetings. if there's at least one item,
+     //meeting number is going to start at 1.
      let counter = 1;
 
-     // loop through intervals array starting at index 1 since index 0 is already in our heap
+     // loop through intervals array starting at index 1 since index 0
+     // is already in our heap
      for(let k=1; k<intervals.length; k++){
-         // if min heap start <= intervals[k][0] (end) and if minheap[0] start <= interval[k] start, change the current min to the current interval.
+         // if min heap start <= intervals[k][0] (end) and if minheap[0]
+         //start <= interval[k] start, change the current min to the current 
+         //interval.
          if(minHeap[0] <= intervals[k][1] && minHeap[0] <=intervals[k][0] ){
              minHeap[0] = intervals[k][1];
          }
