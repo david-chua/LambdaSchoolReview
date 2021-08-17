@@ -1,8 +1,10 @@
 /**
 You are given two non-empty linked list representing two non-negative integers.
-The digits are stored in reverse order, and each of their nodes contain a single digit. Add the two numbers and return the sum as a linked list.
+The digits are stored in reverse order, and each of their nodes contain a single
+digit. Add the two numbers and return the sum as a linked list.
 
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+You may assume the two numbers do not contain any leading zero, except the
+number 0 itself.
 
 Example 1
 
@@ -34,8 +36,10 @@ let addTwoNumbers = function(l1,l2){
   while (l1 != null || l2 !== null){
     let one = l1 ? l1.val : 0;
     let two = l2 ? l2.val : 0;
-    dummyNode.next = new ListNode((one + two + carry) % 10); // This would either be a 0 or the remainder.
-    carry = Math.floor((one + two + carry) / 10) // this would either be a 1 or 0.
+     // This would either be a 0 or the remainder.
+    dummyNode.next = new ListNode((one + two + carry) % 10);
+    // this would either be a 1 or 0.
+    carry = Math.floor((one + two + carry) / 10)
     dummyNode = dummyNode.next;
     if (l1) l1 = l1.next;
     if (l2) l2 = l2.next;

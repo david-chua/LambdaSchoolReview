@@ -20,7 +20,8 @@ steps:
 1. check if height is null and return 0 if it is
 2. go from left to right, and fill maximum possible height in each index.
 3. go from right to left and fill maximum possible height in each index
-4. calculate total water by finding minimum between left two arrays - height of building at that index.
+4. calculate total water by finding minimum between left two arrays -
+height of building at that index.
 5. return total Water.
 **/
 

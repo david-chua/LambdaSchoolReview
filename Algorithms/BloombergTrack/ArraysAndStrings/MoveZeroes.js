@@ -12,8 +12,10 @@ nums = [0,1,0,3,12]
 output= [1,3,12,0,0]
 
 Solution, we use a two pointer approach.
-One pointer will be a pointer that only stays at 0 and will perform a swap when a 0 is found
-One pointer will always move 1 step forward until left pointer landed on 0 and this pointer is on a non-0. Otherwise, it moves forward.
+One pointer will be a pointer that only stays at 0 and will perform a swap when
+a 0 is found
+One pointer will always move 1 step forward until left pointer landed on 0 and
+this pointer is on a non-0. Otherwise, it moves forward.
 **/
 
 // While loop

@@ -1,7 +1,10 @@
 /**
-You are given two non-empty linked list representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return the sum as a linked list.
+You are given two non-empty linked list representing two non-negative integers.
+The most significant digit comes first and each of their nodes contain
+a single digit. Add the two numbers and return the sum as a linked list.
 
-You may assume the two  numbers do not contain any leading zeroes except the number 0 itself.
+You may assume the two  numbers do not contain any leading zeroes except
+the number 0 itself.
 
 Example:
 
@@ -72,9 +75,11 @@ var addTwoNumbers = function(l1, l2) {
     head = null;
     let carry = 0;
 
-    // this portion takes care of the carry and evaluates the node and carry at each point and creates a new ListNode
-    // The adition to the head node adds it in reverse to reverse the way we added the value orgiinally
-    
+    // this portion takes care of the carry and evaluates the node and
+    // carry at each point and creates a new ListNode
+    // The adition to the head node adds it in reverse to reverse the
+    // way we added the value orgiinally
+
     while (curr1 !== null){
         let val = (curr1.val + carry) % 10;
         carry = Math.floor((curr1.val + carry) / 10);

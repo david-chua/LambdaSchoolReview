@@ -78,9 +78,13 @@ let alienOrder = function(words){
     }
   }
 
+  console.log('graph', graph);
+
   // here we start our DFS
   let visiting = new Set();
-  let visited = new Set(); // False means character has been visited, True has been visited and in the current Path.
+  // False means character has been visited,
+  // True has been visited and in the current Path.
+  let visited = new Set();
   let result = [];
 
   let dfs = function(char){
@@ -90,7 +94,7 @@ let alienOrder = function(words){
 
     // go thorugh each neighbor of that character
     for (let n of graph[char]){
-      if (!dfs(n)) return false 
+      if (!dfs(n)) return false
     }
     visiting.delete(char);
     visited.add(char);
@@ -104,3 +108,7 @@ let alienOrder = function(words){
   }
   return result.reverse().join('');
 }
+
+let words = ["wrt","wrf","er","ett","rftt"]
+
+console.log(alienOrder(words));

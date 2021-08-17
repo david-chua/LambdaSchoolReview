@@ -18,8 +18,10 @@ space complexity: O(n)
 
 Steps:
 1. initialize result object
-2. go through first string and add to result object. If it doesn't exist, result = 1, otherwise add 1
-3. go through second string. If result object exist, remove 1 or if value is one, change it to undefined to remove. If it doesn't exist, create a value.
+2. go through first string and add to result object. If it doesn't exist,
+result = 1, otherwise add 1
+3. go through second string. If result object exist, remove 1 or if value
+is one, change it to undefined to remove. If it doesn't exist, create a value.
 **/
 let isAnagram = function(s,t){
   if (s.length !== t.length){

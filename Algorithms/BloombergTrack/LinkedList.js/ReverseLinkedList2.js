@@ -1,5 +1,7 @@
 /**
-Given the head of a singly linked list and two integers, left and right, where left <= right. reverse the node of the list from position left to position right. and return the reversed list;
+Given the head of a singly linked list and two integers, left and right,
+where left <= right. reverse the node of the list from position left to
+position right. and return the reversed list;
 
 Example 1:
 
@@ -23,9 +25,14 @@ Steps:
 prev = null  and current = head ;
 2. until left is 1, go through nodes where
 prev = current and current = current.next;
-subtract left and right - this is because you want to have a pointer where previous is 1 item from where L starts and current is where you begin reversing the linked list.
-3. set two new pointers, tail, and con. Con will be the item connecting the head of the reversed list and tail will be the connecting to the remaining nodes (if it exist).
-4. while you're not at the end of the list, reverse the list as normal and subtract until right = 0
+subtract left and right - this is because you want to have a pointer where
+previous is 1 item from where L starts and current is where you begin reversing
+the linked list.
+3. set two new pointers, tail, and con. Con will be the item connecting the
+head of the reversed list and tail will be the connecting to the remaining
+nodes (if it exist).
+4. while you're not at the end of the list, reverse the list as normal and
+subtract until right = 0
 5. connect the endpoints as instructed from step 3. connect the tail as well.
 6. returnthe original head
 

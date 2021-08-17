@@ -1,5 +1,7 @@
 /**
-You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+You are given a string s and an integer k, a k duplicate removal consists of
+choosing k adjacent and equal letters from s and removing them, causing the left
+and the right side of the deleted substring to concatenate together.
 
 We repeatedly make k duplicate removals on s until we no longer can.
 
@@ -29,12 +31,17 @@ Output: "ps"
 
  /**
  Steps:
- Initiate an empty Stack and a variable character-count
-Loop through the input-string and push [character, current-character-count] on to the stack
-If the current current-character is the same as the one lying on the top of the stack, add "1" to the count-value of the top element of the stack
-Else reset the count to 1 and add this new character [char, count] to the top of the stack.
-If at any given time the value of count of the top element is Equal to "K", Pop it off.
-Loop through the stack, you can treat it as an array-list of [char, frequency] to build result.
+1. Initiate an empty Stack and a variable character-count
+2. Loop through the input-string and push [character, current-character-count]
+on to the stack
+3. If the current current-character is the same as the one lying on the top of the
+stack, add "1" to the count-value of the top element of the stack
+4. Else reset the count to 1 and add this new character [char, count] to the top of
+the stack.
+5. If at any given time the value of count of the top element is Equal to "K",
+Pop it off.
+6. Loop through the stack, you can treat it as an array-list of [char, frequency]
+to build result.
 
 Time complexity: O(n)
 Space complexity: O(n);

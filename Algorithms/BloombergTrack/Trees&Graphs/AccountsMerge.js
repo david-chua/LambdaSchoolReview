@@ -57,8 +57,10 @@ email2accountIdx = {
   "mary@m.com": 4
 }
 
-for index 3 where a_joe@m.com is already seen, we then merge group 3 with group 1.
-for index 3 where joe-a@m.com, we merge the newly merge group (1 and 3) with group 0.
+for index 3 where a_joe@m.com is already seen, we then merge group 3 with
+group 1.
+for index 3 where joe-a@m.com, we merge the newly merge group (1 and 3)
+with group 0.
 
 
 // keep track of group partitioning
@@ -118,7 +120,8 @@ var accountsMerge = function (accounts) {
         }
     }
 
-    return Object.entries(emails).map(([email, x]) => [email2name[email], ...x.sort()]);
+    return Object.entries(emails).map(([email, x]) => [email2name[email],
+    ...x.sort()]);
 };
 
 /**

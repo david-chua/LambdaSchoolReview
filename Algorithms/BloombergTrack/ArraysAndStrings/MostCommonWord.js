@@ -17,6 +17,16 @@ output: "ball"
 /**
 1. create a set of banned word to access it easily
 2. create an array from the paragraph and remove all punctuations.
+go through each word of the array.
+3. change word to lowercase.
+4. if the word is not part of the banned Set.
+- if it's undefined for the validWord,
+- set to 0
+- add frequency.
+- if validWordFrequency is more than  mostcommon frequency,
+change most Common to the word.
+return most common.
+
 **/
 
 var mostCommonWord = function(paragraph, banned){
@@ -34,7 +44,8 @@ var mostCommonWord = function(paragraph, banned){
         validWordFrequency[lowerCaseWord] = 0
       }
       validWordFrequency[lowercase]++;
-      if (mostCommon === '' || validWordFrequency[lowerCaseWord] > validWordFrequency[mostCommon]){
+      if (mostCommon === '' || validWordFrequency[lowerCaseWord] >
+      validWordFrequency[mostCommon]){
         mostcommon = lowerCaseWord;
       }
     }

@@ -32,7 +32,8 @@ Follow up: Could you use search pruning to make your solution faster with a larg
 /**
 steps:
 1. double for loop
-2. check if at that index if board[i][j] === word.charAt(0) and if (dfs(board, i, j, word, 0) returns true, return true )
+2. check if at that index if board[i][j] === word.charAt(0) and
+if (dfs(board, i, j, word, 0) returns true, return true )
 
 3. in DFS function,
 - if out of bounds - return false
@@ -42,12 +43,13 @@ steps:
 
 - have a temp variable to store current board placement board[i][j]
 - change board[i][j] to -1 or "";
-- go through all 4 directions [i+1,j][i-1,j][i,j+1][i,j-1] dfs wise  with char+1 to show next character
+- go through all 4 directions [i+1,j][i-1,j][i,j+1][i,j-1] dfs wise
+with char+1 to show next character
 - if it's false, revert the board back to the original board[i][j] = temp
 - return false - no word is found
 
 time: O(n^2 or n * m or n to specify going through each character of the board) - double for loop
-space O(n) due to recursive calls. 
+space O(n) due to recursive calls.
 /**
  * @param {character[][]} board
  * @param {string} word

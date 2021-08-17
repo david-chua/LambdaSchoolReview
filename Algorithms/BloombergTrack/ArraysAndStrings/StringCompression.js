@@ -31,7 +31,7 @@ let chars2 = ["a","a","b","b","c","c","c"]
 
 
 console.log(compress(chars));
-// console.log(compress(chars2
+// console.log(compress(chars2));
 
 
 var compress = function(chars) {
@@ -47,15 +47,19 @@ var compress = function(chars) {
         } else {
             // if current value is different from previous char
             if (count === 1){
-                // if count is only 1, we don't show this value, so move on and start loop again
+                // if count is only 1, we don't show this value, so move on and
+                //start loop again
                 start = i;
                 continue
             }
 
             // split number into array of individual numbers 12 ==> ['1', '2']
             let countStrs = count.toString().split('');
-            // start will be 1 value where letter starts [a, a, b] - when else is triggered, start is at 0 so we'll be placing value at start + 1
-            // count-1 will be number of digits we'll be removing -1, and ...countStrs is the values we'll insert into the array.
+            // start will be 1 value where letter starts [a, a, b] -
+            // when else is triggered, start is at 0 so we'll be placing value
+            // at start + 1
+            // count-1 will be number of digits we'll be removing -1,
+            // and ...countStrs is the values we'll insert into the array.
             chars.splice(start + 1, count-1, ...countStrs);
 
             // reset i to index of "current char after splice"

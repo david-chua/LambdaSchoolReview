@@ -24,14 +24,15 @@ initial solution: x**n
 /**
 using fast power algorithm
 where basically if n = 10 it's the same as 2 * 5
-
+**/
 
 var myPow = function(x, n) {
     if(n === 0) {
         return 1;
     }
-    let absN = Math.abs(n),
-        pow = 1;
+    let absN = Math.abs(n)
+    let pow = 1;
+    
     while(absN) {
         if(absN % 2 !== 0) {
             pow = x * pow;

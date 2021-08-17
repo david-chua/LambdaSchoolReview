@@ -30,9 +30,11 @@ All values of nums are unique.
 nums is guaranteed to be rotated at some pivot.
 -104 <= target <= 104
 **/
+
 /**
 Overview:
-Since it's increasing, we know there will be two parts, left side and right side but two halfs are sorted.
+Since it's increasing, we know there will be two parts, left side and right side
+but two halfs are sorted.
 
 for binary search, we have 3 pointers: left, mid, right
 left is always <= right
@@ -40,12 +42,15 @@ left is always <= right
 [4,5,6,7,0,1,2]
 if middle is 6
 if target is greater than 6, we know left side i not greater than 6.
-if target is less than middle value, we compare left sorted portion, left sorted portion, we check if target is smaller than first item in left, we run binary in right.
+if target is less than middle value, we compare left sorted portion,
+left sorted portion, we check if target is smaller than first item in left,
+we run binary in right.
 if target is greater or equal to 4, we run binary on right side.
 
-if we're on right portion of array, if our target is less than 1, we have to search left side of our binary search.
-if it's greater than or equal to middle, we use edge most value of right side. if target is greater than mid and greater than edge, we check left side. if it's less than middle and less than edge, we check right side.
-
+if we're on right portion of array, if our target is less than 1, we have to search
+left side of our binary search.
+if it's greater than or equal to middle, we use edge most value of right side.
+if target is greater than mid and greater than edge, we check left side. if it's less than middle and less than edge, we check right side.
 
 [4,5,6,7,0,1,2]
 L = 4
@@ -69,13 +74,12 @@ steps:
 3. if left is less than mid,
 
 For left portion
-4.  if target > mid or if target < nums[l], adjust mid to be l = mid + 1 
+4.  if target > mid or if target < nums[l], adjust mid to be l = mid + 1
  else r = mid - 1
  for right portion
  if target < mid or if target > right
   r = mid -1
   else l = mid + 1
-
 
 5. if you go through loop and find no match, return -1
 

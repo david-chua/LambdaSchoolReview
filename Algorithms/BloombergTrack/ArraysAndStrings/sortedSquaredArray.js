@@ -19,11 +19,12 @@ output = [4, 9, 25, 100, 144]
 /**
 Steps:
 
-1. Do a 4 loop and square the array values
+1. Do a for loop and square the array values
 2. Sort the result
 **/
 
-// This is a possible solution ONLY if question didn't specify to "return a new array" 
+// This is a possible solution ONLY if question didn't specify to
+// "return a new array"
 // In place
 // time complexity: O(nlog(n)) - due tosorting algorithms
 // space: O(1) - no additional space were added due to squaring in place.

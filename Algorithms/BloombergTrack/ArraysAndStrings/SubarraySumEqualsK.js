@@ -23,8 +23,10 @@ the array between those two points is size k
 
 start with (0,1)
 we see a 3 ( (0,1), (3,1))
-We see 4, sum = 7 sum-k = 0, we've seen a 0, so sum = 7, count = 1 : map: ((0,1), (3,1), (7,1))
-we see a 7: sum = 14 sum -k = 14 - 7, and we've seen a 7 map: ((0,1), (3,1), (7,2), (14,1))
+We see 4, sum = 7 sum-k = 0, we've seen a 0,
+so sum = 7, count = 1 : map: ((0,1), (3,1), (7,1))
+we see a 7: sum = 14 sum -k = 14 - 7, and
+we've seen a 7 map: ((0,1), (3,1), (7,2), (14,1))
 
 **/
 
@@ -60,7 +62,8 @@ var subArraySum = function(nums, k) {
         if(map.has(sum-k)) {
             count += map.get(sum-k);
         }
-        map.set(sum, (map.has(sum) ? map.get(sum) : 0) + 1); // if map has property, get it or change it to 0 and add 1.
+        map.set(sum, (map.has(sum) ? map.get(sum) : 0) + 1);
+        // if map has property, get it or change it to 0 and add 1.
     }
     return count;
 };

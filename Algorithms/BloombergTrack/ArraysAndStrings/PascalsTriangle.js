@@ -24,13 +24,16 @@ Steps:
 1. generate result array
 2. start with initial row [[1]]
 3. run for loop from 1 to numRows
-4. inside loop, reference previous Row to get values and create a current row array
+4. inside loop, reference previous Row to get values and create a current row
+array
 5. push 1 as outer value is always 1
 6. for inner values, go from 1 to i.
-7. To add values, use prevRow[j-1] and [j] which is going to reference the values above
+7. To add values, use prevRow[j-1] and [j] which is going to reference the
+values above
 8. Add value to the current row array
 9. add 1 at the end of the current Row once for loop is done
-10. push current Row to end of results and go to start of loop with a higher value until numRows is covered.
+10. push current Row to end of results and go to start of loop with a higher
+value until numRows is covered.
 11. return result array
 **/
 

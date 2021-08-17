@@ -29,6 +29,17 @@ Explanation: n = 1, since there is 1 number, so all numbers are in range of [0,1
 
 **/
 
+/**
+time complexity: O(n)
+space: O(1)
+
+steps:
+- for loop to add value from length of num to 0 and set it sum.
+- loop through nums array and subtract each value until you're left
+with remaining number.
+-missing number is the end sum.
+**/
+
 var missingNumber = function(nums) {
     let sum = addNum(nums.length);
     for (let numIndex = 0; numIndex < nums.length; numIndex++){

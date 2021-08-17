@@ -1,19 +1,23 @@
 /**
 Validate Subsequence
 
-Given two non-empty array of integers, write a function that determines whether the second array is a subsequence of the first one.
+Given two non-empty array of integers, write a function that determines
+whether the second array is a subsequence of the first one.
 
-A subsequence of an array is a set of numbers that aren't necessarily adjacent in the array but are in the same order as they appear in the array.
+A subsequence of an array is a set of numbers that aren't necessarily
+adjacent in the array but are in the same order as they appear in the array.
 
 For instance, the numbers [1,3,4] form a subsequence from the array [1,2,3,4].
-So does [2,4]. Note that a single number in an array and the array itself are both valid subsequence of the array.
+So does [2,4]. Note that a single number in an array and the array itself
+are both valid subsequence of the array.
 
 
 To solve this, we want to keep track of two pointers.
 1. Main array
 2. Sequence array.
 
-We move along the main array until we find the value of the subarray in the subarray's pointer. We continue to do so until we go through the entire main array or we complete the sequence in the array. This is because finishing the main array, there's no remaining values to check. Finishing the sequence array, there's nothing left to compare.
+We move along the main array until we find the value of the subarray
+in the subarray's pointer. We continue to do so until we go through the entire main array or we complete the sequence in the array. This is because finishing the main array, there's no remaining values to check. Finishing the sequence array, there's nothing left to compare.
 
 How to solve
 [5,1,22,25,6,-1,8,10]
@@ -23,7 +27,8 @@ _  <-- sequenceArrayIndex (starts at 0)
 
 
 We then compare:
-5 and 1. This are not the same, so we continue to the next value in the main array:
+5 and 1. This are not the same, so we continue to the next value in the
+main array:
 
 [5,1,22,25,6,-1,8,10]
    _  <-- mainArrayIndex (index value = 1)
@@ -31,14 +36,16 @@ We then compare:
 _  <-- sequenceArrayIndex (index value still at 0)
 
 We compare the two values and they are the same.
-We then increase both mainArrayIndex and sequenceArrayIndex to continue looking for the next value that matches the value in sequence array.
+We then increase both mainArrayIndex and sequenceArrayIndex
+to continue looking for the next value that matches the value in sequence
+array.
 
 [5,1,22,25,6,-1,8,10]
      _  <-- mainArrayIndex (index value = 2 )
 [1,6,-1,10]
    _  <-- sequenceArrayIndex (index value = 1)
 
-22 does not equal to one.
+22 does not equal to six.
 
 [5,1,22,25,6,-1,8,10]
          _  <-- mainArrayIndex (index value = 3)

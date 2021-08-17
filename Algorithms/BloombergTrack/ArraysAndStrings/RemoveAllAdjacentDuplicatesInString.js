@@ -45,7 +45,6 @@ var removeDuplicates = function(s) {
             stack.pop()
         } else {
             stack.push(char)
-
         }
 
     }

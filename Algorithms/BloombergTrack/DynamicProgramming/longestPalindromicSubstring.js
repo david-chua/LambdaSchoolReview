@@ -41,7 +41,8 @@ Steps:
 3. for each letter, check if palindrom exist (2 cases, odd and even palindrome)
 4. compare largest strings.
 5. if current length is longer than current longest, change values
-6. once you've gone through entire array, return the substring starting from start to end.
+6. once you've gone through entire array, return the substring starting
+from start to end.
 
 **/
 

@@ -33,7 +33,6 @@ Steps:
 - left = 0
 - right: matrix[0].length-1
 4. initiate end point when result array contains all items of matrix: (height * width)
-
 5. Start while loop to keep going when array result is smaller than matrix items
 6. go top row left to right
 7. add 1 to top row boundary so it won't get added again

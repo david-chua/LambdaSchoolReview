@@ -1,5 +1,6 @@
 /**
-Given a singly linked list group all odd node together followed by the event nodes.
+Given a singly linked list group all odd node together followed by the
+event nodes.
 Please note we are talking abou the node number and not the value in the nodes.
 
 
@@ -36,5 +37,5 @@ var oddEvenList = function(head){
   }
 
   odd.next = evenHead;
-  return head; 
+  return head;
 }
