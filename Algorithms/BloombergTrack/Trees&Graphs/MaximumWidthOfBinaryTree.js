@@ -54,20 +54,91 @@ The number of nodes in the tree is in the range [1, 3000].
  * }
  */
 
+/**
  Approach: Using Level Order Traversal using the Queue.
 
 Initially add the root and the root index 0 to the queue.
+
 At each level, save the first and last index of the nodes and push the left and
 right child nodes along with their index.
+
 If the parent node has index i, the left child index will be 2 * i + 1 and of
 right child index will be 2 * i + 2.
+
 At the end of each level, calculate the width by subtracting the first index from
 the last index of the level. If the width exceeds the maxWidth, assign that.
+
 Note: Substituting the index in this solution since the solution needs to handle
 values over 32-bit integers. If we don't normalize, the value is overflowing and
 the width at the end of those levels is NaN. Basically, just subtracting the
 initial node index value with each node index, so after subtraction, the width
 will still be the same and we won't get NaN as a result.
+
+
+Need to realize you can turn the tree into a binary tree
+index = i
+left child = 2i + 1
+right child will be 2i + 2
+interested in the index
+queue will be [root, index]
+we then pop the queue so we end with [] then we append left and root child
+q[3, 1], [3,2]   width = end - start + 1; then we compare it with current Max.
+
+then third level after we pop the second level
+[5,3], [3,4][9,6] then we subtract  6-3 + 1 = 4.
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var widthOfBinaryTree = function(root) {
+    if (!root) return 0;
+
+   let queue = [[root,0]];
+    let maxWidth = 0;
+    let left = 0;
+    let right = 0;
+
+    while (queue.length !== 0){
+        let size = queue.length;
+        let start = queue[0][1];
+        for (let i = 0; i < size; i++){
+            let [node, idx] = queue.shift();
+            if (i === 0){
+                left = idx;
+            }
+            if (i === size -1){
+                right = idx;
+            }
+
+            let subIdx = idx - start;
+
+            if (node.left !== null){
+                queue.push([node.left, 2*subIdx + 1]);
+            }
+
+            if(node.right !== null){
+                queue.push([node.right, 2*subIdx + 2]);
+            }
+        }
+        maxWidth = Math.max(maxWidth, right-left + 1);
+    }
+    return maxWidth
+};
+
+
+
+// Copied
+
+
 /**
  * @param {TreeNode} root
  * @return {number}
