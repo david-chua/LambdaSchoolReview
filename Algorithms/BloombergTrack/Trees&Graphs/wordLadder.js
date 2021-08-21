@@ -66,7 +66,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
 
           // push the word and the current steps should be incremented by 1
           // because we found the word that has 1 edit distance.
-          queue.push([word, curWordDetail[1]+1]); 
+          queue.push([word, curWordDetail[1]+1]);
         }
       }
     }
@@ -105,3 +105,33 @@ const oneEditEqualLength = function(word1, word2){
 
   return true
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.

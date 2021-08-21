@@ -72,6 +72,6 @@ let kthSmallest = function(root,k){
     if (n === k){
       return curr.val
     }
-    curr = curr.right; 
+    curr = curr.right;
   }
 }
